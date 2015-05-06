@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RUbook", "RUbook\RUbook.csproj", "{C62FCE7B-0697-4744-BCDD-D86EEC1B79E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RUbook.Tests", "RUbook.Tests\RUbook.Tests.csproj", "{AF35BB97-B9E4-4061-A7E9-4FB4D45D4EBE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C62FCE7B-0697-4744-BCDD-D86EEC1B79E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C62FCE7B-0697-4744-BCDD-D86EEC1B79E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C62FCE7B-0697-4744-BCDD-D86EEC1B79E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C62FCE7B-0697-4744-BCDD-D86EEC1B79E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF35BB97-B9E4-4061-A7E9-4FB4D45D4EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF35BB97-B9E4-4061-A7E9-4FB4D45D4EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF35BB97-B9E4-4061-A7E9-4FB4D45D4EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF35BB97-B9E4-4061-A7E9-4FB4D45D4EBE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
