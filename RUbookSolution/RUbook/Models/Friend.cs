@@ -7,13 +7,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RUbook.Models
 {
-    /*public class Friend
+    public class Friend
     {
-        public int ID { get; set; }
-        [Key]  
+        /*public int ID { get; set; }
+        
         public string friend1 { get; set; }
-        [Key]  
-        public  string friend2 { get; set; }
 
-    }*/
+        public  string friend2 { get; set; }*/
+
+    }
 }

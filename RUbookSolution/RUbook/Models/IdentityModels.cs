@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RUbook.Models
 {
@@ -13,12 +14,15 @@ namespace RUbook.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string FullName { get; set; }
-        /*hérna er komment*/
+        //public int DepartmentID { get; set; }
+        public DateTime? DateoOfBirth { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
 
-        public virtual ICollection<ApplicationUser> Friends { get; set;  }
+        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<GroupMember> GroupMembers { get; set; }
+        public virtual ICollection<EventMember> EventMembers { get; set; }
+        //public virtual ICollection<ApplicationUser> Friends { get; set;  }
 
 
        

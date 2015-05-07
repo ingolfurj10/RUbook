@@ -12,12 +12,9 @@ namespace RUbook.Models
         public string text { get; set; }
         public Department departmentID { get; set; }
         public string course { get; set; }
-       
-        //Here we have to connect users to group - list of users
-       //public virtual ICollection<User> Users { get; set; }
-        
-        //here we have to allow posts on wall of group
-        //public virtual ICollection<Post> Post { get; set; }*/
+
+        public virtual ICollection<GroupMember> GroupMembers { get; set; }
+        public virtual ICollection<Post> Post { get; set; }
        
     }
 }
