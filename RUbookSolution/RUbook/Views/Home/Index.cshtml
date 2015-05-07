@@ -8,10 +8,7 @@
     </div>
     <div class="col-md-6">
         <div class="input-group">
-
-            <textarea class="form-control" placeholder="Something on your
-
-mind?"></textarea>
+            @Html.TextArea("Message", new { @class = "newpost", rows = 3, cols = 100, placeholder = "Something on your mind?" })
         </div>
     </div>
     <div class="col-md-3">
