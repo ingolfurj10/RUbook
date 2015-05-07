@@ -16,12 +16,33 @@ namespace RUbook.DAL
 		{
 		}
 
+
+
+		public override IDbSet<ApplicationUser> Users
+		{
+			get
+			{
+				return base.Users;
+			}
+			set
+			{
+				base.Users = value;
+			}
+		}
 		public DbSet<Post> Posts { get; set; }
         //public DbSet<Friend> Friends {get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Group> Groups { get; set; }
-        
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<UserInfo> UsersInfo { get; set; }
+        public DbSet<EducationInfo> EducationsInfo { get; set; }
+        public DbSet<WorkInfo> WorksInfo { get; set; }
+        public DbSet<GroupMember> GroupMembers { get; set; }
+        public DbSet<EventMember> EventMembers { get; set; }
+
+
+
 
 		public static ApplicationDbContext Create()
 		{

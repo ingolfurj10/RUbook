@@ -10,10 +10,13 @@ namespace RUbook.Models
         public int ID { get; set; }
         public string text { get; set; }
         public string image {get; set; }
-        public string userID { get; set; }
-        public DateTime? DateCreated { get; set; }
+        public virtual ApplicationUser UserID { get; set; }
 
-              
-        //public virtual ICollection<Comment> Comments { get; set; }
+        public DateTime? DateCreated { get; set; }
+        public Group GroupID { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
+
+       
     }
 }
