@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections.Generic;
 
 namespace RUbook.Models
 {
@@ -14,6 +15,10 @@ namespace RUbook.Models
         public string LastName { get; set; }
         public string FullName { get; set; }
         /*hérna er komment*/
+
+        public virtual ICollection<Post> Posts { get; set; }
+
+
        
         
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

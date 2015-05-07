@@ -9,11 +9,10 @@ namespace RUbook.Models
     {
         public int ID { get; set; }
         public string text { get; set; }
-		//[ForeignKey("AspNetUsers")]
-		//[Column(Order = 4)]
+        public string image {get; set; }
         public string userID { get; set; }
         public DateTime? DateCreated { get; set; }
-
+        
         //public virtual ICollection<Comment> Comments { get; set; }
     }
 }

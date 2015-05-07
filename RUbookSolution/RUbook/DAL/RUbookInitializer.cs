@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using RUbook.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
 
 namespace RUbook.DAL
 {
 	public class RUbookInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<ApplicationDbContext>
 	{
-		protected override void Seed(ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
 		{
 			//var users = new List<ApplicationUser>()
 			//{
@@ -18,6 +20,7 @@ namespace RUbook.DAL
 			//users.ForEach(u => appliContext.Users.Add(u));
 			//appliContext.SaveChanges();
 
+            
 			var posts = new List<Post>()
 			{
 				new Post{DateCreated=System.DateTime.Now,userID="blabla@eitthvad.com",text="foobar"}
