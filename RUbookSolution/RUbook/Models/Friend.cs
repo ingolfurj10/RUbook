@@ -7,15 +7,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RUbook.Models
 {
-    public class Friend
+    /*public class Friend
     {
-        /*public int ID { get; set; }
-        [ForeignKey("AspNetUsers")]
-        [Column(Order = 4)]
+        public int ID { get; set; }
+        [Key]  
         public string friend1 { get; set; }
-        [ForeignKey("AspNetUsers")]
-        [Column(Order = 4)]
-        public string friend2 { get; set; }*/
-        
-    }
+        [Key]  
+        public  string friend2 { get; set; }
+
+    }*/
 }

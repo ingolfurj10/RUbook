@@ -18,6 +18,8 @@ namespace RUbook.Models
 
         public virtual ICollection<Post> Posts { get; set; }
 
+        public virtual ICollection<ApplicationUser> Friends { get; set;  }
+
 
        
         

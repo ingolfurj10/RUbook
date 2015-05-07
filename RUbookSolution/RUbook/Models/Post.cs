@@ -12,7 +12,8 @@ namespace RUbook.Models
         public string image {get; set; }
         public string userID { get; set; }
         public DateTime? DateCreated { get; set; }
-        
+
+              
         //public virtual ICollection<Comment> Comments { get; set; }
     }
 }
