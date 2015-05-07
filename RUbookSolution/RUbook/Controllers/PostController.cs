@@ -13,7 +13,7 @@ namespace RUbook.Controllers
 {
     public class PostController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        public  ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Post
         public ActionResult Index()
