@@ -29,7 +29,7 @@ namespace RUbook.Tests
 		{
 			var controller = new PostController();
 
-			var user = (from u in controller.db.Users select u).First();
+			var user = (from u in controller.db.Users where u.Id == "Id"  select u).First();
 			var post = new Post(){UserID=(ApplicationUser)user,text="This will work"};
 			controller.Create(post);
 		}
