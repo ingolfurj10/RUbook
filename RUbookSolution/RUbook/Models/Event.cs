@@ -7,10 +7,9 @@ namespace RUbook.Models
 {
     public class Event
     {
-        /*public int ID { get; set; }
+        public int ID { get; set; }
         public string name { get; set; }
-        public DateTime? DateOfEvent { get; set; }*/
+        public DateTime? DateOfEvent { get; set; }
 
-       
     }
 }
