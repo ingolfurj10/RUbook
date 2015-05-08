@@ -12,9 +12,9 @@ namespace RUbook.Models
 
         public int ID { get; set; }
         
-        public virtual ApplicationUser user1 { get; set; }
+        public virtual ApplicationUser CurrentUserID { get; set; }
 
-		public virtual ApplicationUser user2 { get; set; }
+		public virtual ApplicationUser FriendUserID { get; set; }
 
     }
 }
