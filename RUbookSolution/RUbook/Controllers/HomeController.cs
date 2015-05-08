@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RUbook.Models;
+using RUbook.DAL;
 
 namespace RUbook.Controllers
 {
@@ -10,8 +12,17 @@ namespace RUbook.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            TimelineViewModel model = new TimelineViewModel();
+
+            UserDAL userDAL = new UserDAL();
+            model.AllPosts = userDAL.GetAllPosts();
+            model.AllGroups = userDAL.GetAllGroups();
+            model.AllEvents = userDAL.GetAllEvents();
+
+            return View(model);
         }
+
+       
 
         public ActionResult About()
         {
