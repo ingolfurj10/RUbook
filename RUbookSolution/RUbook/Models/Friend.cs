@@ -9,11 +9,13 @@ namespace RUbook.Models
 {
     public class Friend
     {
-        /*public int ID { get; set; }
-        
-        public string friend1 { get; set; }
 
-        public  string friend2 { get; set; }*/
+        public int ID { get; set; }
+        
+        public ApplicationUser CurrentUserID { get; set; }
+
+        public ApplicationUser FriendUserID { get; set; }
 
     }
 }
+
