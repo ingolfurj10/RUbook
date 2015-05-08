@@ -18,10 +18,11 @@
 
                 <ul class="list-group">
                    @foreach (var group in Model.AllGroups)
-                 {
-                    //Hérna viljum við að þetta linki inn á heimasíðu hóps
-                    <a href="#" class="list-group-item">@group.name</a>
-                 }
+                   {
+                    <div class="list-group-item">
+                        @Html.ActionLink(group.name, "Details", "Events", new { id = group.ID }, new { @class = "" })
+                    </div>
+                   }
                 </ul>
             </div>
             <div class="panel panel-default">
@@ -31,7 +32,9 @@
                     @foreach (var item in Model.AllEvents)
                     {
                         //Hérna viljum við að þetta linki inn á heimasíðu hóps
-                        <a href="#" class="list-group-item">@item.name</a>
+                       <div class="list-group-item">
+                        @Html.ActionLink(item.name, "Details", "Events", new { id = item.ID }, new { @class = "" }) 
+                        </div>
                     }
                 </ul>
             </div>
