@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using RUbook.DAL;
 using RUbook.Models;
+using Microsoft.AspNet.Identity;
 
 namespace RUbook.Controllers
 {
@@ -51,6 +52,7 @@ namespace RUbook.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 db.Groups.Add(group);
                 db.SaveChanges();
                 return RedirectToAction("Index");

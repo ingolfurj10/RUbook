@@ -170,6 +170,7 @@
     <Compile Include="DAL\RUbookInitializer.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DAL\UserDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
