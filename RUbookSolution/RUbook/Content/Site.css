@@ -1,6 +1,6 @@
 ﻿body {
-    padding-top: 70px;
-    padding-bottom: 30px;
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -20,11 +20,10 @@
 input,
 select,
 textarea {
-    max-width: 300px;
+    max-width: 280px;
 }
 
 .newpost {
-    max-width: 300%;
+    max-width: 150%;
     width: 130%;
-    margin-left: -16%;
 }
