@@ -30,7 +30,7 @@ namespace RUbook.DAL
 			}
 		}
 		public DbSet<Post> Posts { get; set; }
-        //public DbSet<Friend> Friends {get; set; }
+        public DbSet<Friend> Friends {get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Group> Groups { get; set; }
