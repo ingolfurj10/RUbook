@@ -12,6 +12,7 @@ namespace RUbook.Models
         public string text { get; set; }
         public Department departmentID { get; set; }
         public string course { get; set; }
+        //public ApplicationUser userID { get; set; }
 
         public virtual ICollection<GroupMember> GroupMembers { get; set; }
         public virtual ICollection<Post> Post { get; set; }
