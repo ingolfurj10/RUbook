@@ -1,5 +1,6 @@
 ﻿@model RUbook.Models.Post
 
+
 @{
     ViewBag.Title = "Create Post on Timeline";
 }
@@ -15,10 +16,12 @@
             <div class="col-md-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">My Groups</div>
-                    <ul class="list-group">
-                        <a href="#" class="list-group-item">Vestibulum at eros</a>
-                        <a href="#" class="list-group-item">Vestibulum at eros</a>
-                    </ul>
+                   
+                        <ul class="list-group">
+                            <a href="#" class="list-group-item">Bla</a>
+                        </ul>
+                    }   
+                    
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">My Events</div>
@@ -35,11 +38,13 @@
             </div>
             <div class="col-md-3">
                 <div>
-                    <button type="button" class="btn btn-default">Create Group</button>
+                    <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
+
+                    
                 </div>
                 <br>
                  <div>
-                    <button type="button" class="btn btn-default">Create Event</button>
+                    <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
                 </div>
             </div>
         </div>
