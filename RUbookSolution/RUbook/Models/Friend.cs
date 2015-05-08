@@ -16,6 +16,8 @@ namespace RUbook.Models
 
 		public virtual ApplicationUser FriendUserID { get; set; }
 
+        //comment virkanúna
+
     }
 }
 
