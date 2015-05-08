@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using RUbook.DAL;
 using RUbook.Models;
+using Microsoft.AspNet.Identity;
 
 namespace RUbook.Controllers
 {
@@ -51,6 +52,9 @@ namespace RUbook.Controllers
         {
             if (ModelState.IsValid)
             {
+				var id = User.Identity.GetUserId();
+				var user = (from u in db.Users where u.Id == id select u).SingleOrDefault();
+				post.UserID = (ApplicationUser)user;
                 db.Posts.Add(post);
                 db.SaveChanges();
                 return RedirectToAction("Index");
