@@ -162,6 +162,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\GroupMembersController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -265,6 +266,11 @@
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\GroupMembers\Create.cshtml" />
+    <Content Include="Views\GroupMembers\Delete.cshtml" />
+    <Content Include="Views\GroupMembers\Details.cshtml" />
+    <Content Include="Views\GroupMembers\Edit.cshtml" />
+    <Content Include="Views\GroupMembers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
