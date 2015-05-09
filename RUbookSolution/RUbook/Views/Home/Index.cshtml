@@ -20,7 +20,7 @@
                    @foreach (var group in Model.AllGroups)
                    {
                     <div class="list-group-item">
-                        @Html.ActionLink(group.name, "Details", "Events", new { id = group.ID }, new { @class = "" })
+                        @Html.ActionLink(group.name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
                     </div>
                    }
                 </ul>
@@ -50,7 +50,7 @@
 
             <!--Hér er button sem beinir á create post nýja síðu sem vísar síðan aftur hingað á tímalínuna-->
             <div>
-                <button type="button" class="btn btn-default">@Html.ActionLink("Create New Post", "Create", "Post")
+                <button type="button" class="btn btn-default">@Html.ActionLink("Create New Post", "Create", "Post") </button>
             </div>
 
             <br>

@@ -4,39 +4,84 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>@Html.DisplayFor(model => model.name)</h2>
 
 <div>
-    <h4>Group</h4>
+
+    <h4>@Html.DisplayFor(model => model.text)</h4>
+
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.name)
-        </dd>
+    <div class="col-md-3">
+        <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Group Photo" />
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.text)
-        </dt>
+    <div class="col-md-6">
 
-        <dd>
-            @Html.DisplayFor(model => model.text)
-        </dd>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.LabelFor(model => model.name, "Name of Group")
 
-        <dt>
-            @Html.DisplayNameFor(model => model.course)
-        </dt>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.course)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
 
-    </dl>
+            <!--Hérna þurfum við að fá date og time til að vera sitt hvort eða fá þetta til að birtast fallegra-->
+            <dt>
+                @Html.LabelFor(model => model.text, "Description")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.text)
+            </dd>
+            <dt>
+                @Html.LabelFor(model => model.course, "Course")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.course)
+            </dd>
+
+            <!--hérna mætti tengja departmentID við líka-->
+
+        </dl>
+
+        <p> Hérna viljum við að group posts komi</p>
+    </div>
+
+    <div class="col-md-3">
+        <div>
+            <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
+            <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Attending Event</div>
+
+            <ul class="list-group">
+
+                <!--Linkur á notanda sem er skráðður í event-->
+                <a href="#" class="list-group-item">Notandi 1</a>
+                <a href="#" class="list-group-item">Notandi 2</a>
+
+            </ul>
+        </div>
+
+        <br />
+        <br />
+
+    </div>
+
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

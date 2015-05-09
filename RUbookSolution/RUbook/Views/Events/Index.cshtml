@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<RUbook.Models.Event>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All Events";
 }
 
-<h2>Index</h2>
+<h2>All Events</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -29,9 +29,9 @@
             @Html.DisplayFor(modelItem => item.DateOfEvent)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            <!--Hérna vantar virkni fyrir að joina Event-->
+            @Html.ActionLink("Join Group", "Edit", new { id=item.ID }) 
+           
         </td>
     </tr>
 }
