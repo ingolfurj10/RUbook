@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using RUbook.DAL;
 using RUbook.Models;
+using Microsoft.AspNet.Identity;
 
 namespace RUbook.Controllers
 {
@@ -29,6 +30,8 @@ namespace RUbook.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             UserInfo userInfo = db.UsersInfo.Find(id);
+			var uid = User.Identity.GetUserId();
+			userInfo.UserID = (from u in db.Users where u.Id == uid select u).SingleOrDefault();
             if (userInfo == null)
             {
                 return HttpNotFound();
@@ -47,13 +50,14 @@ namespace RUbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,address,phone")] UserInfo userInfo)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName")] UserInfo userInfo)
         {
             if (ModelState.IsValid)
             {
                 db.UsersInfo.Add(userInfo);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+				return RedirectToAction("Details", new { id = userInfo.ID });
             }
 
             return View(userInfo);
