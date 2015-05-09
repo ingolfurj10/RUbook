@@ -10,19 +10,21 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-       
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="col-md-3">
+
             <img src="https://beta.mssociety.ca/images/event-default.jpg" alt="Group Photo" />
 
-            <!--choose group photo other then default- hérna þarf að tengja við gagnagrunn og fleira-->            
-                <button type="button" class="glyphicon glyphicon-picture">Add picture</button>
+            <!--choose group photo other then default- hérna þarf að tengja við gagnagrunn og fleira-->
+            <button type="button" class="glyphicon glyphicon-picture">Add picture</button>
 
         </div>
+ 
 
         <div class="col-md-6">
 
@@ -44,19 +46,19 @@
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.DateOfEvent, "Description", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Text, "Description", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.DateOfEvent, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DateOfEvent, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
                 </div>
             </div>
 
-            <!--vantar að bæta í gagnagrun location of event-->
+          
             <div class="form-group">
                 @Html.LabelFor(model => model.Location, "Location", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.DateOfEvent, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DateOfEvent, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -70,10 +72,28 @@
             </div>
         </div>
 
-          
-    </div>
+        <div class="col-md-3">
 
-
+            <p>Hérna er dálkur</p>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        </div>
+  </div>
 }
 
 

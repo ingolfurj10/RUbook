@@ -13,15 +13,19 @@ namespace RUbook.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-
+        //Ása: hvað er þetta aftur? :) 
 		public ApplicationUser() : base()
 		{
 			this.Friends = new HashSet<ApplicationUser>();
 		}
 
+     
         public string FirstName { get; set; }
+    
         public string LastName { get; set; }
+        //ekki búið að tengja ennþá
         //public int DepartmentID { get; set; }
+      
         public DateTime? DateOfBirth { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
