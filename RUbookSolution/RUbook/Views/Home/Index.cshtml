@@ -39,16 +39,17 @@
     <div class="col-md-6">
             <div class="input-group"> 
                 <!--þetta þarf að laga eða færa yfir í annað view ef þetta verður margnotað view-->
-               @*@Html.TextAreaFor(model => Model.text, new { @class = "newpost", rows = 3, cols = 100, placeholder = "Something on your mind?" })*@
+               @Html.TextAreaFor(model => Model.Text, new { @class = "newpost", rows = 3, cols = 100, 
+              placeholder = "Something on your mind?" })
                 
              
             </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+          
                 <input type="submit" value="Create" class="btn btn-info" />
             </div>
-        </div>
+        
         
         <div>@foreach (var item in Model.AllPosts)
         {
