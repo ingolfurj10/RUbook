@@ -167,6 +167,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\UserInfoesController.cs" />
     <Compile Include="DAL\ApplicationDbContext.cs" />
     <Compile Include="DAL\RUbookInitializer.cs">
       <SubType>Code</SubType>
@@ -270,6 +271,11 @@
     <Content Include="Views\GroupMembers\Details.cshtml" />
     <Content Include="Views\GroupMembers\Edit.cshtml" />
     <Content Include="Views\GroupMembers\Index.cshtml" />
+    <Content Include="Views\UserInfoes\Create.cshtml" />
+    <Content Include="Views\UserInfoes\Delete.cshtml" />
+    <Content Include="Views\UserInfoes\Details.cshtml" />
+    <Content Include="Views\UserInfoes\Edit.cshtml" />
+    <Content Include="Views\UserInfoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
