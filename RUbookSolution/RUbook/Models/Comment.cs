@@ -10,7 +10,6 @@ namespace RUbook.Models
     public class Comment
     {
         public int ID { get; set; }
-        [Required]
         public int text { get; set; }
         public virtual ApplicationUser UserID { get; set; }
         public Post PostID { get; set; }

@@ -10,19 +10,21 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-       
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="col-md-3">
+
             <img src="https://beta.mssociety.ca/images/event-default.jpg" alt="Group Photo" />
 
-            <!--choose group photo other then default- hérna þarf að tengja við gagnagrunn og fleira-->            
-                <button type="button" class="glyphicon glyphicon-picture">Add picture</button>
+            <!--choose group photo other then default- hérna þarf að tengja við gagnagrunn og fleira-->
+            <button type="button" class="glyphicon glyphicon-picture">Add picture</button>
 
         </div>
+ 
 
         <div class="col-md-6">
 
@@ -91,7 +93,7 @@
             <br />
             <br />
         </div>
-
+  </div>
 }
 
 

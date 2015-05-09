@@ -12,11 +12,8 @@ namespace RUbook.Models
         [Required]
         public string text { get; set; }
         public string image {get; set; }
-        [Required]
         public virtual ApplicationUser UserID { get; set; }
         //notum email eins og UserName? - hvernig sækjum við úr töflu þessari töflu sem er ekki primary key
-        //public virtual ApplicationUser UserEmail { get; set; }
-        [Required]
         public DateTime? DateCreated { get; set; }
         //ekki búið að tengja
         public Group GroupID { get; set; }
