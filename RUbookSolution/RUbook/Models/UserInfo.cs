@@ -13,6 +13,7 @@ namespace RUbook.Models
         public virtual ApplicationUser UserID { get; set; }
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
+		
 
         public virtual ICollection<WorkInfo> WorksInfo { get; set; }
         public virtual ICollection<EducationInfo> EducationsInfo { get; set; }
