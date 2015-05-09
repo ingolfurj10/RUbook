@@ -55,7 +55,8 @@ namespace RUbook.Controllers
                 
                 db.Groups.Add(group);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = group.ID });
+                
             }
 
             return View(group);

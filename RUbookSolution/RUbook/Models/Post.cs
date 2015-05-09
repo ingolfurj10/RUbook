@@ -11,7 +11,8 @@ namespace RUbook.Models
         public string text { get; set; }
         public string image {get; set; }
         public virtual ApplicationUser UserID { get; set; }
-
+        //notum email eins og UserName?
+        //public virtual ApplicationUser UserEmail { get; set; }
         public DateTime? DateCreated { get; set; }
         public Group GroupID { get; set; }
 

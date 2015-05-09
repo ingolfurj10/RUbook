@@ -55,7 +55,7 @@ namespace RUbook.Controllers
                 
                 db.Events.Add(@event);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = @event.ID });
             }
 
             return View(@event);
