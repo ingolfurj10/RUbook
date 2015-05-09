@@ -11,11 +11,9 @@ namespace RUbook.Models
         public int ID { get; set; }
         [Required]
         public string Name { get; set; }
-        [Required]
         public string Text { get; set; }
         [Required]
         public DateTime? DateOfEvent { get; set; }
-        [Required]
         public string Location { get; set; }
         //ekki búið að tengja ennþá
         public Department DepartmentID { get; set; }
