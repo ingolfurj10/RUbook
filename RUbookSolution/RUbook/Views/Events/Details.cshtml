@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>@Html.DisplayFor(model => model.name)</h2>
+<h2>@Html.DisplayFor(model => model.Name)</h2>
 
 <div>
 
@@ -20,12 +20,12 @@
 
         <dl class="dl-horizontal">
             <dt>
-                @Html.LabelFor(model => model.name, "Name of Event")
+                @Html.LabelFor(model => model.Name, "Name of Event")
                 
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.name)
+                @Html.DisplayFor(model => model.Name)
             </dd>
 
             <!--Hérna þurfum við að fá date og time til að vera sitt hvort eða fá þetta til að birtast fallegra-->
@@ -46,6 +46,8 @@
         <div>
             <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
             <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
+          
+            
         </div>
 
         <br/>
@@ -63,10 +65,13 @@
             </ul>
         </div>
 
+
+        <!--er hérna í veseni með footer sem poppar alltaf upp ef dálkurinn er ekki nógu langur-->
         <br />
         <br />
 
-    
+        <br />
+        <br />
  
     </div> 
 

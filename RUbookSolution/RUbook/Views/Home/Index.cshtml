@@ -31,9 +31,9 @@
 
                     @foreach (var item in Model.AllEvents)
                     {
-                        //Hérna viljum við að þetta linki inn á heimasíðu hóps
+                        
                        <div class="list-group-item">
-                        @Html.ActionLink(item.name, "Details", "Events", new { id = item.ID }, new { @class = "" }) 
+                        @Html.ActionLink(item.Name, "Details", "Events", new { id = item.ID }, new { @class = "" }) 
                         </div>
                     }
                 </ul>
