@@ -55,9 +55,10 @@ namespace RUbook.Controllers
 				var id = User.Identity.GetUserId();
 				var user = (from u in db.Users where u.Id == id select u).SingleOrDefault();
 				post.UserID = (ApplicationUser)user;
+				post.DateCreated = DateTime.Now;
                 db.Posts.Add(post);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
 
             return View(post);

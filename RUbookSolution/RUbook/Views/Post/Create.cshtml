@@ -2,7 +2,7 @@
 
 
 @{
-    ViewBag.Title = "Create Post on Timeline";
+    ViewBag.Title = "Create Post";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -14,21 +14,7 @@
 
         <div class="row">
             <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">My Groups</div>
-                   
-                        <ul class="list-group">
-                            <a href="#" class="list-group-item">Group 1</a>
-                            <a href="#" class="list-group-item">Group 2</a>
-                        </ul>   
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">My Events</div>
-                    <ul class="list-group">
-                        <a href="#" class="list-group-item">Event 1</a>
-                        <a href="#" class="list-group-item">Event 2</a>
-                    </ul>
-                </div>
+                
             </div>
             <div class="col-md-6">
                 <div class="input-group">
@@ -36,40 +22,11 @@
                     <div class="form-group">
                         <div>
                             <input type="submit" value="Create" class="btn btn-info" />
+                            
                         </div>
                     </div>
                 </div>
-            </div>
-
-            @*
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.text)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-    }
-            *@
-
-            <div class="col-md-3">
-                <div>
-                    <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
-                </div>
-                <br>
-                 <div>
-                    <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
-                </div>
-            </div>
+            </div>   
         </div>
 
     

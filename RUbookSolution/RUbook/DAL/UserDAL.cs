@@ -21,7 +21,7 @@ namespace RUbook.DAL
         public List<Post> GetAllPosts()
         {
 
-            var posts = db.Posts.ToList();
+			var posts = db.Posts.OrderByDescending(p => p.DateCreated).ToList();
 
             return posts;
        

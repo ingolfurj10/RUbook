@@ -17,11 +17,11 @@
                 <div class="panel-heading">My Groups</div>
 
                 <ul class="list-group">
-                   @foreach (var group in Model.AllGroups)
-                 {
-                    //Hérna viljum við að þetta linki inn á heimasíðu hóps
-                    <a href="#" class="list-group-item">@group.name</a>
-                 }
+                    @foreach (var group in Model.AllGroups)
+                    {
+                        //Hérna viljum við að þetta linki inn á heimasíðu hóps
+                        <a href="#" class="list-group-item">@group.name</a>
+                    }
                 </ul>
             </div>
             <div class="panel panel-default">
@@ -36,27 +36,31 @@
                 </ul>
             </div>
         </div>
-    <div class="col-md-6">
-            <div class="input-group"> 
+        <div class="col-md-6">
+            <div class="input-group">
                 <!--þetta þarf að laga eða færa yfir í annað view ef þetta verður margnotað view-->
-               @Html.TextAreaFor(model => Model.Text, new { @class = "newpost", rows = 3, cols = 100, 
-              placeholder = "Something on your mind?" })
-                
-             
+                @*@Html.TextAreaFor(model => Model.Text, new { @class = "newpost", rows = 3, cols = 100, placeholder = "Something on your mind?" })*@
             </div>
 
-        <div class="form-group">
-          
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-info" />
             </div>
-        
-        
-        <div>@foreach (var item in Model.AllPosts)
-        {
 
-            <div class="well"><p>@item.text</p></div> 
-               
-        }</div>
+            <p>
+                @Html.ActionLink("Create Post", "Create", "Post")
+            </p>
+
+
+            <div>
+                @foreach (var item in Model.AllPosts)
+                {
+                    <div class="well">
+                        <p>@item.text</p>
+                        <p>@item.DateCreated</p>
+                    </div>
+
+                }
+            </div>
 
 
         </div>
@@ -73,7 +77,7 @@
         </div>
     </div>
 
-    
+
 
 }
 
