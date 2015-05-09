@@ -17,20 +17,12 @@
                 <div class="panel-heading">My Groups</div>
 
                 <ul class="list-group">
-<<<<<<< HEAD
-                    @foreach (var group in Model.AllGroups)
-                    {
-                        //Hérna viljum við að þetta linki inn á heimasíðu hóps
-                        <a href="#" class="list-group-item">@group.name</a>
-                    }
-=======
                    @foreach (var group in Model.AllGroups)
                    {
                     <div class="list-group-item">
                         @Html.ActionLink(group.name, "Details", "Events", new { id = group.ID }, new { @class = "" })
                     </div>
                    }
->>>>>>> 01d3035ecdce67d7c1b86472a804b792eb1bff32
                 </ul>
             </div>
             <div class="panel panel-default">
@@ -63,14 +55,13 @@
                 @*@Html.TextAreaFor(model => Model.Text, new { @class = "newpost", rows = 3, cols = 100, placeholder = "Something on your mind?" })*@
             </div>
 
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-info" />
+
+            <!--Hér er button sem beinir á create post nýja síðu sem vísar síðan aftur hingað á tímalínuna-->
+            <div>
+                <button type="button" class="btn btn-default">@Html.ActionLink("Create New Post", "Create", "Post")
             </div>
 
-            <p>
-                @Html.ActionLink("Create Post", "Create", "Post")
-            </p>
-
+            <br>
 
             <div>
                 @foreach (var item in Model.AllPosts)
