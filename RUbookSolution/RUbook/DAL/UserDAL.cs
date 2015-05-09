@@ -42,6 +42,7 @@ namespace RUbook.DAL
 
         }
 
+		/*
 		public UserInfo GetUserInfo(ApplicationUser user)
 		{
 			var userInfo = (from u in db.UsersInfo
@@ -51,6 +52,7 @@ namespace RUbook.DAL
 			return userInfo;
 						   
 		}
+		*/
     }
 
 }
