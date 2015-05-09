@@ -13,6 +13,7 @@ namespace RUbook.Controllers
     {
 		private ApplicationDbContext db = new ApplicationDbContext();
 
+        [Authorize]
         public ActionResult Index()
         {
             TimelineViewModel model = new TimelineViewModel();
