@@ -17,12 +17,14 @@ namespace RUbook.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Groups
+       [Authorize]
         public ActionResult Index()
         {
             return View(db.Groups.ToList());
         }
 
         // GET: Groups/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +40,7 @@ namespace RUbook.Controllers
         }
 
         // GET: Groups/Create
+         [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +50,7 @@ namespace RUbook.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,name,text,course")] Group group)
         {
@@ -63,6 +67,7 @@ namespace RUbook.Controllers
         }
 
         // GET: Groups/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,6 +86,7 @@ namespace RUbook.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,name,text,course")] Group group)
         {
@@ -94,6 +100,7 @@ namespace RUbook.Controllers
         }
 
         // GET: Groups/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,6 +117,7 @@ namespace RUbook.Controllers
 
         // POST: Groups/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

@@ -10,6 +10,7 @@ namespace RUbook.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
             TimelineViewModel model = new TimelineViewModel();

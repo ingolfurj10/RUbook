@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using RUbook.DAL;
 using RUbook.Models;
 using Microsoft.AspNet.Identity;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RUbook.Controllers
 {
@@ -17,12 +19,14 @@ namespace RUbook.Controllers
         public  ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Post
+       
         public ActionResult Index()
         {
             return View(db.Posts.ToList());
         }
 
         // GET: Post/Details/5
+   
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +42,7 @@ namespace RUbook.Controllers
         }
 
         // GET: Post/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -47,7 +52,9 @@ namespace RUbook.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "ID,text,userID,DateCreated")] Post post)
         {
             if (ModelState.IsValid)
@@ -66,6 +73,7 @@ namespace RUbook.Controllers
         }
 
         // GET: Post/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,6 +92,7 @@ namespace RUbook.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,text,userID,DateCreated")] Post post)
         {
@@ -97,6 +106,7 @@ namespace RUbook.Controllers
         }
 
         // GET: Post/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,6 +123,7 @@ namespace RUbook.Controllers
 
         // POST: Post/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

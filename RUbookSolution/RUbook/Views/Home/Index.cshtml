@@ -1,103 +1,105 @@
 ﻿@model RUbook.Models.TimelineViewModel
 
 @{
-    ViewBag.Title = "Timeline";
+    ViewBag.Title = "My Timeline";
 }
 
 <h2>@ViewBag.Title</h2>
 
+ 
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">My Groups</div>
 
-    <div class="row">
-        <div class="col-md-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">My Groups</div>
+                    <ul class="list-group">
+                        @foreach (var group in Model.AllGroups)
+                        {
+                            <div class="list-group-item">
+                                @Html.ActionLink(group.name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
+                            </div>
+                        }
+                    </ul>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">My Events</div>
+                    <ul class="list-group">
 
-                <ul class="list-group">
-                   @foreach (var group in Model.AllGroups)
-                   {
-                    <div class="list-group-item">
-                        @Html.ActionLink(group.name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
-                    </div>
-                   }
-                </ul>
+                        @foreach (var item in Model.AllEvents)
+                        {
+
+                            <div class="list-group-item">
+                                @Html.ActionLink(item.Name, "Details", "Events", new { id = item.ID }, new { @class = "" })
+                            </div>
+                        }
+                    </ul>
+                </div>
+
+
             </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">My Events</div>
-                <ul class="list-group">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <!--þetta þarf að laga eða færa yfir í annað view ef þetta verður margnotað view-->
+                    @*@Html.TextAreaFor(model => Model.Text, new { @class = "newpost", rows = 3, cols = 100, placeholder = "Something on your mind?" })*@
+                </div>
 
-                    @foreach (var item in Model.AllEvents)
+
+                <!--Hér er button sem beinir á create post nýja síðu sem vísar síðan aftur hingað á tímalínuna-->
+                <div>
+                    <button type="button" class="btn btn-default">@Html.ActionLink("Create New Post", "Create", "Post") </button>
+                </div>
+
+                <br>
+
+                <div>
+                    @foreach (var item in Model.AllPosts)
                     {
-                        
-                       <div class="list-group-item">
-                        @Html.ActionLink(item.Name, "Details", "Events", new { id = item.ID }, new { @class = "" }) 
+                        <div class="well">
+                            <p>@item.text</p>
+                            <p>@item.DateCreated</p>
+
+                            <!--Hérna vatnar að sýna notendnafn eða email þess sem skrifa innlegg-->
+                            <!--<p>item.UserEmail</p>-->
                         </div>
+
                     }
-                </ul>
-            </div>
-
-            
-        </div>
-        <div class="col-md-6">
-            <div class="input-group">
-                <!--þetta þarf að laga eða færa yfir í annað view ef þetta verður margnotað view-->
-                @*@Html.TextAreaFor(model => Model.Text, new { @class = "newpost", rows = 3, cols = 100, placeholder = "Something on your mind?" })*@
-            </div>
-
-
-            <!--Hér er button sem beinir á create post nýja síðu sem vísar síðan aftur hingað á tímalínuna-->
-            <div>
-                <button type="button" class="btn btn-default">@Html.ActionLink("Create New Post", "Create", "Post") </button>
-            </div>
-
-            <br>
-
-            <div>
-                @foreach (var item in Model.AllPosts)
-                {
-                    <div class="well">
-                        <p>@item.text</p>
-                        <p>@item.DateCreated</p>
-                        
-                        <!--Hérna vatnar að sýna notendnafn eða email þess sem skrifa innlegg-->
-                        <!--<p>item.UserEmail</p>-->
-                    </div>
-
-                }
-            </div>
-
-
-        </div>
-        <div class="col-md-3">
-            <div>
-                <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
-                <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
+                </div>
 
 
             </div>
-   
-            <br>
+            <div class="col-md-3">
+                <div>
+                    <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
+                    <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
 
-            <div class="panel panel-default">
 
-                <div class="panel-heading">My Friends</div>
+                </div>
 
-                <ul class="list-group">
+                <br>
 
-                    <a href="#" class="list-group-item">Vinur 1</a>
-                    <a href="#" class="list-group-item">Vinur 2</a>
+                <div class="panel panel-default">
 
-                </ul>
+                    <div class="panel-heading">My Friends</div>
+
+                    <ul class="list-group">
+
+                        <a href="#" class="list-group-item">Vinur 1</a>
+                        <a href="#" class="list-group-item">Vinur 2</a>
+
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
 
 
 
-}
+    }
+
+
 
 
 @section Scripts {
