@@ -41,6 +41,16 @@ namespace RUbook.DAL
             return events;
 
         }
+
+		public UserInfo GetUserInfo(ApplicationUser user)
+		{
+			var userInfo = (from u in db.UsersInfo
+						    where u.UserID.Id == user.Id
+							select u)
+						    .SingleOrDefault();
+			return userInfo;
+						   
+		}
     }
 
 }

@@ -22,49 +22,50 @@
         </div>
 
         </br>
-
-        <dl class="table-striped">
-            <dt>
-                @Html.LabelFor(model => model.Age, "Age")
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Age)
-            </dd>
-            <dt>
-                @Html.LabelFor(model => model.Email, "Email")
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
-            <dt>
-                @Html.LabelFor(model => model.Phone, "Phone Number")
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Phone)
-            </dd>
-            <dt>
-                @Html.LabelFor(model => model.Department, "Department")
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Department)
-            </dd>
-            <dt>
-                @Html.LabelFor(model => model.Education, "Education Information")
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Education)
-            </dd>
-            <dt>
-                @Html.LabelFor(model => model.WorkInfo, "Work Information")
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.WorkInfo)
-            </dd>
-        </dl>
+    
+        <form class="form-group">
+            <dl class="table-striped">
+                <dt>
+                    @Html.LabelFor(model => model.Age, "Age")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Age)
+                </dd>
+                <dt>
+                    @Html.LabelFor(model => model.Email, "Email")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+                <dt>
+                    @Html.LabelFor(model => model.Phone, "Phone Number")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
+                <dt>
+                    @Html.LabelFor(model => model.Department, "Department")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Department)
+                </dd>
+                <dt>
+                    @Html.LabelFor(model => model.Education, "Education Information")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Education)
+                </dd>
+                <dt>
+                    @Html.LabelFor(model => model.WorkInfo, "Work Information")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.WorkInfo)
+                </dd>
+            </dl>
+        </form>
 
             <p>
                 @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-                @Html.ActionLink("Back to List", "Index")
             </p>
         
 </center>
