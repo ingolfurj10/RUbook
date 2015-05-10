@@ -17,13 +17,15 @@ namespace RUbook.Controllers
         public ActionResult Index()
         {
             TimelineViewModel model = new TimelineViewModel();
-			var id = User.Identity.GetUserId();
+			
+            var id = User.Identity.GetUserId();
 			var user = (from u in db.Users where u.Id == id select u).SingleOrDefault();
 
             UserDAL userDAL = new UserDAL();
             model.AllPosts = userDAL.GetAllPosts();
             model.AllGroups = userDAL.GetAllGroups();
             model.AllEvents = userDAL.GetAllEvents();
+            
 			//model.UserInfo = userDAL.GetUserInfo(user);
 
             return View(model);

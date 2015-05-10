@@ -11,11 +11,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.text)
+            @Html.DisplayNameFor(model => model.Text)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.text)
+            @Html.DisplayFor(model => model.Text)
         </dd>
 
      
@@ -27,6 +27,8 @@
         <dd>
             @Html.DisplayFor(model => model.DateCreated)
         </dd>
+
+        <img src="@Html.DisplayFor(model =>model.Image)" alt="Hérna er mynd" style="width:299px; height:228px" />
 
     </dl>
 </div>

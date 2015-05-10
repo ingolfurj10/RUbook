@@ -12,7 +12,8 @@ namespace RUbook.Models
        public List<Post> AllPosts { get; set; }
        public List<Group> AllGroups { get; set; }
        public List<Event> AllEvents { get; set; }
-	   public List<Post> Text { get; set; }
+	   //public List<Post> Text { get; set; }
+       //public List<Post> Image { get; set; }
 	   public UserInfo UserInfo { get; set; }
        
         //public Post Post { get; set; } - til að ná í text area for post

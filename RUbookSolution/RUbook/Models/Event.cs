@@ -15,6 +15,7 @@ namespace RUbook.Models
         [Required]
         public DateTime? DateOfEvent { get; set; }
         public string Location { get; set; }
+        public string Image { get; set; }
         //ekki búið að tengja ennþá
         public Department DepartmentID { get; set; }
         //ekki búið að tengja ennþá

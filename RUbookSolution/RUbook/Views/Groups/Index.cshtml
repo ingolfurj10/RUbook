@@ -12,13 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.name)
+            @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.text)
+            @Html.DisplayNameFor(model => model.Text)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.course)
+            @Html.DisplayNameFor(model => model.Course)
         </th>
         <th></th>
     </tr>
@@ -26,17 +26,17 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.name)
+            @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.text)
+            @Html.DisplayFor(modelItem => item.Text)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.course)
+            @Html.DisplayFor(modelItem => item.Course)
         </td>
         <td>
-            <!--Hérna vantar virkni fyrir að joina Event-->
-            @Html.ActionLink("Attend Event", "Edit", new { id = item.ID }) 
+            <!--Hérna vantar virkni fyrir að joina Group-->
+            @Html.ActionLink("Join Group", "Edit", new { id = item.ID }) 
             
         </td>
     </tr>

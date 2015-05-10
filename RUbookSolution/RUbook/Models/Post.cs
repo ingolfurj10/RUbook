@@ -10,8 +10,8 @@ namespace RUbook.Models
     {
         public int ID { get; set; }
         [Required]
-        public string text { get; set; }
-        public string image {get; set; }
+        public string Text { get; set; }
+        public string Image {get; set; }
         public virtual ApplicationUser UserID { get; set; }
         //notum email eins og UserName? - hvernig sækjum við úr töflu þessari töflu sem er ekki primary key
         public DateTime? DateCreated { get; set; }

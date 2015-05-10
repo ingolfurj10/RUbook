@@ -4,7 +4,8 @@
     ViewBag.Title = "My Timeline";
 }
 
-@*<h2>@ViewBag.Title</h2>*@
+<h2>@ViewBag.Title</h2>
+
 <!--Hér væri hægt að displaya Fullt nafn á innskráðum notanda með eftirfarandi - vantar að tengja-->
 <h2>@Html.DisplayFor(model => model.UserInfo.FirstName) @Html.DisplayFor(model => model.UserInfo.LastName)</h2>
 
@@ -22,7 +23,7 @@
                         @foreach (var group in Model.AllGroups)
                         {
                             <div class="list-group-item">
-                                @Html.ActionLink(group.name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
+                                @Html.ActionLink(group.Name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
                             </div>
                         }
                     </ul>
@@ -41,14 +42,12 @@
                     </ul>
                 </div>
 
-
             </div>
             <div class="col-md-6">
                 <div class="input-group">
                     <!--þetta þarf að laga eða færa yfir í annað view ef þetta verður margnotað view-->
                     @*@Html.TextAreaFor(model => Model.Text, new { @class = "newpost", rows = 3, cols = 100, placeholder = "Something on your mind?" })*@
                 </div>
-
 
                 <!--Hér er button sem beinir á create post nýja síðu sem vísar síðan aftur hingað á tímalínuna-->
                 <div>
@@ -61,7 +60,8 @@
                     @foreach (var item in Model.AllPosts)
                     {
                         <div class="well">
-                            <p>@item.text</p>
+                            <p>@item.Text</p>
+                            <img src="@item.Image" alt="Hérna er mynd"style="width:299px; height:228px"/>
                             <p>@item.DateCreated</p>
 
                             <!--Hérna vatnar að sýna notendnafn eða email þess sem skrifa innlegg-->
@@ -77,7 +77,6 @@
                 <div>
                     <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
                     <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
-
 
                 </div>
 

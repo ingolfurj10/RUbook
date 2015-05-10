@@ -4,47 +4,61 @@
     ViewBag.Title = "Details";
 }
 
-<h2>@Html.DisplayFor(model => model.name)</h2>
+<h2>@Html.DisplayFor(model => model.Name)</h2>
 
 <div>
 
-    <h4>@Html.DisplayFor(model => model.text)</h4>
+    <h4>@Html.DisplayFor(model => model.Text)</h4>
 
     <hr />
 
-   
     <div class="col-md-3">
 
-        <!--hérna myndum við sækja þá mynd sem er í gagnagrunni á þeim tíma-->
-        <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Group Photo" />
+        <!--Þessi if setning er ekki alveg að virka eins og hún á að gera, birtir aldrei default myndina-->
+
+        @if (Model.Image == null || Model.Image == "")
+        {
+            <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Group photo" style="width:270px; height:228px" />
+
+        }
+
+        else
+        {
+            <img src="@Html.DisplayFor(model =>model.Image)" alt="Group photo" style="width:270px; height:228px" />
+           
+        }
+        
+        @Html.ActionLink("Edit Group", "Edit", new { id = Model.ID })
+
+
     </div>
 
     <div class="col-md-6">
 
         <dl class="dl-horizontal">
             <dt>
-                @Html.LabelFor(model => model.name, "Name of Group")
+                @Html.LabelFor(model => model.Name, "Name of Group")
 
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.name)
+                @Html.DisplayFor(model => model.Name)
             </dd>
 
-            <!--Hérna þurfum við að fá date og time til að vera sitt hvort eða fá þetta til að birtast fallegra-->
+            
             <dt>
-                @Html.LabelFor(model => model.text, "Description")
+                @Html.LabelFor(model => model.Text, "Description")
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.text)
+                @Html.DisplayFor(model => model.Text)
             </dd>
             <dt>
-                @Html.LabelFor(model => model.course, "Course")
+                @Html.LabelFor(model => model.Course, "Course")
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.course)
+                @Html.DisplayFor(model => model.Course)
             </dd>
 
             <!--hérna mætti tengja departmentID við líka-->
@@ -61,14 +75,19 @@
         </div>
 
         <br />
+        <div>
+            <!--hérna vatnar action link til að joina grúppu-->
+            <button type="button" class="btn btn-primary">Join Group</button>
+        </div>
+
         <br />
 
         <div class="panel panel-default">
-            <div class="panel-heading">Attending Event</div>
+            <div class="panel-heading">Group members</div>
 
             <ul class="list-group">
 
-                <!--Linkur á notanda sem er skráðður í event-->
+                <!--action linkur á notanda í forech loopu sem er skráðður í event-->
                 <a href="#" class="list-group-item">Notandi 1</a>
                 <a href="#" class="list-group-item">Notandi 2</a>
 

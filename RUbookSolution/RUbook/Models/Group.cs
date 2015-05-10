@@ -9,11 +9,12 @@ namespace RUbook.Models
     {
         public int ID { get; set; }
         [Required]
-        public string name { get; set; }
+        public string Name { get; set; }
         [Required]
-        public string text { get; set; }
-        public Department departmentID { get; set; }
-        public string course { get; set; }
+        public string Text { get; set; }
+        public string Image { get; set; }
+        //public Department DepartmentID { get; set; }
+        public string Course { get; set; }
         //public ApplicationUser userID { get; set; }
 
         public virtual ICollection<GroupMember> GroupMembers { get; set; }
