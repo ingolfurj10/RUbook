@@ -32,15 +32,14 @@ namespace RUbook.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //UserInfo userInfo = db.UsersInfo.Find(id);
+            ApplicationUser userInfo = db.Users.Find(id);
             //var uid = User.Identity.GetUserId();
             //userInfo.UserID = (from u in db.Users where u.Id == uid select u).SingleOrDefault();
-            //if (userInfo == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(userInfo);
-            return null;
+            if (userInfo == null)
+            {
+                return HttpNotFound();
+            }
+            return View(userInfo);
         }
 
         // GET: UserInfoes/Create
