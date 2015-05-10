@@ -2,10 +2,10 @@
 
 
 @{
-    ViewBag.Title = "Create Post";
+    ViewBag.Title = "Create a new Post for Timeline";
 }
 
-<h2>@ViewBag.Title</h2>
+
 
 
 @using (Html.BeginForm()) 
@@ -17,12 +17,31 @@
                 
             </div>
             <div class="col-md-6">
+                <h3>Create a new Post for Timeline</h3>
                 <div class="input-group">
                     @Html.TextAreaFor(model => model.text, new { @class = "newpost", rows = 3, cols = 55, placeholder = "Something on your mind?" })
                     <div class="form-group">
                         <div>
-                            <input type="submit" value="Create" class="btn btn-info" />
+                            <input type="submit" value="Post Text" class="btn btn-info" />
                             
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Insert a new Photo for Timeline</h3>
+                <div class="input-group">
+                    <!--Hér á eftir að gera virkni fyrir að setja inn Mynd!-->
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputFile">Add Profile Picture</label>
+                            <input type="file" id="exampleInputFile">
+                            <p class="help-block">Here you can choose a photo for your Timeline</p>
+                        </div>
+                    </form>
+                    <div class="form-group">
+                        <div>
+                            <input type="submit" value="Post Photo" class="btn btn-info" />
+
                         </div>
                     </div>
                 </div>

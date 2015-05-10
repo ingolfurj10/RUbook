@@ -1,6 +1,8 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color:#f6f1f8;
+    padding: 5%;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -26,4 +28,13 @@ textarea {
 .newpost {
     max-width: 100%;
     width: 100%;
+}
+
+
+.navbar {
+    background-color:#ad96a0;
+}
+
+a {
+    color: #531e34;
 }
