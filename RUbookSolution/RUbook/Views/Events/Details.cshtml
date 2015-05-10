@@ -14,19 +14,19 @@
 
     <div class="col-md-3">   
 
-        @if (@Html.DisplayFor(model => model.Image) == null)
+        @if (Model.Image == null || Model.Image == "")
         {
             <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Group photo" style="width:270px; height:228px" />
-
         }
 
         else
         {
             <img src="@Html.DisplayFor(model =>model.Image)" alt="Group photo" style="width:270px; height:228px" />
-
         }
 
-     </div>
+        @Html.ActionLink("Edit Event", "Edit", new { id = Model.ID })
+
+    </div>
 
     <div class="col-md-6">
 
@@ -66,18 +66,23 @@
         <div>
             <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
             <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
-          
-            
         </div>
 
-        <br/>
         <br />
+        <div>
+            <!--hérna vatnar action link til að attenda event-->
+            <button type="button" class="btn btn-primary">Attend Event</button>
+        </div>
+
+        <br />
+    
 
         <div class="panel panel-default">
             <div class="panel-heading">Attending Event</div>
 
             <ul class="list-group">
 
+               <!-- hérna mætti gera ajax svo hann birist strax í fólk sem ætlar að attenda-->
                 <!--Linkur á notanda sem er skráðður í event-->
                 <a href="#" class="list-group-item">Notandi 1</a>
                 <a href="#" class="list-group-item">Notandi 2</a>

@@ -93,7 +93,7 @@ namespace RUbook.Controllers
             {
                 db.Entry(@event).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = @event.ID });
             }
             return View(@event);
         }

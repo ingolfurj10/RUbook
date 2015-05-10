@@ -124,7 +124,7 @@ namespace RUbook.Controllers
             Group group = db.Groups.Find(id);
             db.Groups.Remove(group);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", new { id = group.ID });
         }
 
         protected override void Dispose(bool disposing)

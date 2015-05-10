@@ -5,6 +5,7 @@
 }
 
 <h2>@ViewBag.Title</h2>
+
 <!--Hér væri hægt að displaya Fullt nafn á innskráðum notanda með eftirfarandi - vantar að tengja-->
 <h2>@Html.DisplayFor(model => model.UserInfo.FirstName) @Html.DisplayFor(model => model.UserInfo.LastName)</h2>
 
@@ -41,14 +42,12 @@
                     </ul>
                 </div>
 
-
             </div>
             <div class="col-md-6">
                 <div class="input-group">
                     <!--þetta þarf að laga eða færa yfir í annað view ef þetta verður margnotað view-->
                     @*@Html.TextAreaFor(model => Model.Text, new { @class = "newpost", rows = 3, cols = 100, placeholder = "Something on your mind?" })*@
                 </div>
-
 
                 <!--Hér er button sem beinir á create post nýja síðu sem vísar síðan aftur hingað á tímalínuna-->
                 <div>
