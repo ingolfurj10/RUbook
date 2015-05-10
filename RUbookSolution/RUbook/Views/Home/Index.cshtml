@@ -103,7 +103,7 @@
                             @foreach (var item in Model.AllUsers)
                             {
                                 <div class="well">
-                                    @Html.ActionLink(item.Email, "Details", new { id = item.userID })
+                                    @Html.ActionLink(item.Email, "Details", new { id = item.Id })
                                 </div>
                             }
                         </div>

@@ -20,13 +20,20 @@ namespace RUbook.Models
 		}
 
      
-        public string FirstName { get; set; }
-    
-        public string LastName { get; set; }
+   
         //ekki búið að tengja ennþá
         //public int DepartmentID { get; set; }
       
         public DateTime? DateOfBirth { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string DateOfBirth { get; set; }
+        public string Image { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Education { get; set; }
+        public string WorkInfo { get; set; }
+        public string Department { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
 
