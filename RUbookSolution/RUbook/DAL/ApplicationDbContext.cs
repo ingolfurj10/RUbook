@@ -37,7 +37,6 @@ namespace RUbook.DAL
         public DbSet<Department> Departments { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<UserInfo> UsersInfo { get; set; }
         public DbSet<EducationInfo> EducationsInfo { get; set; }
         public DbSet<WorkInfo> WorksInfo { get; set; }
         public DbSet<GroupMember> GroupMembers { get; set; }

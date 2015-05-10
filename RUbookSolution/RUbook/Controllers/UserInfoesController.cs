@@ -21,24 +21,26 @@ namespace RUbook.Controllers
         {
           
 
-            return View(db.UsersInfo.ToList());
+            //return View(db.UsersInfo.ToList());
+            return null;
         }
 
         // GET: UserInfoes/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserInfo userInfo = db.UsersInfo.Find(id);
-			var uid = User.Identity.GetUserId();
-			userInfo.UserID = (from u in db.Users where u.Id == uid select u).SingleOrDefault();
-            if (userInfo == null)
-            {
-                return HttpNotFound();
-            }
-            return View(userInfo);
+            //UserInfo userInfo = db.UsersInfo.Find(id);
+            //var uid = User.Identity.GetUserId();
+            //userInfo.UserID = (from u in db.Users where u.Id == uid select u).SingleOrDefault();
+            //if (userInfo == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(userInfo);
+            return null;
         }
 
         // GET: UserInfoes/Create
@@ -52,14 +54,14 @@ namespace RUbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName, DateOfBirth, Email, Phone, Education, WorkInfo, Department, Image")] UserInfo userInfo)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName, DateOfBirth, Email, Phone, Education, WorkInfo, Department, Image")] ApplicationUser userInfo)
         {
             if (ModelState.IsValid)
             {
-                db.UsersInfo.Add(userInfo);
-                db.SaveChanges();
-                //return RedirectToAction("Index");
-				return RedirectToAction("Details", new { id = userInfo.ID });
+                //db.UsersInfo.Add(userInfo);
+                //db.SaveChanges();
+                ////return RedirectToAction("Index");
+                //return RedirectToAction("Details", new { id = userInfo.ID });
             }
 
             return View(userInfo);
@@ -72,12 +74,13 @@ namespace RUbook.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserInfo userInfo = db.UsersInfo.Find(id);
-            if (userInfo == null)
-            {
-                return HttpNotFound();
-            }
-            return View(userInfo);
+            //UserInfo userInfo = db.UsersInfo.Find(id);
+            //if (userInfo == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(userInfo);
+            return null;
         }
 
         // POST: UserInfoes/Edit/5
@@ -85,7 +88,7 @@ namespace RUbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName, DateOfBirth, Email, Phone, Education, WorkInfo, Department, Image")] UserInfo userInfo)
+        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName, DateOfBirth, Email, Phone, Education, WorkInfo, Department, Image")] ApplicationUser userInfo)
         {
             if (ModelState.IsValid)
             {
@@ -103,12 +106,13 @@ namespace RUbook.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserInfo userInfo = db.UsersInfo.Find(id);
-            if (userInfo == null)
-            {
-                return HttpNotFound();
-            }
-            return View(userInfo);
+            //UserInfo userInfo = db.UsersInfo.Find(id);
+            //if (userInfo == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(userInfo);
+            return null;
         }
 
         // POST: UserInfoes/Delete/5
@@ -116,9 +120,9 @@ namespace RUbook.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            UserInfo userInfo = db.UsersInfo.Find(id);
-            db.UsersInfo.Remove(userInfo);
-            db.SaveChanges();
+            //UserInfo userInfo = db.UsersInfo.Find(id);
+            //db.UsersInfo.Remove(userInfo);
+            //db.SaveChanges();
             return RedirectToAction("Index");
         }
 
