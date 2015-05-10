@@ -57,7 +57,10 @@
                 <br>
 
                 <div>
-                    @foreach (var item in Model.AllPosts)
+                    @{
+                    if(Model.AllPosts != null)
+                    {
+                    foreach (var item in Model.AllPosts)
                     {
                         <div class="well">
                             <p>@item.Text</p>
@@ -69,6 +72,13 @@
                         </div>
 
                     }
+                    }
+                    else 
+                    { 
+                        <p>You have no posts!!!</p>
+                    }
+                    }
+
                 </div>
 
 
@@ -93,7 +103,7 @@
                             @foreach (var item in Model.AllUsers)
                             {
                                 <div class="well">
-                                    <p>@item.Email</p>
+                                    @Html.ActionLink(item.Email, "Details", new { id = item.userID })
                                 </div>
                             }
                         </div>

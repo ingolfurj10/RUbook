@@ -33,7 +33,7 @@ namespace RUbook.Models
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<GroupMember> GroupMembers { get; set; }
         public virtual ICollection<EventMember> EventMembers { get; set; }
-        public virtual ICollection<ApplicationUser> Friends { get; set;  }
+        public virtual ICollection<Friend> Friends { get; set;  }
 
 
        
