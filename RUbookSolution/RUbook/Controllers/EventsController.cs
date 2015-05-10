@@ -50,8 +50,8 @@ namespace RUbook.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "ID,name,DateOfEvent")] Event @event)
         {
             if (ModelState.IsValid)
@@ -85,8 +85,8 @@ namespace RUbook.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "ID,name,DateOfEvent")] Event @event)
         {
             if (ModelState.IsValid)
@@ -116,8 +116,8 @@ namespace RUbook.Controllers
 
         // POST: Events/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Event @event = db.Events.Find(id);

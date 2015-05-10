@@ -17,7 +17,8 @@ namespace RUbook.Controllers
         public ActionResult Index()
         {
             TimelineViewModel model = new TimelineViewModel();
-			var id = User.Identity.GetUserId();
+			
+            var id = User.Identity.GetUserId();
 			var user = (from u in db.Users where u.Id == id select u).SingleOrDefault();
 
             UserDAL userDAL = new UserDAL();

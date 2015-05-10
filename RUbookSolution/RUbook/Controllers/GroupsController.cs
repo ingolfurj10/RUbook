@@ -17,7 +17,7 @@ namespace RUbook.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Groups
-       [Authorize]
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Groups.ToList());
@@ -40,7 +40,7 @@ namespace RUbook.Controllers
         }
 
         // GET: Groups/Create
-         [Authorize]
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -50,8 +50,8 @@ namespace RUbook.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "ID,name,text,course")] Group group)
         {
             if (ModelState.IsValid)
@@ -86,8 +86,8 @@ namespace RUbook.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "ID,name,text,course")] Group group)
         {
             if (ModelState.IsValid)
@@ -117,8 +117,8 @@ namespace RUbook.Controllers
 
         // POST: Groups/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Group group = db.Groups.Find(id);

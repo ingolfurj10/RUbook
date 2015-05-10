@@ -19,14 +19,14 @@ namespace RUbook.Controllers
         public  ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Post
-       
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Posts.ToList());
         }
 
         // GET: Post/Details/5
-   
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -52,7 +52,6 @@ namespace RUbook.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-
         [ValidateAntiForgeryToken]
         [Authorize]
         public ActionResult Create([Bind(Include = "ID,text,userID,DateCreated")] Post post)
@@ -92,8 +91,8 @@ namespace RUbook.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "ID,text,userID,DateCreated")] Post post)
         {
             if (ModelState.IsValid)
@@ -123,8 +122,8 @@ namespace RUbook.Controllers
 
         // POST: Post/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Post post = db.Posts.Find(id);
