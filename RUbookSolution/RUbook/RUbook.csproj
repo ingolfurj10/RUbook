@@ -169,6 +169,7 @@
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\UserInfoesController.cs" />
     <Compile Include="DAL\ApplicationDbContext.cs" />
+    <Compile Include="DAL\PostDAL.cs" />
     <Compile Include="DAL\RUbookInitializer.cs">
       <SubType>Code</SubType>
     </Compile>
