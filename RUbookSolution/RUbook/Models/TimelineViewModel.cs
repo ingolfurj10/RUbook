@@ -14,7 +14,7 @@ namespace RUbook.Models
        public List<Event> AllEvents { get; set; }
        public List<ApplicationUser> AllUsers { get; set; }
 	 
-	   public UserInfo UserInfo { get; set; }
+	   //public UserInfo UserInfo { get; set; }
        
         //public Post Post { get; set; } - til að ná í text area for post
     }
