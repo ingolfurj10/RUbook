@@ -17,11 +17,22 @@ namespace RUbook.Controllers
     public class PostController : Controller
     {
         public  ApplicationDbContext db = new ApplicationDbContext();
+        UserDAL userDAL;
+        PostDAL postDAL;
+
+        public PostController() : base()
+        {
+            userDAL = new UserDAL(db);
+            postDAL = new PostDAL(db);
+        }
 
         // GET: Post
         [Authorize]
         public ActionResult Index()
         {
+            var userId = User.Identity.GetUserId();
+            var user = userDAL.GetUser(userId);
+            var posts = postDAL.GetAllPosts(user);
             return View(db.Posts.ToList());
         }
 

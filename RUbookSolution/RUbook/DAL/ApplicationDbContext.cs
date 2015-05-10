@@ -22,13 +22,15 @@ namespace RUbook.DAL
 		{
 			get
 			{
-				return base.Users;
+				return (DbSet<ApplicationUser>)base.Users;
 			}
 			set
 			{
 				base.Users = value;
 			}
 		}
+        
+       
 		public DbSet<Post> Posts { get; set; }
         public DbSet<Friend> Friends {get; set; }
         public DbSet<Event> Events { get; set; }
@@ -41,9 +43,7 @@ namespace RUbook.DAL
         public DbSet<GroupMember> GroupMembers { get; set; }
         public DbSet<EventMember> EventMembers { get; set; }
 
-
-
-
+        
 		public static ApplicationDbContext Create()
 		{
 			return new ApplicationDbContext();

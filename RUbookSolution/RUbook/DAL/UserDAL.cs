@@ -16,7 +16,12 @@ namespace RUbook.DAL
     public class UserDAL
     {
 
-        public ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db;
+
+        public UserDAL(ApplicationDbContext context)
+        {
+            db = context;
+        }
 
         public List<Post> GetAllPosts()
         {
@@ -42,17 +47,32 @@ namespace RUbook.DAL
 
         }
 
-		/*
+        public List<ApplicationUser> GetAllUsers()
+        {
+
+            var users = db.Users.ToList();
+
+            return users;
+
+        }
+
+        public ApplicationUser GetUser (string userid)
+        {
+            var user = (from u in db.Users where u.Id == userid select u).SingleOrDefault();
+
+            return user;
+        }
+		
 		public UserInfo GetUserInfo(ApplicationUser user)
 		{
 			var userInfo = (from u in db.UsersInfo
-						    where u.UserID.Id == user.Id
+						    where u.UserID == user
 							select u)
 						    .SingleOrDefault();
 			return userInfo;
 						   
 		}
-		*/
+		
     }
 
 }

@@ -18,7 +18,7 @@ namespace RUbook.Models
         //public ApplicationUser userID { get; set; }
 
         public virtual ICollection<GroupMember> GroupMembers { get; set; }
-        public virtual ICollection<Post> Post { get; set; }
+        public List<Post> Posts { get; set; }
        
     }
 }
