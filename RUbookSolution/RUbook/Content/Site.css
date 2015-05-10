@@ -1,8 +1,9 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color:#f6f1f8;
+    background-color:#fff9fc;
     padding: 5%;
+    margin: auto;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -32,9 +33,9 @@ textarea {
 
 
 .navbar {
-    background-color:#ad96a0;
+    background-color:#9f1e63;
 }
 
 a {
-    color: #531e34;
+    color: #d16ea3;
 }
