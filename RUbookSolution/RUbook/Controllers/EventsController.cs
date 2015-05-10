@@ -52,7 +52,7 @@ namespace RUbook.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "ID,name,DateOfEvent")] Event @event)
+        public ActionResult Create([Bind(Include = "ID,Name,DateOfEvent,Image,Location,Text,GroupID,DepartmentID")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace RUbook.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Edit([Bind(Include = "ID,name,DateOfEvent")] Event @event)
+        public ActionResult Edit([Bind(Include = "ID,Name,DateOfEvent,Image,Location,Text,GroupID,DepartmentID")] Event @event)
         {
             if (ModelState.IsValid)
             {

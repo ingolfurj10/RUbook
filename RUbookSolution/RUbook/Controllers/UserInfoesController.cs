@@ -50,7 +50,7 @@ namespace RUbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName, Age, Email, Phone, Education, WorkInfo, Department")] UserInfo userInfo)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName, DateOfBirth, Email, Phone, Education, WorkInfo, Department, Image")] UserInfo userInfo)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace RUbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,address,phone")] UserInfo userInfo)
+        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName, DateOfBirth, Email, Phone, Education, WorkInfo, Department, Image")] UserInfo userInfo)
         {
             if (ModelState.IsValid)
             {

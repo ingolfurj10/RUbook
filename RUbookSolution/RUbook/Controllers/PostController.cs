@@ -54,7 +54,7 @@ namespace RUbook.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "ID,text,userID,DateCreated")] Post post)
+        public ActionResult Create([Bind(Include = "ID,Text,Image,UserID,DateCreated")] Post post)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace RUbook.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Edit([Bind(Include = "ID,text,userID,DateCreated")] Post post)
+        public ActionResult Edit([Bind(Include = "ID,Text,Image,UserID,DateCreated")] Post post)
         {
             if (ModelState.IsValid)
             {

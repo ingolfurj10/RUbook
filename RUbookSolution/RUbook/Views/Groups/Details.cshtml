@@ -4,29 +4,30 @@
     ViewBag.Title = "Details";
 }
 
-<h2>@Html.DisplayFor(model => model.name)</h2>
+<h2>@Html.DisplayFor(model => model.Name)</h2>
 
 <div>
 
-    <h4>@Html.DisplayFor(model => model.text)</h4>
+    <h4>@Html.DisplayFor(model => model.Text)</h4>
 
     <hr />
 
-   
-
     <div class="col-md-3">
 
-        <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Group photo" />
+        <!--Þessi if setning er ekki alveg að virka eins og hún á að gera, birtir aldrei default myndina-->
 
-        <form action="" method="post" enctype="multipart/form-data">
+        @if (@Html.DisplayFor(model => model.Image) == null)
+        {
+            <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Group photo" style="width:299px; height:228px" />
 
-            <label for="file">Choose group photo:</label>
-            <input type="file" name="file" id="file" />
+        }
 
-            <input type="submit" />
-        </form>
-   
-     
+        else
+        {
+            <img src="@Html.DisplayFor(model =>model.Image)" alt="Group photo" style="width:299px; height:228px" />
+           
+        }
+        
 
     </div>
 
@@ -34,28 +35,28 @@
 
         <dl class="dl-horizontal">
             <dt>
-                @Html.LabelFor(model => model.name, "Name of Group")
+                @Html.LabelFor(model => model.Name, "Name of Group")
 
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.name)
+                @Html.DisplayFor(model => model.Name)
             </dd>
 
-            <!--Hérna þurfum við að fá date og time til að vera sitt hvort eða fá þetta til að birtast fallegra-->
+            
             <dt>
-                @Html.LabelFor(model => model.text, "Description")
+                @Html.LabelFor(model => model.Text, "Description")
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.text)
+                @Html.DisplayFor(model => model.Text)
             </dd>
             <dt>
-                @Html.LabelFor(model => model.course, "Course")
+                @Html.LabelFor(model => model.Course, "Course")
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.course)
+                @Html.DisplayFor(model => model.Course)
             </dd>
 
             <!--hérna mætti tengja departmentID við líka-->

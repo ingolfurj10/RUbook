@@ -52,7 +52,7 @@ namespace RUbook.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "ID,name,text,course")] Group group)
+        public ActionResult Create([Bind(Include = "ID,Name,Text,Course,Image")] Group group)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace RUbook.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Edit([Bind(Include = "ID,name,text,course")] Group group)
+        public ActionResult Edit([Bind(Include = "ID,Name,Text,Course,Image")] Group group)
         {
             if (ModelState.IsValid)
             {

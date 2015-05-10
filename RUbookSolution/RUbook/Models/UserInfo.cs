@@ -13,7 +13,8 @@ namespace RUbook.Models
         public virtual ApplicationUser UserID { get; set; }
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
-		public string Age { get; set; }
+		public string DateOfBirth { get; set; }
+        public string Image { get; set; }
 		public string Email { get; set; }
 		public string Phone { get; set; }
 		public string Education { get; set; }

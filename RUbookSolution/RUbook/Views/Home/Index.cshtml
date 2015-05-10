@@ -22,7 +22,7 @@
                         @foreach (var group in Model.AllGroups)
                         {
                             <div class="list-group-item">
-                                @Html.ActionLink(group.name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
+                                @Html.ActionLink(group.Name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
                             </div>
                         }
                     </ul>
@@ -61,7 +61,7 @@
                     @foreach (var item in Model.AllPosts)
                     {
                         <div class="well">
-                            <p>@item.text</p>
+                            <p>@item.Text</p>
                             <p>@item.DateCreated</p>
 
                             <!--Hérna vatnar að sýna notendnafn eða email þess sem skrifa innlegg-->
