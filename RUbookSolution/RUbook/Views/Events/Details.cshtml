@@ -13,7 +13,19 @@
     <hr />
 
     <div class="col-md-3">   
-        <img src="https://beta.mssociety.ca/images/event-default.jpg" alt="Event Photo"/>
+
+        @if (@Html.DisplayFor(model => model.Image) == null)
+        {
+            <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Group photo" style="width:270px; height:228px" />
+
+        }
+
+        else
+        {
+            <img src="@Html.DisplayFor(model =>model.Image)" alt="Group photo" style="width:270px; height:228px" />
+
+        }
+
      </div>
 
     <div class="col-md-6">

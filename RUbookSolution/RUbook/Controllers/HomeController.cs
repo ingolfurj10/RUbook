@@ -25,6 +25,7 @@ namespace RUbook.Controllers
             model.AllPosts = userDAL.GetAllPosts();
             model.AllGroups = userDAL.GetAllGroups();
             model.AllEvents = userDAL.GetAllEvents();
+            
 			//model.UserInfo = userDAL.GetUserInfo(user);
 
             return View(model);
