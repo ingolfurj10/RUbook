@@ -18,10 +18,20 @@ namespace RUbook.DAL
         public List<Post> GetAllPosts(ApplicationUser User)
         {
 
-			//var posts = db.Posts.OrderByDescending(p => p.DateCreated).ToList();
-            var posts = db.Posts.Where(p => p.UserID.Id == User.Id).OrderByDescending(p => p.DateCreated).ToList();
+            //var posts = db.Posts.OrderByDescending(p => p.DateCreated).ToList();
+            try
+            {
+                var posts = db.Posts.Where(p => p.UserID.Id == User.Id).OrderByDescending(p => p.DateCreated).ToList();
+                return posts;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
 
-            return posts;
+            return null;
+
+            
        
         }
     }
