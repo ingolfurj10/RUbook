@@ -19,6 +19,8 @@ namespace RUbook.Controllers
         // GET: UserInfoes
         public ActionResult Index()
         {
+          
+
             return View(db.UsersInfo.ToList());
         }
 

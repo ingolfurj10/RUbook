@@ -90,8 +90,15 @@
 
                     <ul class="list-group">
 
-                        <a href="#" class="list-group-item">Vinur 1</a>
-                        <a href="#" class="list-group-item">Vinur 2</a>
+                        <div>
+
+                            @foreach (var item in Model.AllUsers)
+                            {
+                                <div class="well">
+                                    <p>@item.Email</p>
+                                </div>
+                            }
+                        </div>
 
                     </ul>
                 </div>

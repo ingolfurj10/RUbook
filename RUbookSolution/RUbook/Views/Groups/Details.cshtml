@@ -19,13 +19,11 @@
         @if (Model.Image == null || Model.Image == "")
         {
             <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Group photo" style="width:270px; height:228px" />
-
         }
 
         else
         {
             <img src="@Html.DisplayFor(model =>model.Image)" alt="Group photo" style="width:270px; height:228px" />
-           
         }
         
         @Html.ActionLink("Edit Group", "Edit", new { id = Model.ID })
@@ -65,7 +63,7 @@
 
         </dl>
 
-        <p> Hérna viljum við að group posts komi</p>
+    
     </div>
 
     <div class="col-md-3">

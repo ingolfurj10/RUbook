@@ -64,16 +64,22 @@
                 </dd>
             </dl>
         </form>
-
-            <p>
-                @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-            </p>
-        
+                
 </center>
 
     <div class="col-md-3">
 
-  
+       
+       
+       
+        <!-- hérna vatnar að athuga hver er að skoða síðuna-->
+
+            <button type="button" class="btn btn-info">@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) </button>
+       
+           <!--hérna vantar action link sem addar friend-->
+            <button type="button" class="btn btn-primary">Add Friend</button>
+        
+     
     </div>
 
 </div>

@@ -70,7 +70,7 @@
 
         <!--Education Information-->
         <div class="form-group">
-            @Html.LabelFor(model => model.Education, "Education History", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Education, "Education history", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Education, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Education, "", new { @class = "text-danger" })
@@ -79,7 +79,7 @@
 
         <!--Work Information-->
         <div class="form-group">
-            @Html.LabelFor(model => model.WorkInfo, "Work History", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.WorkInfo, "Work history", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.WorkInfo, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.WorkInfo, "", new { @class = "text-danger" })

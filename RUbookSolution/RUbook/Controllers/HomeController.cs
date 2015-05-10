@@ -12,6 +12,14 @@ namespace RUbook.Controllers
     public class HomeController : Controller
     {
 		private ApplicationDbContext db = new ApplicationDbContext();
+        UserDAL userDAL;
+        PostDAL postDAL;
+
+        public HomeController() : base()
+        {
+            userDAL = new UserDAL(db);
+            postDAL = new PostDAL(db);
+        }
 
         [Authorize]
         public ActionResult Index()
@@ -21,10 +29,10 @@ namespace RUbook.Controllers
             var id = User.Identity.GetUserId();
 			var user = (from u in db.Users where u.Id == id select u).SingleOrDefault();
 
-            UserDAL userDAL = new UserDAL();
-            model.AllPosts = userDAL.GetAllPosts();
+            model.AllPosts = postDAL.GetAllPosts(user);
             model.AllGroups = userDAL.GetAllGroups();
             model.AllEvents = userDAL.GetAllEvents();
+            model.AllUsers = userDAL.GetAllUsers();
             
 			//model.UserInfo = userDAL.GetUserInfo(user);
 
