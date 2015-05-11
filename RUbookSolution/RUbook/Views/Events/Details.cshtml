@@ -16,12 +16,12 @@
 
         @if (Model.Image == null || Model.Image == "")
         {
-            <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Group photo" style="width:270px; height:228px" />
+            <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Group photo" />
         }
 
         else
         {
-            <img src="@Html.DisplayFor(model =>model.Image)" alt="Group photo" style="width:270px; height:228px" />
+            <img src="@Html.DisplayFor(model =>model.Image)" alt="Group photo" />
         }
 
         @Html.ActionLink("Edit Event", "Edit", new { id = Model.ID })
