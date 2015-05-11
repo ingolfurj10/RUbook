@@ -21,7 +21,7 @@
 
         else
         {
-            <img src="@Html.DisplayFor(model =>model.Image)" alt="Group photo" />
+            <img src="@Html.DisplayFor(model =>model.Image)" alt="Group photo" class="img-rounded" />
         }
         
         @Html.ActionLink("Edit Group", "Edit", new { id = Model.ID })
