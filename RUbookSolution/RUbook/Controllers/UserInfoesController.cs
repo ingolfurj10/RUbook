@@ -83,19 +83,20 @@ namespace RUbook.Controllers
         }
 
         // GET: UserInfoes/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+			var user = userDAL.GetUser(id);
             //UserInfo userInfo = db.UsersInfo.Find(id);
             //if (userInfo == null)
             //{
             //    return HttpNotFound();
             //}
             //return View(userInfo);
-            return null;
+            return View(user);
         }
 
         // POST: UserInfoes/Edit/5
