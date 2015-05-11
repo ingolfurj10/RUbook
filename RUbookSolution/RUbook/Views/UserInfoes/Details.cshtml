@@ -14,20 +14,14 @@
 
 
     <div class="col-md-3">
-      
             <img src="@Html.DisplayFor(model =>model.Image)" alt="Group photo" class="img-rounded" />
-
-        <div>
-         
-        </div>
         </br>
     </div>
 
 
-
     <div class="col-md-6">
-        <form class="form-group">
-            <dl class="table-striped">
+        <form class="panel panel-collapse">
+            <dl class="dl-horizontal">
                 <dt>
                     @Html.LabelFor(model => model.DateOfBirth, "Date of Birth")
                 </dt>
