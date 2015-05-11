@@ -37,3 +37,8 @@ textarea {
 a {
     color: #d16ea3;
 }
+
+img{
+    width:100%;
+    max-width:600px;
+}
