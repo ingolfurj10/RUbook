@@ -30,6 +30,7 @@ namespace RUbook.Controllers
             var user = userDAL.GetUser(userId);
 
             //vinaID
+
             var friends = (from u in db.Friends where u.UserId.Id == user.Id select u.FriendUserID.Id).ToList();
             friends.Add(userId);
 
@@ -37,11 +38,14 @@ namespace RUbook.Controllers
             model.AllGroups = userDAL.GetAllGroups();
             model.AllEvents = userDAL.GetAllEvents();
             model.AllUsers = userDAL.GetAllUsers();
-            
-			//model.UserInfo = userDAL.GetUserInfo(user);
+            model.User = userDAL.GetUser(userId);
+
+            //model.UserInfo = userDAL.GetUserInfo(user);
 
             return View(model);
-        }
+            }
+
+        
 
        
 

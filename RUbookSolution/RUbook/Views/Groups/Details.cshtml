@@ -67,7 +67,7 @@
         <br />
         <div>
             <!--hérna vatnar action link til að joina grúppu-->
-            <button type="button" class="btn btn-primary">Join Group</button>
+            <button type="button" class="btn btn-primary">@Html.ActionLink("Join Group", "Create", "GroupMembers", new { id = Model.ID }, null) </button>
         </div>
 
         <br />
