@@ -127,7 +127,7 @@ namespace RUbook.Controllers
             }
             if (String.IsNullOrEmpty(commentText))
             {
-                return RedirectToAction("Details", "Comments", new { id = postId });
+                return RedirectToAction("Details", "Post", new { id = postId });
             }
 
             string username = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
@@ -137,7 +137,7 @@ namespace RUbook.Controllers
             {
                 Comment comment = new Comment { text = commentText, PostID = post };
                 PostDAL.Instance.AddComment(comment);
-                return RedirectToAction("Details", "Comments", new { id = postId });
+                return RedirectToAction("Details", "Post", new { id = postId });
             }
             return View("Error");
         }

@@ -43,17 +43,16 @@ namespace RUbook.DAL
             return null;
         }
 
-        private List<Post> posts = null;
-        private List<Comment> comments = null;
+        
 
         public Post GetPostById(int postId)
         {
-            Post result = (from post in posts
+            Post result = (from post in db.Posts
                            where post.ID == postId
                            select post).SingleOrDefault();
             if(result != null)
             {
-                result.Comments = (from comment in comments
+                result.Comments = (from comment in db.Comments
                                    where comment.ID == result.ID
                                    orderby comment.CreatedDate ascending
                                    select comment).ToList();
@@ -64,13 +63,13 @@ namespace RUbook.DAL
         public void AddComment(Comment comment)
         {
             int newID = 1;
-            if (comments.Count() > 1)
+            if (db.Comments.Count() > 1)
             {
-                newID = comments.Max(x => x.ID) + 1;
+                newID = db.Comments.Max(x => x.ID) + 1;
             }
             comment.ID = newID;
             comment.CreatedDate = DateTime.Now;
-            comments.Add(comment);
+            db.Comments.Add(comment);
         }
     }
 }
