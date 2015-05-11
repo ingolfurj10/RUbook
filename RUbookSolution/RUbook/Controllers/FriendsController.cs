@@ -77,7 +77,7 @@ namespace RUbook.Controllers
             db.Friends.Add(ship);
 
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
 
         }
 

@@ -8,7 +8,6 @@
 
 <!--Hér væri hægt að displaya Fullt nafn á innskráðum notanda með eftirfarandi - vantar að tengja-->
 @*<h2>@Html.DisplayFor(model => model.UserInfo.FirstName) @Html.DisplayFor(model => model.UserInfo.LastName)</h2>*@
-
  
     @using (Html.BeginForm())
     {
@@ -34,7 +33,6 @@
 
                         @foreach (var item in Model.AllEvents)
                         {
-
                             <div class="list-group-item">
                                 @Html.ActionLink(item.Name, "Details", "Events", new { id = item.ID }, new { @class = "" })
                             </div>
@@ -61,8 +59,6 @@
             </script>
 
 
-
-            
             <div class="col-md-6">
                 <div class="input-group">
                     <!--þetta þarf að laga eða færa yfir í annað view ef þetta verður margnotað view-->
