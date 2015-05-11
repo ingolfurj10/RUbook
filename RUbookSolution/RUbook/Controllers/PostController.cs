@@ -34,12 +34,23 @@ namespace RUbook.Controllers
             var user = userDAL.GetUser(userId);
 
             //vinaID
-            var friends = (from u in db.Friends where u.UserId.Id == user.Id select u.FriendUserID.Id).ToList();
-            friends.Add(userId);
-            var posts = postDAL.GetAllPosts(friends);
-   
 
-            return View(db.Posts.ToList());
+            try
+            {
+                var friends = (from u in db.Friends where u.UserId.Id == user.Id select u.FriendUserID.Id).ToList();
+                friends.Add(userId);
+                var posts = postDAL.GetAllPosts(friends);
+                return View(db.Posts.ToList());
+
+            }
+
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex);
+            }
+
+            return null;
         }
 
         // GET: Post/Details/5

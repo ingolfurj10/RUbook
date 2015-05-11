@@ -50,6 +50,7 @@ namespace RUbook.Controllers
             Friend ship = new Friend();
             ship.FriendUserID = userDAL.GetUser(id);
             ship.UserId = userDAL.GetUser(User.Identity.GetUserId());
+           
             return View(ship);
         }
 
@@ -62,20 +63,20 @@ namespace RUbook.Controllers
         {
             var uid = User.Identity.GetUserId();
 
-            //if (id == uid)
-            //{
-            //     ekki hægt að vera vinur sinn
-            //}
-
+            if (friend.FriendUserID.Id == uid)
+            {
+                return RedirectToAction("Error");
+            }
+            
             var user = userDAL.GetUser(uid);
             var fr = userDAL.GetUser(friend.FriendUserID.Id);
 
             Friend ship = new Friend();
             ship.UserId = user;
             ship.FriendUserID = fr;
+            ship.DateCreated = DateTime.Now;
 
             db.Friends.Add(ship);
-
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
 

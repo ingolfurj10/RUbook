@@ -14,7 +14,7 @@ namespace RUbook.Models
        
         public virtual ApplicationUser UserId { get; set; }
 		public virtual ApplicationUser FriendUserID { get; set; }
-
+        public DateTime DateCreated { get; set; }
    }
 }
 

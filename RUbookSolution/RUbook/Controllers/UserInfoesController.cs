@@ -63,7 +63,6 @@ namespace RUbook.Controllers
             {
                 //var original = db.Users.SingleOrDefault(u => u.Id == userInfo.Id);
                 
-
                 var original = userDAL.GetUser(uid);
                 if (original != null)
                 {
