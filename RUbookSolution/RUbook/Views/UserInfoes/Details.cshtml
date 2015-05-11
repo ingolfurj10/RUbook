@@ -5,35 +5,23 @@
 }
 
 
-<h2>Details</h2>
- 
-    <div class="form-horizontal">
-        
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2>
 
-<div class="col-md-3">
 
-    <p>Hérna er dálkur</p>
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-</div>
 
-<div class="col-md-6">
-    <center>
-        <h3>Personal Information</h3>
-        <h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2>
-
-        <div>
-
-            <div>
-                <img src="http://www.lumineers.me/images/core/profile-image-zabadnesterling.gif" alt="Your Photo" class="img-rounded">
-            </div>
-        </div>
-
+    <div class="col-md-3">
+            <img src="@Html.DisplayFor(model =>model.Image)" alt="Group photo" class="img-rounded" />
         </br>
-    
-        <form class="form-group">
-            <dl class="table-striped">
+    </div>
+
+
+    <div class="col-md-6">
+        <form class="panel panel-collapse">
+            <dl class="dl-horizontal">
                 <dt>
                     @Html.LabelFor(model => model.DateOfBirth, "Date of Birth")
                 </dt>
@@ -47,11 +35,11 @@
                     @Html.DisplayFor(model => model.Email)
                 </dd>
                 @*<dt>
-                    @Html.LabelFor(model => model.Phone, "Phone Number")
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Phone)
-                </dd>*@
+                        @Html.LabelFor(model => model.Phone, "Phone Number")
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Phone)
+                    </dd>*@
                 <dt>
                     @Html.LabelFor(model => model.Department, "Department")
                 </dt>
@@ -72,19 +60,15 @@
                 </dd>
             </dl>
         </form>
-                
-    </center>
-
-    <div class="col-md-3">
-
-        <!-- hérna vatnar að athuga hver er að skoða síðuna-->
-
-            @*<button type="button" class="btn btn-info">@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) </button>*@
-       
-           <!--hérna vantar action link sem addar friend-->
-            <button type="button" class="btn btn-primary">@Html.ActionLink("Add Friend", "Create", "Friends", new { id = Model.Id},null) </button>
-     
     </div>
 
+
+    <div class="col-md-3">
+        <!-- hérna vatnar að athuga hver er að skoða síðuna-->
+        @*<button type="button" class="btn btn-info">@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) </button>*@
+        <!--hérna vantar action link sem addar friend-->
+        <button type="button" class="btn btn-primary">@Html.ActionLink("Add Friend", "Create", "Friends", new { id = Model.Id }, null) </button>
+    </div>
 </div>
+
 
