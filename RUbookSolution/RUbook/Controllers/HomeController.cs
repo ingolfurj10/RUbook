@@ -25,11 +25,15 @@ namespace RUbook.Controllers
         public ActionResult Index()
         {
             TimelineViewModel model = new TimelineViewModel();
-			
-            var id = User.Identity.GetUserId();
-			var user = (from u in db.Users where u.Id == id select u).SingleOrDefault();
 
-            model.AllPosts = postDAL.GetAllPosts(user);
+            var userId = User.Identity.GetUserId();
+            var user = userDAL.GetUser(userId);
+
+            //vinaID
+            var friends = (from u in db.Friends where u.UserId.Id == user.Id select u.FriendUserID.Id).ToList();
+            friends.Add(userId);
+
+            model.AllPosts = postDAL.GetAllPosts(friends);
             model.AllGroups = userDAL.GetAllGroups();
             model.AllEvents = userDAL.GetAllEvents();
             model.AllUsers = userDAL.GetAllUsers();

@@ -13,7 +13,6 @@ namespace RUbook.Models
         public int ID { get; set; }
        
         public virtual ApplicationUser UserId { get; set; }
-        
 		public virtual ApplicationUser FriendUserID { get; set; }
 
    }

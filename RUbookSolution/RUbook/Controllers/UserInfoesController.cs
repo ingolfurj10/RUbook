@@ -15,14 +15,17 @@ namespace RUbook.Controllers
     public class UserInfoesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private UserDAL userDAL;
+
+        public UserInfoesController() : base()
+        {
+            userDAL = new UserDAL(db);
+        }
 
         // GET: UserInfoes
         public ActionResult Index()
         {
-          
-
-            //return View(db.UsersInfo.ToList());
-            return null;
+            return View(userDAL.GetAllUsers());
         }
 
         // GET: UserInfoes/Details/5
@@ -32,9 +35,8 @@ namespace RUbook.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser userInfo = db.Users.Find(id);
-            //var uid = User.Identity.GetUserId();
-            //userInfo.UserID = (from u in db.Users where u.Id == uid select u).SingleOrDefault();
+            ApplicationUser userInfo = userDAL.GetUser(id);
+           
             if (userInfo == null)
             {
                 return HttpNotFound();
@@ -53,17 +55,31 @@ namespace RUbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName, DateOfBirth, Email, Phone, Education, WorkInfo, Department, Image")] ApplicationUser userInfo)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName, DateOfBirth, Education, WorkInfo, Department, Image")] ApplicationUser userInfo)
         {
+            var uid = User.Identity.GetUserId();
+
             if (ModelState.IsValid)
             {
-                //db.UsersInfo.Add(userInfo);
-                //db.SaveChanges();
-                ////return RedirectToAction("Index");
-                //return RedirectToAction("Details", new { id = userInfo.ID });
+                //var original = db.Users.SingleOrDefault(u => u.Id == userInfo.Id);
+                
+
+                var original = userDAL.GetUser(uid);
+                if (original != null)
+                {
+                    original.FirstName = userInfo.FirstName;
+                    original.LastName = userInfo.LastName;
+                    original.DateOfBirth = userInfo.DateOfBirth;
+                    original.Education = userInfo.Education;
+                    original.WorkInfo = userInfo.WorkInfo;
+                    original.Department = userInfo.Department;
+                    original.Image = userInfo.Image;
+                    db.SaveChanges();
+                }
             }
 
-            return View(userInfo);
+            return RedirectToAction("Details", new { id = uid });
+            //return View(userInfo);
         }
 
         // GET: UserInfoes/Edit/5
