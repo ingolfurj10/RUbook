@@ -1,4 +1,5 @@
 ﻿@model RUbook.Models.ApplicationUser
+@using Microsoft.AspNet.Identity;
 
 @{
     ViewBag.Title = "Details";
@@ -64,10 +65,21 @@
 
 
     <div class="col-md-3">
-        <!-- hérna vatnar að athuga hver er að skoða síðuna-->
-        @*<button type="button" class="btn btn-info">@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) </button>*@
-        <!--hérna vantar action link sem addar friend-->
-        <button type="button" class="btn btn-primary">@Html.ActionLink("Add Friend", "Create", "Friends", new { id = Model.Id }, null) </button>
+        @{
+            
+            var user = User.Identity.GetUserId();
+            
+            if( user == Model.Id)
+            { 
+                <!-- hérna vatnar að athuga hver er að skoða síðuna-->
+                <button type="button" class="btn btn-info">@Html.ActionLink("Edit", "Edit", new { id = user }) </button>
+            }
+            else
+            { 
+                <!--hérna vantar action link sem addar friend-->
+                <button type="button" class="btn btn-primary">@Html.ActionLink("Add Friend", "Create", "Friends", new { id = Model.Id }, null) </button>
+            }
+        }
     </div>
 </div>
 
