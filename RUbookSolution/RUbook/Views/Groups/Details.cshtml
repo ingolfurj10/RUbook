@@ -7,7 +7,7 @@
 <h2>@Html.DisplayFor(model => model.Name)</h2>
 
 <div>
-    <h4>@Html.DisplayFor(model => model.Text)</h4>
+    
     <hr />
 
     <div class="col-md-3">
@@ -15,7 +15,7 @@
         <!--Þessi if setning er ekki alveg að virka eins og hún á að gera, birtir aldrei default myndina-->
         @if (Model.Image == null || Model.Image == "")
         {
-            <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Group photo"/>
+            <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Group photo" />
         }
         else
         {
@@ -28,31 +28,34 @@
 
     <div class="col-md-6">
 
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.LabelFor(model => model.Name, "Name of Group")
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-            <dt>
-                @Html.LabelFor(model => model.Text, "Description")
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Text)
-            </dd>
-            <dt>
-                @Html.LabelFor(model => model.Course, "Course")
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Course)
-            </dd>
-
-            <!--hérna mætti tengja departmentID við líka-->
-
-        </dl>
-
-    
+        <div class="panel panel-collapse">
+            <div class="dl-horizontal">
+                <dt>
+                    @Html.LabelFor(model => model.Name, "Name of Group")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt>
+                    @Html.LabelFor(model => model.Text, "Description")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Text)
+                </dd>
+                <dt>
+                    @Html.LabelFor(model => model.Course, "Course")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Course)
+                </dd>
+                <!--hérna mætti tengja departmentID við líka-->
+            </div>
+        </div>
+        <div class="panel panel-heading">
+            <div>
+                <p>Hérna eiga Event Posts að koma!</p>
+            </div>
+        </div>
     </div>
 
     <div class="col-md-3">
