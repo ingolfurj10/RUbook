@@ -82,11 +82,22 @@
                     {
                         <div class="well">
                             <p>@item.Text</p>
-                            <img src="@item.Image" alt="Hérna er mynd"/>
-                            <p>@item.DateCreated</p>
+                            @if (item.Image != null)
+                            {
+                                <img src="@item.Image" alt="Hérna er mynd" />
 
+                            }
+                           
+                            <p>@item.DateCreated</p>
+                    
+                            
+                            @Html.ActionLink("Add comment", "Details", "Post", new { id = item.ID }, new { @class = "" })
+                            
+                           
+                       
                             <!--Hérna vatnar að sýna notendnafn eða email þess sem skrifa innlegg-->
                             <!--<p>item.UserEmail</p>-->
+                        
                         </div>
 
                     }
