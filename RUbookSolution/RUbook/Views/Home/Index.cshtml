@@ -33,9 +33,13 @@
 
                         @foreach (var item in Model.AllEvents)
                         {
-                            <div class="list-group-item">
-                                @Html.ActionLink(item.Name, "Details", "Events", new { id = item.ID }, new { @class = "" })
-                            </div>
+                            if (DateTime.Now < item.DateOfEvent)
+                            {
+                                <div class="list-group-item">
+                                    @Html.ActionLink(item.Name, "Details", "Events", new { id = item.ID }, new { @class = "" })
+                                </div>
+                            }
+
                         }
                     </ul>
                 </div>

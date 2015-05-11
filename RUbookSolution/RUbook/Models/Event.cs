@@ -20,6 +20,7 @@ namespace RUbook.Models
         public Department DepartmentID { get; set; }
         //ekki búið að tengja ennþá
         public Group GroupID { get; set; }
+        //public ApplicationUser UserID {get; set;}
 
         public virtual ICollection<EventMember> EventMembers { get; set; }
        
