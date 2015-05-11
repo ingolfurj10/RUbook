@@ -5,14 +5,14 @@
 }
 
 
+@Model.User.FirstName @Model.User.LastName
 
-<!--Hér væri hægt að displaya Fullt nafn á innskráðum notanda með eftirfarandi - vantar að tengja-->
-@*<h2>@Html.DisplayFor(model => model.UserInfo.FirstName) @Html.DisplayFor(model => model.UserInfo.LastName)</h2>*@
- 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
+        <div>
 
+        </div>
         <div class="row">
             <div class="col-md-3">
                 <div class="panel panel-default">
@@ -58,7 +58,6 @@
                 
             </script>
 
-
             <div class="col-md-6">
                 <div class="input-group">
                     <!--þetta þarf að laga eða færa yfir í annað view ef þetta verður margnotað view-->
@@ -82,11 +81,23 @@
                     {
                         <div class="well">
                             <p>@item.Text</p>
-                            <img src="@item.Image" alt="Hérna er mynd"/>
+                            @if (item.Image != null)
+                            {
+                                <img src="@item.Image" alt="Hérna er mynd" />
+
+                            }
+                           
                             <p>@item.DateCreated</p>
 
+                    @item.UserID.FirstName
+                            
+                            @Html.ActionLink("Add comment", "Details", "Post", new { id = item.ID }, new { @class = "" })
+                            
+                           
+                       
                             <!--Hérna vatnar að sýna notendnafn eða email þess sem skrifa innlegg-->
                             <!--<p>item.UserEmail</p>-->
+                        
                         </div>
 
                     }
@@ -121,9 +132,10 @@
                             @foreach (var item in Model.AllUsers)
                             {
                                 <div class="well">
-                                    @Html.ActionLink(item.Email, "Details", new { id = item.Id })
+                                    @Html.ActionLink(item.Email, "Details", "UserInfoes",  new { id = item.Id }, null)
                                 </div>
                             }
+
                         </div>
 
                     </ul>

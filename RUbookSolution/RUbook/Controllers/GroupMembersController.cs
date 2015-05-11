@@ -8,12 +8,22 @@ using System.Web;
 using System.Web.Mvc;
 using RUbook.DAL;
 using RUbook.Models;
+using Microsoft.AspNet.Identity;
 
 namespace RUbook.Controllers
 {
     public class GroupMembersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        GroupDAL groupDAL;
+        UserDAL userDAL;
+
+        public GroupMembersController():base()
+        {
+            groupDAL = new GroupDAL(db);
+            userDAL = new UserDAL(db);
+        }
 
         // GET: GroupMembers
         public ActionResult Index()
@@ -37,9 +47,14 @@ namespace RUbook.Controllers
         }
 
         // GET: GroupMembers/Create
-        public ActionResult Create()
+     
+        public ActionResult Create(int id)
         {
-            return View();
+            GroupMember group = new GroupMember();
+            group.GroupID = groupDAL.GetGroup(id);
+            group.UserID = userDAL.GetUser(User.Identity.GetUserId());
+            
+            return View(group);
         }
 
         // POST: GroupMembers/Create
@@ -47,16 +62,27 @@ namespace RUbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID")] GroupMember groupMember)
+        public ActionResult Create([Bind(Include = "ID,UserID,GroupID")] GroupMember groupMember)
         {
-            if (ModelState.IsValid)
-            {
-                db.GroupMembers.Add(groupMember);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            var uid = User.Identity.GetUserId();
 
-            return View(groupMember);
+            //if (id == uid)
+            //{
+            //     ekki hægt að vera vinur sinn
+            //}
+
+            var user = userDAL.GetUser(uid);
+            var gr = groupDAL.GetGroup(groupMember.GroupID.ID);
+
+            GroupMember member = new GroupMember();
+            member.UserID = user;
+            member.GroupID = gr;
+
+            db.GroupMembers.Add(member);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Details", "Groups", new { id = gr.ID });
         }
 
         // GET: GroupMembers/Edit/5
