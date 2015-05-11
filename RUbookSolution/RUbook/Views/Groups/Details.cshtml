@@ -13,17 +13,14 @@
     <div class="col-md-3">
 
         <!--Þessi if setning er ekki alveg að virka eins og hún á að gera, birtir aldrei default myndina-->
-
         @if (Model.Image == null || Model.Image == "")
         {
             <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Group photo"/>
         }
-
         else
         {
             <img src="@Html.DisplayFor(model =>model.Image)" alt="Group photo" class="img-rounded" />
         }
-        
         @Html.ActionLink("Edit Group", "Edit", new { id = Model.ID })
 
 
