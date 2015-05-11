@@ -135,12 +135,12 @@
 
                             @foreach (var item in Model.AllUsers)
                             {
-                                <div class="well">
-                                    @Html.ActionLink(item.Email, "Details", "UserInfoes",  new { id = item.Id }, null)
+                                <div class="list-group-item">
+                                        @Html.ActionLink(item.Email, "Details", "UserInfoes",  new { id = item.Id }, null)
                                 </div>
                             }
 
-                        </div>
+                         </div>
 
                     </ul>
                 </div>
