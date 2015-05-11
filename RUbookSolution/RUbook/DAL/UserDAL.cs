@@ -23,14 +23,7 @@ namespace RUbook.DAL
             db = context;
         }
 
-        public List<Post> GetAllPosts()
-        {
-
-			var posts = db.Posts.OrderByDescending(p => p.DateCreated).ToList();
-
-            return posts;
-       
-        }
+     
         public List<Group> GetAllGroups()
         {
             var groups = db.Groups.ToList();
@@ -49,17 +42,26 @@ namespace RUbook.DAL
 
         public List<ApplicationUser> GetAllUsers()
         {
+            try
+            {
+                //bæta við hérna dateAdded svo nýjasti komi fyrst eða í starfrófsröð bara - athuga virkar ekki 
+                //var users = db.Friends.Where(p => uid.Contains(p.UserId.Id)).OrderByDescending(p => p.UserId.FirstName).ToList();
+                var users = db.Users.ToList();
+                return users;
 
-            var users = db.Users.ToList();
+            }
 
-            return users;
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
 
+            return null; 
         }
 
         public ApplicationUser GetUser (string userid)
         {
             var user = (from u in db.Users where u.Id == userid select u).SingleOrDefault();
-
             return user;
         }
 		

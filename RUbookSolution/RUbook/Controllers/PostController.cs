@@ -80,6 +80,10 @@ namespace RUbook.Controllers
 				post.UserID = (ApplicationUser)user;
                 //post.UserEmail = (ApplicationUser)user;
 				post.DateCreated = DateTime.Now;
+                //if (post.Image == "")
+                //{
+                    //hvað gerist ef image er NULL strengur
+                //}
                 db.Posts.Add(post);
                 db.SaveChanges();
                 return RedirectToAction("Index","Home");
