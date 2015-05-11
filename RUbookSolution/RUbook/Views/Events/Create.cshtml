@@ -17,57 +17,51 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="col-md-3">
-
-            <img src="https://beta.mssociety.ca/images/event-default.jpg" alt="Group Photo" />
-
+            <div>
+                <img src="https://beta.mssociety.ca/images/event-default.jpg" alt="Event Photo" class="img-rounded" style="width:216px;height:173px" />
+            </div>
+            <div class="form-group">
+                <p class="help-block">Here you can choose a picture for your Event</p>
+                <div>
+                        @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", placeholder = "Insert a Source Link"}})
+                        @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                </div>
+            </div>
         </div>
  
         <div class="col-md-6">
-
-
             <div class="form-group">
-               
-                @Html.LabelFor(model => model.Name, "Name of event", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+             <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Name of Event" } })
                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.DateOfEvent, "DateTime of event", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DateOfEvent, new { htmlAttributes = new { @class = "form-control" } })
+               <div class="col-md-10">
+                    @Html.EditorFor(model => model.DateOfEvent, new { htmlAttributes = new { @class = "form-control", placeholder = "Date of Event" } })
                     @Html.ValidationMessageFor(model => model.DateOfEvent, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.Text, "Description", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+               <div class="col-md-10">
+                    @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control", placeholder = "Description" } })
                     @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
                 </div>
             </div>
 
           
             <div class="form-group">
-                @Html.LabelFor(model => model.Location, "Location", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+               <div class="col-md-10">
+                    @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control", placeholder = "Location" } })
                     @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
                 </div>
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Image, "Event image source", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
-                </div>
-            </div>
+            
 
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
+                <div class="col-md-10">
                     <input type="submit" value="Create" class="btn btn-default" />
                 </div>
             </div>
@@ -77,25 +71,6 @@
         </div>
 
         <div class="col-md-3">
-
-            <p>Hérna er dálkur</p>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
         </div>
   </div>
 }
