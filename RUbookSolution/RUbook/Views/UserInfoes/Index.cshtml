@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RUbook.Models.UserInfo>
+﻿@model IEnumerable<RUbook.Models.ApplicationUser>
 
 @{
     ViewBag.Title = "Index";
@@ -29,11 +29,12 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink(item.FirstName + " " + item.LastName, "Details", new { id = item.ID })
+            @Html.ActionLink(item.FirstName + " " + item.LastName, "Details", new { id = item.Id })
         </td>
         <td>
             <!-- hérna vantar if ef þeir eru vinur þá gerist eitthvað annað-->
-            @Html.ActionLink("Send Friend request", "AddFriend", new { id=item.ID })
+            <!--hérna vantar virkni líka-->
+            @Html.ActionLink("Send Friend request", "AddFriend", new { id=item.Id })
         </td>
     </tr>
 }
