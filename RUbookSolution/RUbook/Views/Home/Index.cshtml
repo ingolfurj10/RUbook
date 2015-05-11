@@ -41,8 +41,28 @@
                         }
                     </ul>
                 </div>
-
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
             </div>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('#datetimepicker6').data("DateTimePicker").FUNCTION();
+                    $(function () {
+                        $('#datetimepicker1').datetimepicker();
+                    })
+                });
+                
+            </script>
+
+
+
+            
             <div class="col-md-6">
                 <div class="input-group">
                     <!--þetta þarf að laga eða færa yfir í annað view ef þetta verður margnotað view-->
