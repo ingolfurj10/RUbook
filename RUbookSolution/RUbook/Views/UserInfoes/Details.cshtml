@@ -1,4 +1,4 @@
-﻿@model RUbook.Models.UserInfo
+﻿@model RUbook.Models.ApplicationUser
 
 @{
     ViewBag.Title = "Details";
@@ -38,12 +38,12 @@
                 <dd>
                     @Html.DisplayFor(model => model.Email)
                 </dd>
-                <dt>
+                @*<dt>
                     @Html.LabelFor(model => model.Phone, "Phone Number")
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.Phone)
-                </dd>
+                </dd>*@
                 <dt>
                     @Html.LabelFor(model => model.Department, "Department")
                 </dt>
@@ -74,11 +74,10 @@
        
         <!-- hérna vatnar að athuga hver er að skoða síðuna-->
 
-            <button type="button" class="btn btn-info">@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) </button>
+            @*<button type="button" class="btn btn-info">@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) </button>*@
        
            <!--hérna vantar action link sem addar friend-->
-            <button type="button" class="btn btn-primary">Add Friend</button>
-        
+            <button type="button" class="btn btn-primary">@Html.ActionLink("Add Friend", "Create", "Friends", new { id = Model.Id},null) </button>
      
     </div>
 
