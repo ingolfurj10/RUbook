@@ -16,8 +16,6 @@ namespace RUbook.DAL
 		{
 		}
 
-
-
 		public override IDbSet<ApplicationUser> Users
 		{
 			get

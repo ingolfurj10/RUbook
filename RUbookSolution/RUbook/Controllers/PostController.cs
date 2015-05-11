@@ -32,7 +32,13 @@ namespace RUbook.Controllers
         {
             var userId = User.Identity.GetUserId();
             var user = userDAL.GetUser(userId);
-            var posts = postDAL.GetAllPosts(user);
+
+            //vinaID
+            var friends = (from u in db.Friends where u.UserId.Id == user.Id select u.FriendUserID.Id).ToList();
+            friends.Add(userId);
+            var posts = postDAL.GetAllPosts(friends);
+   
+
             return View(db.Posts.ToList());
         }
 

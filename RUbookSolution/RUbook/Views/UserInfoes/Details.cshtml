@@ -4,6 +4,14 @@
     ViewBag.Title = "Details";
 }
 
+
+<h2>Details</h2>
+ 
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
 <div class="col-md-3">
 
     <p>Hérna er dálkur</p>
@@ -65,13 +73,10 @@
             </dl>
         </form>
                 
-</center>
+    </center>
 
     <div class="col-md-3">
 
-       
-       
-       
         <!-- hérna vatnar að athuga hver er að skoða síðuna-->
 
             @*<button type="button" class="btn btn-info">@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) </button>*@
@@ -82,3 +87,4 @@
     </div>
 
 </div>
+
