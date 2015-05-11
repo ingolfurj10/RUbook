@@ -4,7 +4,7 @@
     ViewBag.Title = "My Timeline";
 }
 
-<h2>@ViewBag.Title</h2>
+
 
 <!--Hér væri hægt að displaya Fullt nafn á innskráðum notanda með eftirfarandi - vantar að tengja-->
 @*<h2>@Html.DisplayFor(model => model.UserInfo.FirstName) @Html.DisplayFor(model => model.UserInfo.LastName)</h2>*@
@@ -66,7 +66,7 @@
                     {
                         <div class="well">
                             <p>@item.Text</p>
-                            <img src="@item.Image" alt="Hérna er mynd"style="width:299px; height:228px"/>
+                            <img src="@item.Image" alt="Hérna er mynd"/>
                             <p>@item.DateCreated</p>
 
                             <!--Hérna vatnar að sýna notendnafn eða email þess sem skrifa innlegg-->
