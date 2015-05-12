@@ -45,9 +45,9 @@
                 <p>@item.DateCreated</p>
 
                 @item.UserID.FirstName
-
-                @Html.ActionLink("Add comment", "Details", "Post", new { id = item.ID }, new { @class = "" })
-
+                <div class="left">
+                    @Html.ActionLink("See Comments", "Details", "Post", new { id = item.ID }, new { @class = "" })
+                </div>                
             </div>
 
         }
