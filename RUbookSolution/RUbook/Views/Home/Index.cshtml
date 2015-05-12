@@ -99,10 +99,10 @@
             @*Calendar1!*@
             <div class="form-group">
                 <div class='input-group date' id='datetimepicker1'>
-                    <input type='date' class="form-control" />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
+                    <input type='date' class="form-control" />
                 </div>
             </div>
 
@@ -117,11 +117,12 @@
         </div>
 
         <div class="col-md-3 col-sm-6">
-            <div>
-                <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
-                <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
-
-            </div>
+            <center>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
+                    <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
+                </div>
+            </center>
 
             <br>
 
