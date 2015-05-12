@@ -103,7 +103,7 @@ namespace RUbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName, DateOfBirth, Email, Phone, Education, WorkInfo, Department, Image")] ApplicationUser userInfo)
+        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName, DateOfBirth, Education, WorkInfo, Department, Image")] ApplicationUser userInfo)
         {
             if (ModelState.IsValid)
             {
