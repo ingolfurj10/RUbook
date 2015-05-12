@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/themes/base/css")
     @Scripts.Render("~/bundles/modernizr")
+    @using Microsoft.AspNet.Identity;
 
     <meta name="RUbook" content="Social media for students and faculty of The University of Reykjavík" />
 </head>
@@ -25,11 +26,10 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Timeline", "Index", "Home")</li>
+                    <li>@Html.ActionLink("My Profile", "Details", "UserInfoes", new {id = User.Identity.GetUserId()}, null)</li>
                     <li>@Html.ActionLink("All Groups", "Index", "Groups")</li>
                     <li>@Html.ActionLink("All Events", "Index", "Events")</li>
                     <li>@Html.ActionLink("All Users", "Index", "UserInfoes")</li>
-                    <li>@Html.ActionLink("See GroupMembers", "Index", "GroupMembers")</li>
-                   
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
