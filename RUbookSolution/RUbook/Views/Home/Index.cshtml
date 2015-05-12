@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿@model RUbook.Models.TimelineViewModel
 
 @{
@@ -49,11 +48,6 @@
 
                 @Html.ActionLink("Add comment", "Details", "Post", new { id = item.ID }, new { @class = "" })
 
-
-
-                <!--Hérna vatnar að sýna notendnafn eða email þess sem skrifa innlegg-->
-                <!--<p>item.UserEmail</p>-->
-
             </div>
 
         }
@@ -85,12 +79,12 @@
                 <div class="panel-heading">My Events</div>
                 <ul class="list-group">
 
-                    @foreach (var item in Model.AllEvents)
+                    @foreach (var eve in Model.AllEventsOfUser)
                     {
-                        if (DateTime.Now < item.DateOfEvent)
+                        if (DateTime.Now < eve.EventID.DateOfEvent)
                         {
                             <div class="list-group-item">
-                                @Html.ActionLink(item.Name, "Details", "Events", new { id = item.ID }, new { @class = "" })
+                                @Html.ActionLink(eve.EventID.Name, "Details", "Events", new { id = eve.ID }, new { @class = "" })
                             </div>
                         }
                     }
@@ -133,12 +127,12 @@
 
                 <ul class="list-group">
                     <div>
-                        @foreach (var item in Model.AllUsers)
-                        {
-                            <div class="list-group-item">
-                                @Html.ActionLink(item.Email, "Details", "UserInfoes", new { id = item.Id }, null)
-                            </div>
-                        }
+                       @foreach (var item in Model.AllFriendsOfUser)
+                       {
+                        <div class="list-group-item">
+                            @Html.ActionLink(item.FriendUserID.Email, "Details", "UserInfoes", new { id = item.UserId.Id }, null)
+                        </div>
+                       }
                     </div>
                 </ul>
             </div>
@@ -150,164 +144,5 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-=======
-﻿@model RUbook.Models.TimelineViewModel
 
-@{
-    ViewBag.Title = "My Timeline";
-}
-
-
-<h3> @Model.User.FirstName @Model.User.LastName's Timeline</h3>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        <div>
-
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">My Groups</div>
-                    <ul class="list-group">
-                        @foreach (var group in Model.AllGroupsOfUser)
-                        {
-                            <div class="list-group-item">
-                                @Html.ActionLink(group.GroupID.Name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
-                            </div>
-                        }
-                    </ul>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">My Events</div>
-                    <ul class="list-group">
-
-                        @foreach (var eve in Model.AllEventsOfUser)
-                        {
-                            if (DateTime.Now < eve.EventID.DateOfEvent)
-                            {
-                                <div class="list-group-item">
-                                    @Html.ActionLink(eve.EventID.Name, "Details", "Events", new { id = eve.ID }, new { @class = "" })
-                                </div>
-                            }
-                        }
-                    </ul>
-                </div>
-                <div class="form-group">
-                    <div class='input-group date' id='datetimepicker1'>
-                        <input type='date' class="form-control" />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#datetimepicker6').data("DateTimePicker").FUNCTION();
-                    $(function () {
-                        $('#datetimepicker1').datetimepicker();
-                    })
-                });
-                
-            </script>
-
-            <div class="col-md-6">
-                <div class="input-group">
-                    <!--þetta þarf að laga eða færa yfir í annað view ef þetta verður margnotað view-->
-                    @*@Html.TextAreaFor(model => Model.Text, new { @class = "newpost", rows = 3, cols = 100, placeholder = "Something on your mind?" })*@
-                </div>
-
-                <!--Hér er button sem beinir á create post nýja síðu sem vísar síðan aftur hingað á tímalínuna-->
-                <div>
-                    <center>
-                        <button type="button" class="btn btn-default">@Html.ActionLink("Create New Post For Timeline", "Create", "Post") </button>
-                    </center>
-                </div>
-
-                <br>
-
-                <div>
-                    @{
-                    if(Model.AllPosts != null)
-                    {
-                        foreach (var item in Model.AllPosts)
-                        {
-                            <div class="well">
-                                <p>@item.Text</p>
-                                @if (item.Image != null)
-                                {
-                                    <img src="@item.Image" alt="Hérna er mynd" />
-                                }
-                           
-                                <p>@item.DateCreated</p>
-
-                        @item.UserID.FirstName
-                            
-                                @Html.ActionLink("Add comment", "Details", "Post", new { id = item.ID }, new { @class = "" })
-                            
-                           
-                                <!--Hérna vatnar að sýna notendnafn eða email þess sem skrifa innlegg-->
-                                <!--<p>item.UserEmail</p>-->
-                        
-                            </div>
-
-                        }
-                    }
-                    
-                    else 
-                    { 
-                        <p>You have no posts!!!</p>
-                    }
-                 }
-
-                </div>
-
-
-            </div>
-            <div class="col-md-3">
-                <div>
-                    <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
-                    <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
-
-                </div>
-
-                <br>
-
-                <div class="panel panel-default">
-
-                    <div class="panel-heading">My Friends</div>
-
-                    <ul class="list-group">
-
-                        <div>
-
-                            @foreach (var item in Model.AllFriendsOfUser)
-                            {
-
-                                <div class="list-group-item">
-                                    @Html.ActionLink(item.FriendUserID.Email, "Details", "UserInfoes", new { id = item.UserId.Id }, null)
-
-                                </div>
-
-                            }
-
-                         </div>
-                            }
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-
-
-    }
-
-
-
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
->>>>>>> asabjorg
+﻿

@@ -87,7 +87,7 @@ namespace RUbook.Controllers
 
         // GET: GroupMembers/Edit/5
         public ActionResult Edit(int? id)
-        {testc 
+        {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
