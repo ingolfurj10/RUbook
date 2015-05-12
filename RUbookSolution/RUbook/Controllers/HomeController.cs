@@ -42,7 +42,7 @@ namespace RUbook.Controllers
                 model.AllEvents = userDAL.GetAllEvents();
                 model.AllUsers = userDAL.GetAllUsers();
                 model.User = userDAL.GetUser(userId);
-                //model.User = groupDAL.GetAllGroupsOfUser(userId);
+                model.AllGroupsOfUser = groupDAL.GetAllGroupsOfUser(userId);
 
                 return View(model);
             }

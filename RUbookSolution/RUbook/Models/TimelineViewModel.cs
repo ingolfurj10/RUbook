@@ -15,9 +15,10 @@ namespace RUbook.Models
        public List<ApplicationUser> AllUsers { get; set; }
        public Post Post { get; set; }
        public ApplicationUser User { get; set; }
-	 
-	   //public UserInfo UserInfo { get; set; }
+       public List<GroupMember> AllGroupsOfUser { get; set; }
+       public List<Friend> AllFriendsOfUser { get; set; }
+
+        //public UserInfo UserInfo { get; set; }
        
-        //public Post Post { get; set; } - til að ná í text area for post
     }
 }

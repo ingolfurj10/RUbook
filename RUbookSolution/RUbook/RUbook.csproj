@@ -162,6 +162,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\EventMembersController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\FriendsController.cs" />
     <Compile Include="Controllers\GroupMembersController.cs" />
@@ -289,6 +290,11 @@
     <Content Include="Views\Comments\Details.cshtml" />
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="Views\EventMembers\Create.cshtml" />
+    <Content Include="Views\EventMembers\Delete.cshtml" />
+    <Content Include="Views\EventMembers\Details.cshtml" />
+    <Content Include="Views\EventMembers\Edit.cshtml" />
+    <Content Include="Views\EventMembers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

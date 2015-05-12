@@ -7,15 +7,21 @@
 
 
 <h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2>
-
-
 <div class="form-horizontal">
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
     <div class="col-md-3">
-            <img src="@Html.DisplayFor(model =>model.Image)" alt="Group photo" class="img-rounded" />
+        @if (Model.Image == null || Model.Image == "")
+        {
+            <img src="http://kairoschurch.org/wp-content/uploads/2013/09/default_profile-d80441a6f25a9a0aac354978c65c8fa91-e1379912288150.jpg" alt="Friend Photo" />
+        }
+        else
+        {
+            <img src="@Html.DisplayFor(model =>model.Image)" alt="Friend Photo" class="img-rounded" />
+        }
+
         <br/>
     </div>
 

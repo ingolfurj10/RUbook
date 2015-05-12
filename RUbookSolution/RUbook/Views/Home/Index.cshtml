@@ -17,12 +17,11 @@
             <div class="col-md-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">My Groups</div>
-
                     <ul class="list-group">
-                        @foreach (var group in Model.AllGroups)
+                        @foreach (var group in Model.AllGroupsOfUser)
                         {
                             <div class="list-group-item">
-                                @Html.ActionLink(group.Name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
+                                @Html.ActionLink(group.GroupID.Name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
                             </div>
                         }
                     </ul>
@@ -39,7 +38,6 @@
                                     @Html.ActionLink(item.Name, "Details", "Events", new { id = item.ID }, new { @class = "" })
                                 </div>
                             }
-
                         }
                     </ul>
                 </div>
@@ -83,36 +81,36 @@
                     @{
                     if(Model.AllPosts != null)
                     {
-                    foreach (var item in Model.AllPosts)
-                    {
-                        <div class="well">
-                            <p>@item.Text</p>
-                            @if (item.Image != null)
-                            {
-                                <img src="@item.Image" alt="Hérna er mynd" />
-
-                            }
+                        foreach (var item in Model.AllPosts)
+                        {
+                            <div class="well">
+                                <p>@item.Text</p>
+                                @if (item.Image != null)
+                                {
+                                    <img src="@item.Image" alt="Hérna er mynd" />
+                                }
                            
-                            <p>@item.DateCreated</p>
+                                <p>@item.DateCreated</p>
 
-                    @item.UserID.FirstName
+                        @item.UserID.FirstName
                             
-                            @Html.ActionLink("Add comment", "Details", "Post", new { id = item.ID }, new { @class = "" })
+                                @Html.ActionLink("Add comment", "Details", "Post", new { id = item.ID }, new { @class = "" })
                             
                            
                        
-                            <!--Hérna vatnar að sýna notendnafn eða email þess sem skrifa innlegg-->
-                            <!--<p>item.UserEmail</p>-->
+                                <!--Hérna vatnar að sýna notendnafn eða email þess sem skrifa innlegg-->
+                                <!--<p>item.UserEmail</p>-->
                         
-                        </div>
+                            </div>
 
+                        }
                     }
-                    }
+                    
                     else 
                     { 
                         <p>You have no posts!!!</p>
                     }
-                    }
+                 }
 
                 </div>
 
@@ -139,7 +137,7 @@
                             {
                               
                                 <div class="list-group-item">
-                                        @Html.ActionLink(item.Email, "Details", "UserInfoes",  new { id = item.Id }, null)
+                                        @Html.ActionLink(item.Email,"Details", "UserInfoes",  new { id = item.Id }, null)
                                 </div>
                             }
 
