@@ -1,8 +1,10 @@
 ﻿using RUbook.Models;
+using RUbook.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.Identity;
 
 namespace RUbook.DAL
 {
@@ -42,14 +44,16 @@ namespace RUbook.DAL
             }
             return null;
         }
-
         
-
         public Post GetPostById(int postId)
         {
             Post result = (from post in db.Posts
                            where post.ID == postId
+<<<<<<< HEAD
                            select post).FirstOrDefault();
+=======
+                           select post).ToList().FirstOrDefault();
+>>>>>>> 7b6f883952ecd0181899aca5cf3618de6987228b
             if(result != null)
             {
                 result.Comments = (from comment in db.Comments
