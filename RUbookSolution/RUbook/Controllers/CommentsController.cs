@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using RUbook.Models;
 using RUbook.DAL;
+using Microsoft.AspNet.Identity;
 
 namespace RUbook.Controllers
 {
@@ -132,11 +133,13 @@ namespace RUbook.Controllers
 
             string username = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
             int id = Int32.Parse(postId);
-            Post post = PostDAL.Instance.GetPostById(id);
+            var Instance = new PostDAL(new ApplicationDbContext());
+            Post post = Instance.GetPostById(id);
             if (post != null)
             {
                 Comment comment = new Comment { text = commentText, PostID = post };
-                PostDAL.Instance.AddComment(comment);
+                Instance.AddComment(comment);
+                db.SaveChanges();
                 return RedirectToAction("Details", "Post", new { id = postId });
             }
             return View("Error");
