@@ -23,14 +23,6 @@ namespace RUbook.DAL
             db = context;
         }
 
-     
-        public List<Group> GetAllGroups()
-        {
-            var groups = db.Groups.ToList();
-
-            return groups;
-
-        }
 
         public List<Event> GetAllEvents()
         {
@@ -64,16 +56,7 @@ namespace RUbook.DAL
             var user = (from u in db.Users where u.Id == userid select u).SingleOrDefault();
             return user;
         }
-		
-        //public ApplicationUser GetUserInfo(ApplicationUser user)
-        //{
-        //    var userInfo = (from u in db.UsersInfo
-        //                    where u.UserID == user
-        //                    select u)
-        //                    .SingleOrDefault();
-        //    return userInfo;
-						   
-        //}
+	
 		
     }
 

@@ -29,13 +29,12 @@ namespace RUbook.DAL
 
         public List<Post> GetAllPosts(List<string> uid)
         {
-            //var posts = db.Posts.OrderByDescending(p => p.DateCreated).ToList();
             try
             {
                 var posts = db.Posts.Where(p => uid.Contains(p.UserID.Id)).OrderByDescending(p => p.DateCreated).ToList();
-                
                 return posts;
             }
+            
             catch(Exception ex)
             {
                 Console.WriteLine(ex);

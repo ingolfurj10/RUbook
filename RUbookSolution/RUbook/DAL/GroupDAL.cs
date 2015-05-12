@@ -26,6 +26,38 @@ namespace RUbook.DAL
             var group = (from u in db.Groups where u.ID == groupid select u).SingleOrDefault();
 
             return group;
-        } 
+        }
+
+        public List<GroupMember> GetAllGroupsOfUser(string gid)
+        {
+            try
+            {
+                var group = db.GroupMembers.Where(p => gid.Contains(p.UserID.Id)).ToList();
+                return group;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return null;
+        }
+
+        public List<Group> GetAllGroups()
+        {
+            try
+            {
+                //bæta við hérna dateAdded svo nýjasti komi fyrst eða í starfrófsröð bara - athuga virkar ekki 
+                //var users = db.Friends.Where(p => uid.Contains(p.UserId.Id)).OrderByDescending(p => p.UserId.FirstName).ToList();
+                var groups = db.Groups.ToList();
+                return groups;
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return null;
+        }
     }
 }
