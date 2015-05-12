@@ -137,6 +137,7 @@ namespace RUbook.Controllers
             {
                 Comment comment = new Comment { text = commentText, PostID = post };
                 PostDAL.Instance.AddComment(comment);
+                db.SaveChanges();
                 return RedirectToAction("Details", "Post", new { id = postId });
             }
             return View("Error");

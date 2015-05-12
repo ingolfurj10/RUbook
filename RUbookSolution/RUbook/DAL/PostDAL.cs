@@ -22,8 +22,9 @@ namespace RUbook.DAL
             get
             {
                 if (instance == null)
+                    
                     instance = new PostDAL(db);
-                return instance;
+                    return instance;
             }
         }
 
@@ -48,7 +49,7 @@ namespace RUbook.DAL
         {
             Post result = (from post in db.Posts
                            where post.ID == postId
-                           select post).SingleOrDefault();
+                           select post).FirstOrDefault();
             if(result != null)
             {
                 result.Comments = (from comment in db.Comments
@@ -69,6 +70,7 @@ namespace RUbook.DAL
             comment.ID = newID;
             comment.CreatedDate = DateTime.Now;
             db.Comments.Add(comment);
+            db.SaveChanges();
         }
     }
 }

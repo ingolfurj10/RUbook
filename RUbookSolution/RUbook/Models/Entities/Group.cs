@@ -14,8 +14,8 @@ namespace RUbook.Models
         public string Text { get; set; }
         public string Image { get; set; }
         public string Course { get; set; }
-        //langar að láta userId fylgja hverjum hóp!
-        //public ApplicationUser userID { get; set; }
+
+        public virtual ApplicationUser userID { get; set; }
 
         public virtual List<GroupMember> GroupMembers { get; set; }
         public List<Post> Posts { get; set; }
