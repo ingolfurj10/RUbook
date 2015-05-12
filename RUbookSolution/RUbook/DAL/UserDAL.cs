@@ -56,10 +56,21 @@ namespace RUbook.DAL
             var user = (from u in db.Users where u.Id == userid select u).SingleOrDefault();
             return user;
         }
-	
+        
+        public List<Friend> AllFriendsOfUser(string gid)
+        {
+            try
+            {
+                var friends = db.Friends.Where(p => gid.Contains(p.UserId.Id)).ToList();
+                return friends;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return null;
+        }
 		
     }
 
 }
-
-//Hérna viljum við hafa allar linq queries. 
