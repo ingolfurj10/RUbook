@@ -49,11 +49,8 @@ namespace RUbook.DAL
         {
             Post result = (from post in db.Posts
                            where post.ID == postId
-<<<<<<< HEAD
                            select post).FirstOrDefault();
-=======
-                           select post).ToList().FirstOrDefault();
->>>>>>> 7b6f883952ecd0181899aca5cf3618de6987228b
+
             if(result != null)
             {
                 result.Comments = (from comment in db.Comments
