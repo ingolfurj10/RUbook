@@ -14,11 +14,13 @@ namespace RUbook.Controllers
 		private ApplicationDbContext db = new ApplicationDbContext();
         UserDAL userDAL;
         PostDAL postDAL;
+        GroupDAL groupDAL;
 
         public HomeController() : base()
         {
             userDAL = new UserDAL(db);
-            postDAL = new PostDAL(db);
+            postDAL = new PostDAL(db); 
+            groupDAL = new GroupDAL(db);
         }
 
         [Authorize]
@@ -28,19 +30,19 @@ namespace RUbook.Controllers
 
             var userId = User.Identity.GetUserId();
             var user = userDAL.GetUser(userId);
+           
 
             try
-
             {
-
                 var friends = (from u in db.Friends where u.UserId.Id == user.Id select u.FriendUserID.Id).ToList();
                 friends.Add(userId);
 
                 model.AllPosts = postDAL.GetAllPosts(friends);
-                model.AllGroups = userDAL.GetAllGroups();
+                model.AllGroups = groupDAL.GetAllGroups();
                 model.AllEvents = userDAL.GetAllEvents();
                 model.AllUsers = userDAL.GetAllUsers();
                 model.User = userDAL.GetUser(userId);
+                //model.User = groupDAL.GetAllGroupsOfUser(userId);
 
                 return View(model);
             }
@@ -54,8 +56,6 @@ namespace RUbook.Controllers
             return null; 
         }
         
-
-       
 
         public ActionResult About()
         {

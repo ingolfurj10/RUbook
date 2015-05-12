@@ -29,14 +29,14 @@
             @Html.ActionLink(item.Name, "Details", new { id = item.ID })
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Text)
+            @Html.DisplayFor(modelItem => item.Text, "Description")
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Course)
         </td>
         <td>
             <!--Hérna vantar virkni fyrir að joina Group-->
-            @Html.ActionLink("Join Group", "Edit", new { id = item.ID }) 
+            @Html.ActionLink("Checkout group", "Details", new { id = item.ID }) 
             
         </td>
     </tr>

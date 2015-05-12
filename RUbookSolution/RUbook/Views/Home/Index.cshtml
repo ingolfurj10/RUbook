@@ -21,6 +21,7 @@
                     <ul class="list-group">
                         @foreach (var group in Model.AllGroups)
                         {
+                          
                             <div class="list-group-item">
                                 @Html.ActionLink(group.Name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
                             </div>
@@ -135,6 +136,7 @@
 
                             @foreach (var item in Model.AllUsers)
                             {
+                              
                                 <div class="list-group-item">
                                         @Html.ActionLink(item.Email, "Details", "UserInfoes",  new { id = item.Id }, null)
                                 </div>
