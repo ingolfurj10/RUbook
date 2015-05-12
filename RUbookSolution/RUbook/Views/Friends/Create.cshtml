@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Start Following user</h2>
+<h2>Start Following your Friend</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -15,16 +15,16 @@
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
+        @*<div class="form-group">
             <div class="col-md-10">
-                <p class="help-block">If you want you can send the person you are following a message to request a follow back!<p>
+                <p class="help-block">Here you can send the person you are following a message to request a follow back!<p>
                 @Html.LabelFor(model => model.UserId.FirstName, "", htmlAttributes: new { @class = "control-label" })
-                <div>
-                    @*<p>Hérna vantar að setja skilaboðabox ef við fáum það til að virka</p>*@
-                    @Html.TextAreaFor(model => model.UserId.FirstName, new { @class = "newpost", rows = 3, cols = 55, placeholder = "Say Something..." })
-                </div>
-                </div>
+            <div>
+                <p>Hérna vantar að setja skilaboðabox ef við fáum það til að virka</p>
+                @Html.TextAreaFor(model => model.UserId.FirstName, new { @class = "newpost", rows = 3, cols = 55, placeholder = "Say Something..." })
             </div>
+            </div>
+        </div>*@
 
                 <div class="form-group">
                     <div class="col-md-10">
@@ -35,9 +35,12 @@
                     </div>
                 </div>
 
+                <div>
+                    <h4>You are here because you want to follow your Friend:</h4>
+                </div>
+
                 <div class="form-group">
-                    <div class="col-md-10">
-                        <h4>You are here because you want to follow your Friend:</h4>
+                    <div class="col-md-10">                        
                         @Html.DisplayFor(model => model.FriendUserID.FirstName)
                         @Html.HiddenFor(model => model.FriendUserID.Id, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.FriendUserID.Id, "", new { @class = "text-danger" })
@@ -57,5 +60,5 @@
             }
 
             <div>
-                @Html.ActionLink("Back to List", "Index")
+                @Html.ActionLink("Back to List of All Users", "Index", "UserInfoes")
             </div>
