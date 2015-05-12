@@ -137,7 +137,7 @@ namespace RUbook.Controllers
             Post post = Instance.GetPostById(id);
             if (post != null)
             {
-                Comment comment = new Comment { Text = commentText, PostID = post };
+                Comment comment = new Comment { Text = commentText, PostID = post.ID };
                 PostDAL.Instance.AddComment(comment);
                 Instance.AddComment(comment);
                 db.SaveChanges();

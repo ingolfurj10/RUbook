@@ -9,7 +9,7 @@ namespace RUbook.Models
     {
         public int ID { get; set; }
         public virtual ApplicationUser UserID { get; set; }
-        public Event EventID { get; set; }
+        public int EventID { get; set; }
 
     }
 }

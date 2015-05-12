@@ -51,7 +51,7 @@ namespace RUbook.Controllers
         public ActionResult Create(int id)
         {
             GroupMember group = new GroupMember();
-            group.GroupID = groupDAL.GetGroup(id);
+            group.GroupID = id;
             group.UserID = userDAL.GetUser(User.Identity.GetUserId());
             
             return View(group);
@@ -72,17 +72,16 @@ namespace RUbook.Controllers
             //}
 
             var user = userDAL.GetUser(uid);
-            var gr = groupDAL.GetGroup(groupMember.GroupID.ID);
 
             GroupMember member = new GroupMember();
             member.UserID = user;
-            member.GroupID = gr;
+            member.GroupID = groupMember.GroupID;
 
             db.GroupMembers.Add(member);
 
             db.SaveChanges();
 
-            return RedirectToAction("Details", "Groups", new { id = gr.ID });
+            return RedirectToAction("Details", "Groups", new { id = groupMember.GroupID});
         }
 
         // GET: GroupMembers/Edit/5

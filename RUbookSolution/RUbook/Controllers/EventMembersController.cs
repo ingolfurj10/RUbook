@@ -50,7 +50,7 @@ namespace RUbook.Controllers
         public ActionResult Create(int id)
         {
             EventMember eve = new EventMember();
-            eve.EventID = eventDAL.GetEvent(id);
+            eve.EventID = id;
             eve.UserID = userDAL.GetUser(User.Identity.GetUserId());
 
             return View(eve);
@@ -72,17 +72,16 @@ namespace RUbook.Controllers
             //}
 
             var user = userDAL.GetUser(uid);
-            var ev = eventDAL.GetEvent(eventMember.EventID.ID);
 
             EventMember member = new EventMember();
             member.UserID = user;
-            member.EventID = ev;
+            member.EventID = eventMember.ID;
 
             db.EventMembers.Add(member);
 
             db.SaveChanges();
 
-            return RedirectToAction("Details", "Events", new { id = ev.ID });
+            return RedirectToAction("Details", "Events", new { id = eventMember.ID });
         }
 
         // GET: EventMembers/Edit/5
