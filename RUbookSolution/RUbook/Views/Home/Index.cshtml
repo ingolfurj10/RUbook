@@ -30,12 +30,12 @@
                     <div class="panel-heading">My Events</div>
                     <ul class="list-group">
 
-                        @foreach (var item in Model.AllEvents)
+                        @foreach (var eve in Model.AllEventsOfUser)
                         {
-                            if (DateTime.Now < item.DateOfEvent)
+                            if (DateTime.Now < eve.EventID.DateOfEvent)
                             {
                                 <div class="list-group-item">
-                                    @Html.ActionLink(item.Name, "Details", "Events", new { id = item.ID }, new { @class = "" })
+                                    @Html.ActionLink(eve.EventID.Name, "Details", "Events", new { id = eve.ID }, new { @class = "" })
                                 </div>
                             }
                         }
@@ -95,7 +95,6 @@
                                 @Html.ActionLink("Add comment", "Details", "Post", new { id = item.ID }, new { @class = "" })
                             
                            
-                       
                                 <!--Hérna vatnar að sýna notendnafn eða email þess sem skrifa innlegg-->
                                 <!--<p>item.UserEmail</p>-->
                         
@@ -131,16 +130,18 @@
 
                         <div>
 
-                            @foreach (var item in Model.AllUsers)
+                            @foreach (var item in Model.AllFriendsOfUser)
                             {
-                              
+
                                 <div class="list-group-item">
-                                        @Html.ActionLink(item.Email,"Details", "UserInfoes",  new { id = item.Id }, null)
+                                    @Html.ActionLink(item.FriendUserID.Email, "Details", "UserInfoes", new { id = item.UserId.Id }, null)
+
                                 </div>
+
                             }
 
                          </div>
-
+                            }
                     </ul>
                 </div>
             </div>

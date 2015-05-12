@@ -8,12 +8,22 @@ using System.Web;
 using System.Web.Mvc;
 using RUbook.DAL;
 using RUbook.Models;
+using Microsoft.AspNet.Identity;
 
 namespace RUbook.Controllers
 {
     public class EventMembersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        EventDAL eventDAL;
+        UserDAL userDAL;
+
+        public EventMembersController():base()
+        {
+            eventDAL = new EventDAL(db);
+            userDAL = new UserDAL(db);
+        }
 
         // GET: EventMembers
         public ActionResult Index()
@@ -37,9 +47,13 @@ namespace RUbook.Controllers
         }
 
         // GET: EventMembers/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            return View();
+            EventMember eve = new EventMember();
+            eve.EventID = eventDAL.GetEvent(id);
+            eve.UserID = userDAL.GetUser(User.Identity.GetUserId());
+
+            return View(eve);
         }
 
         // POST: EventMembers/Create
@@ -49,14 +63,26 @@ namespace RUbook.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID")] EventMember eventMember)
         {
-            if (ModelState.IsValid)
-            {
-                db.EventMembers.Add(eventMember);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            var uid = User.Identity.GetUserId();
 
-            return View(eventMember);
+            //if (id == uid)
+            //{
+            //     ekki hægt að joina tvisvar sama event. Contains
+            
+            //}
+
+            var user = userDAL.GetUser(uid);
+            var ev = eventDAL.GetEvent(eventMember.EventID.ID);
+
+            EventMember member = new EventMember();
+            member.UserID = user;
+            member.EventID = ev;
+
+            db.EventMembers.Add(member);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Details", "Events", new { id = ev.ID });
         }
 
         // GET: EventMembers/Edit/5

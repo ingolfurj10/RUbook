@@ -15,12 +15,14 @@ namespace RUbook.Controllers
         UserDAL userDAL;
         PostDAL postDAL;
         GroupDAL groupDAL;
+        EventDAL eventDAL;
 
         public HomeController() : base()
         {
             userDAL = new UserDAL(db);
             postDAL = new PostDAL(db); 
             groupDAL = new GroupDAL(db);
+            eventDAL = new EventDAL(db);
         }
 
         [Authorize]
@@ -39,10 +41,12 @@ namespace RUbook.Controllers
 
                 model.AllPosts = postDAL.GetAllPosts(friends);
                 model.AllGroups = groupDAL.GetAllGroups();
-                model.AllEvents = userDAL.GetAllEvents();
+                model.AllEvents = eventDAL.GetAllEvents();
                 model.AllUsers = userDAL.GetAllUsers();
                 model.User = userDAL.GetUser(userId);
+                model.AllFriendsOfUser = userDAL.AllFriendsOfUser(userId);
                 model.AllGroupsOfUser = groupDAL.GetAllGroupsOfUser(userId);
+                model.AllEventsOfUser = eventDAL.GetAllEventsOfUser(userId);
 
                 return View(model);
             }

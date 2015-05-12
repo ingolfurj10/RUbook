@@ -24,14 +24,6 @@ namespace RUbook.DAL
         }
 
 
-        public List<Event> GetAllEvents()
-        {
-            var events = db.Events.ToList();
-
-            return events;
-
-        }
-
         public List<ApplicationUser> GetAllUsers()
         {
             try
