@@ -98,12 +98,8 @@ namespace RUbook.Controllers
 				post.UserID = (ApplicationUser)user;
 				post.DateCreated = DateTime.Now;  
                 db.Posts.Add(post);
-                db.SaveChanges();
-
                 return RedirectToAction("Index", "Home");
-               
             }
-
             return View(post);
         }
 
