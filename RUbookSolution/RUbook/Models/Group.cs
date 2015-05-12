@@ -13,8 +13,8 @@ namespace RUbook.Models
         [Required]
         public string Text { get; set; }
         public string Image { get; set; }
-        //public Department DepartmentID { get; set; }
         public string Course { get; set; }
+        //langar að láta userId fylgja hverjum hóp!
         //public ApplicationUser userID { get; set; }
 
         public virtual List<GroupMember> GroupMembers { get; set; }

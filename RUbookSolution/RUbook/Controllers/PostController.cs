@@ -19,11 +19,13 @@ namespace RUbook.Controllers
         public  ApplicationDbContext db = new ApplicationDbContext();
         UserDAL userDAL;
         PostDAL postDAL;
+        GroupDAL groupDAL;
 
         public PostController() : base()
         {
             userDAL = new UserDAL(db);
             postDAL = new PostDAL(db);
+            groupDAL = new GroupDAL(db);
         }
 
         // GET: Post
@@ -32,8 +34,7 @@ namespace RUbook.Controllers
         {
             var userId = User.Identity.GetUserId();
             var user = userDAL.GetUser(userId);
-
-            //vinaID
+            var group = groupDAL.GetGroup();
 
             try
             {
@@ -82,22 +83,31 @@ namespace RUbook.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "ID,Text,Image,UserID,DateCreated")] Post post)
+        public ActionResult Create([Bind(Include = "ID,Text,Image,UserID,DateCreated, groupID")] Post post)
         {
             if (ModelState.IsValid)
             {
 				var id = User.Identity.GetUserId();
 				var user = (from u in db.Users where u.Id == id select u).SingleOrDefault();
 				post.UserID = (ApplicationUser)user;
-                //post.UserEmail = (ApplicationUser)user;
 				post.DateCreated = DateTime.Now;
+                post.GroupID = groupDAL.GetGroup(groupID);
                 //if (post.Image == "")
                 //{
                     //hvað gerist ef image er NULL strengur
                 //}
                 db.Posts.Add(post);
                 db.SaveChanges();
-                return RedirectToAction("Index","Home");
+
+                if (post.GroupID == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                else
+                {
+                    return RedirectToAction("Details", "Groups", new { id = post.GroupID });
+                }  
             }
 
             return View(post);
