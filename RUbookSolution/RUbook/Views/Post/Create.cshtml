@@ -19,7 +19,7 @@
                 <h3>Create a new Post for Timeline</h3>
                 <div class="input-group">
                     @Html.TextAreaFor(model => model.Text, new { @class = "newpost", rows = 3, cols = 55, placeholder = "Something on your mind?" })
-                    
+                    @Html.HiddenFor(model => model.GroupID)
                     <div class="form-group">
 
                         @Html.LabelFor(model => model.Image, "", htmlAttributes: new { @class = "control-label" })

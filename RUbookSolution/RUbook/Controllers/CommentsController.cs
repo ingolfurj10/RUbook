@@ -138,7 +138,11 @@ namespace RUbook.Controllers
             if (post != null)
             {
                 Comment comment = new Comment { text = commentText, PostID = post };
+<<<<<<< HEAD
+                PostDAL.Instance.AddComment(comment);
+=======
                 Instance.AddComment(comment);
+>>>>>>> 7b6f883952ecd0181899aca5cf3618de6987228b
                 db.SaveChanges();
                 return RedirectToAction("Details", "Post", new { id = postId });
             }

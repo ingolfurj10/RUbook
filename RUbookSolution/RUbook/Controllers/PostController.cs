@@ -72,8 +72,14 @@ namespace RUbook.Controllers
 
         // GET: Post/Create
         [Authorize]
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            if (id != null)
+            {
+                Post post = new Post();
+                post.GroupID = (int)id;
+            }
+
             return View();
         }
 
@@ -90,24 +96,12 @@ namespace RUbook.Controllers
 				var id = User.Identity.GetUserId();
 				var user = (from u in db.Users where u.Id == id select u).SingleOrDefault();
 				post.UserID = (ApplicationUser)user;
-				post.DateCreated = DateTime.Now;
-                //post.GroupID = groupDAL.GetGroup(groupID);
-                //if (post.Image == "")
-                //{
-                    //hvað gerist ef image er NULL strengur
-                //}
+				post.DateCreated = DateTime.Now;  
                 db.Posts.Add(post);
                 db.SaveChanges();
 
-                if (post.GroupID == null)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-
-                else
-                {
-                    return RedirectToAction("Details", "Groups", new { id = post.GroupID });
-                }  
+                return RedirectToAction("Index", "Home");
+               
             }
 
             return View(post);

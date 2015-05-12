@@ -15,7 +15,7 @@ namespace RUbook.Models
         public virtual ApplicationUser UserID { get; set; }
         public DateTime? DateCreated { get; set; }
         //ekki búið að tengja
-        public Group GroupID { get; set; }
+        public int GroupID { get; set; }
 
         public virtual List<Comment> Comments { get; set; }
 
