@@ -15,11 +15,11 @@
         <!--Þessi if setning er ekki alveg að virka eins og hún á að gera, birtir aldrei default myndina-->
         @if (Model.Image == null || Model.Image == "")
         {
-            <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Group photo" />
+            <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Friend Photo" />
         }
         else
         {
-            <img src="@Html.DisplayFor(model =>model.Image)" alt="Group photo" class="img-rounded" />
+            <img src="@Html.DisplayFor(model =>model.Image)" alt="Friend Photo" class="img-rounded" />
         }
         @Html.ActionLink("Edit Group", "Edit", new { id = Model.ID })
 
@@ -27,37 +27,7 @@
     </div>
 
     <div class="col-md-6">
-
-<<<<<<< HEAD
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.LabelFor(model => model.Name, "Name of Group")
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-            <dt>
-                @Html.LabelFor(model => model.Text, "Description")
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Text)
-            </dd>
-            <dt>
-                @Html.LabelFor(model => model.Course, "Course")
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Course)
-            </dd>
-
-            <!--hérna mætti tengja departmentID við líka-->
-
-        </dl>
-
     
-
-
-    
-=======
         <div class="panel panel-collapse">
             <div class="dl-horizontal">
                 <dt>
@@ -86,7 +56,6 @@
                 <p>Hérna eiga Group Posts að koma!</p>
             </div>
         </div>
->>>>>>> d4f581a68c83eea98de0682ad8be17c89fe15939
     </div>
 
     <div class="col-md-3">
@@ -98,7 +67,7 @@
         <br />
         <div>
             <!--hérna vatnar action link til að joina grúppu-->
-            <button type="button" class="btn btn-primary">@Html.ActionLink("Join Group", "Create", "GroupMembers", new { id = Model.ID }, null) </button>
+            <button type="button" class="btn btn-primary btn-block">@Html.ActionLink("Join Group", "Create", "GroupMembers", new { id = Model.ID }, null) </button>
         </div>
 
         <br />
