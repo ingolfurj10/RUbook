@@ -2,31 +2,33 @@
 
 @{
     ViewBag.Title = "Details";
-}
+ }
 
-<h2>Details</h2>
+<h2>Post</h2>
 
 <div>
-    <h4>Post</h4>
+    <h4>@Model.UserID.FirstName @Model.UserID.LastName</h4>
+    <h5>@Html.DisplayFor(model => model.DateCreated)</h5>
+
+
     <hr />
     <dl class="dl-horizontal">
        
-    @Model.UserID.FirstName @Model.UserID.LastName
         <dd>
             @Html.DisplayFor(model => model.Text)
         </dd>
 
         <dd>
-            @Html.DisplayFor(model => model.DateCreated)
+            @if (Model.Image != null)
+            {
+                <img src="@Html.DisplayFor(model =>model.Image)" alt="Hérna er mynd" style="width:299px; height:228px" />
+
+            }
         </dd>
-
-        @if (Model.Image != null)
-        {
-            <img src="@Html.DisplayFor(model =>model.Image)" alt="Hérna er mynd" style="width:299px; height:228px" />
-
-        }     
-
     </dl>
+
+    
+    
 </div>
 <p>
    
