@@ -103,13 +103,22 @@ namespace RUbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName, DateOfBirth, Email, Phone, Education, WorkInfo, Department, Image")] ApplicationUser userInfo)
+        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName, DateOfBirth, Education, WorkInfo, Department, Image")] ApplicationUser userInfo)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(userInfo).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+				var original = userDAL.GetUser(userInfo.Id);
+				if (original != null)
+				{
+					original.FirstName = userInfo.FirstName;
+					original.LastName = userInfo.LastName;
+					original.DateOfBirth = userInfo.DateOfBirth;
+					original.Education = userInfo.Education;
+					original.WorkInfo = userInfo.WorkInfo;
+					original.Department = userInfo.Department;
+					original.Image = userInfo.Image;
+					db.SaveChanges();
+				}
             }
             return View(userInfo);
         }
