@@ -72,7 +72,8 @@
         <br />
         <div>
             <!--hérna vatnar action link til að attenda event-->
-            <button type="button" class="btn btn-primary">Attend Event</button>
+            <button type="button" class="btn btn-primary btn-block">@Html.ActionLink("Attend Event", "Create", "EventMembers", new { id = Model.ID }, null) </button>
+
         </div>
 
         <br />

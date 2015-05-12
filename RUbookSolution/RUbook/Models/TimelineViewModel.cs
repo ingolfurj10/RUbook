@@ -17,6 +17,7 @@ namespace RUbook.Models
        public ApplicationUser User { get; set; }
        public List<GroupMember> AllGroupsOfUser { get; set; }
        public List<Friend> AllFriendsOfUser { get; set; }
+       public List<EventMember> AllEventsOfUser { get; set; }
 
         //public UserInfo UserInfo { get; set; }
        
