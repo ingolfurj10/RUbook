@@ -34,7 +34,7 @@ namespace RUbook.Controllers
         {
             var userId = User.Identity.GetUserId();
             var user = userDAL.GetUser(userId);
-            var group = groupDAL.GetGroup();
+            //var group = groupDAL.GetGroup();
 
             try
             {
@@ -91,7 +91,7 @@ namespace RUbook.Controllers
 				var user = (from u in db.Users where u.Id == id select u).SingleOrDefault();
 				post.UserID = (ApplicationUser)user;
 				post.DateCreated = DateTime.Now;
-                post.GroupID = groupDAL.GetGroup(groupID);
+                //post.GroupID = groupDAL.GetGroup(groupID);
                 //if (post.Image == "")
                 //{
                     //hvað gerist ef image er NULL strengur
