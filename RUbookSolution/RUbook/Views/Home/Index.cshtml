@@ -21,7 +21,6 @@
                     <ul class="list-group">
                         @foreach (var group in Model.AllGroups)
                         {
-                          
                             <div class="list-group-item">
                                 @Html.ActionLink(group.Name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
                             </div>
@@ -44,6 +43,8 @@
                         }
                     </ul>
                 </div>
+
+                @*Calendar1!*@
                 <div class="form-group">
                     <div class='input-group date' id='datetimepicker1'>
                         <input type='date' class="form-control" />
@@ -52,16 +53,16 @@
                         </span>
                     </div>
                 </div>
-            </div>
-            <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#datetimepicker6').data("DateTimePicker").FUNCTION();
-                    $(function () {
-                        $('#datetimepicker1').datetimepicker();
-                    })
-                });
-                
-            </script>
+
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#datetimepicker1').data("DateTimePicker").FUNCTION();
+                        $(function () {
+                            $('#datetimepicker1').datetimepicker();
+                        })
+                    });
+                </script>           
+            </div>               
 
             <div class="col-md-6">
                 <div class="input-group">
