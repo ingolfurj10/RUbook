@@ -10,9 +10,9 @@ namespace RUbook.Models
     public class Comment
     {
         public int ID { get; set; }
-        public string text { get; set; }
+        public string Text { get; set; }
         public virtual ApplicationUser UserID { get; set; }
-        public Post PostID { get; set; }
+        public int PostID { get; set; }
         public DateTime? CreatedDate { get; set; }
      }
 }

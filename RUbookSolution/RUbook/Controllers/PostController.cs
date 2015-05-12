@@ -78,6 +78,7 @@ namespace RUbook.Controllers
             {
                 Post post = new Post();
                 post.GroupID = (int)id;
+                return View(post);
             }
 
             return View();
