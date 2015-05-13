@@ -7,17 +7,15 @@
 <h2>Post</h2>
 
 <div>
-    <h4>@Model.UserID @Model.UserID.LastName</h4>
+    <h4>@Model.UserID.FirstName @Model.UserID.LastName</h4>
     <h5>@Html.DisplayFor(model => model.DateCreated)</h5>
 
-
     <hr />
+
     <dl class="dl-horizontal">
-       
         <dd>
             @Html.DisplayFor(model => model.Text)
         </dd>
-
         <dd>
             @if (Model.Image != null)
             {
@@ -26,12 +24,8 @@
             }
         </dd>
     </dl>
-
-    
-    
 </div>
 <p>
-   
     @Html.ActionLink("Go back" ,"Index", "Home")
 </p>
 
@@ -42,11 +36,8 @@
         <h4>Comments</h4>
         @foreach (var comment in Model.Comments)
         {
-            if (comment.PostID == Model.ID)
-            {
-                <p>@comment.UserID | @comment.Text</p>
+                <p>@Model.UserID.FirstName @Model.UserID.LastName | @comment.Text</p>
                 <p>@comment.CreatedDate</p>
-            }
         }
     </section>
     <section>

@@ -10,7 +10,7 @@ $(document).ready(function () {
             data: $(this).serialize(),
 
         }).done(function (result) {
-
+            
             var resultHtml = $(result).find('#comment-list');
             $('#comment-list').replaceWith(resultHtml);
             $('input[type=text],textarea').val('');
