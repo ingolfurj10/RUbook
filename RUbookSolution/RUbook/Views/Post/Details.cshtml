@@ -7,7 +7,7 @@
 <h2>Post</h2>
 
 <div>
-    <h4>@Model.UserID.FirstName @Model.UserID.LastName</h4>
+    <h4>@Model.UserID @Model.UserID.LastName</h4>
     <h5>@Html.DisplayFor(model => model.DateCreated)</h5>
 
 
@@ -42,8 +42,11 @@
         <h4>Comments</h4>
         @foreach (var comment in Model.Comments)
         {
-            <p>@comment.UserID | @comment.Text</p>
-            <p>@comment.CreatedDate</p>
+            if(comment.PostID == Model.ID)
+            {
+                <p>@comment.UserID.FirstName | @comment.Text</p>
+                <p>@comment.CreatedDate</p>
+            }
         }
     </section>
     <section>
