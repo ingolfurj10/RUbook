@@ -73,7 +73,7 @@ namespace RUbook.DAL
             if(result != null)
             {
                 result.Comments = (from comment in db.Comments
-                                   where comment.ID == result.ID
+                                   where comment.PostID == result.ID
                                    orderby comment.CreatedDate ascending
                                    select comment).ToList();
             }

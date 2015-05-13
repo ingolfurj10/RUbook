@@ -107,7 +107,7 @@
 
         <br />
         <div>
-            <button type="button" class="btn btn-primary btn-block">@Html.ActionLink("Attend Event", "Create", "EventMembers", new { id = Model.Event.ID }, null) </button>
+            <button type="button" class="btn btn-success btn-block">@Html.ActionLink("Attend Event", "Create", "EventMembers", new { id = Model.Event.ID }, new { @class = "linkcolor" }) </button>
         </div>
      
         <br />
@@ -119,15 +119,18 @@
 
                 <!-- hérna mætti gera ajax svo hann birist strax í fólk sem ætlar að attenda-->
                 <!--Linkur á notanda sem er skráður í event-->
-                <ul class="list-group">
+                <li>
                     @if (Model.EventMember != null)
                     {
                         foreach (var member in Model.EventMember)
                         {
-                            @Html.ActionLink(member.FirstName, "Details", "UserInfoes", new { id = member.Id })
+                            <div class="list-group-item">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true">
+                                </span> @Html.ActionLink(member.FirstName, "Details", "UserInfoes", new { id = member.Id })
+                            </div>
                         }
                     }
-                </ul>
+                </li>
 
             </ul>
         </div>
