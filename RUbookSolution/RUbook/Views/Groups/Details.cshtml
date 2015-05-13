@@ -22,7 +22,7 @@
             <img src="@Html.DisplayFor(model => model.Group.Image)" alt="Friend Photo" class="img-rounded" />
         }
 
-        <!--þetta vil ég bara sjá þegar notandi sem bjó til síðu er loggaður inn-->
+  
         @Html.ActionLink("Edit Group", "Edit", new { id = Model.Group.ID })
 
 
@@ -50,7 +50,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.Group.Course)
                 </dd>
-                <!--hérna mætti tengja departmentID við líka-->
+               
             </div>
         </div>
         <div class="panel panel-heading">
@@ -60,6 +60,36 @@
                         <button type="button" class="btn btn-default">@Html.ActionLink("Create New Post For Group Wall", "Create", "Post", new { id = Model.Group.ID}, new { @class = "" }) </button>
                     </center>
                 </div>
+
+                <br />
+
+                @{if (Model.Group.Posts != null)
+                {
+                    foreach (var post in Model.Group.Posts)
+                    {
+                        <div class="well">
+                            <p>@post.Text</p>
+                            @if (post.Image != null)
+                            {
+                                <img src="@post.Image" alt="Hérna er mynd" />
+                            }
+
+                            <p>@post.DateCreated</p>
+
+                            @post.UserID.FirstName
+                            <div class="left">
+                                @Html.ActionLink("See Comments", "Details", "Post", new { id = Model.Group.ID }, new { @class = "" })
+                            </div>
+                        </div>
+
+                    }
+                }
+
+                else
+                {
+                    <p>You have no posts!!!</p>
+                }
+                }
 
             </div>
         </div>
