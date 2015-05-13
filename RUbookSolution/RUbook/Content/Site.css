@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 body {
+=======
+<<<<<<< HEAD
+﻿body {
+=======
+body {
+>>>>>>> asabjorg
+>>>>>>> 31c4d06b8a2bca9abb49f8f17e7d75b7d4dbbd9f
     background-color:#fff9fc;
     padding: 77px;
     margin: auto;
@@ -91,3 +99,13 @@ img {
 .btn-info {
     color: #d16ea3;
 }
+
+.footer-RUbook {
+    padding: 77px;
+    margin: auto;
+}
+
+li {
+    list-style-type: none;
+}
+

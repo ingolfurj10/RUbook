@@ -23,7 +23,7 @@
         }
 
 
-        
+
         @Html.ActionLink("Edit Event", "Edit", new { id = Model.Event.ID })
     </div>
 
@@ -32,13 +32,13 @@
 
         <div class="panel panel-collapse">
             <div class="dl-horizontal">
+
                 <dt>
                     @Html.LabelFor(model => model.Event.Name, "Name of Event")
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.Event.Name)
                 </dd>
-                <!--Hérna þurfum við að fá date og time til að vera sitt hvort eða fá þetta til að birtast fallegra-->
                 <dt>
                     @Html.LabelFor(model => model.Event.DateOfEvent, "DateTime")
                 </dt>
@@ -51,13 +51,50 @@
                 <dd>
                     @Html.DisplayFor(model => model.Event.Text)
                 </dd>
-                            </div>
-        </div>
-        <div class="panel panel-heading">
-            <div>
-                <p>Hérna eiga Group Posts að koma!</p>
             </div>
         </div>
+        <div class="panel panel-heading">
+            div>
+            <center>
+                <button type="button" class="btn btn-default">@Html.ActionLink("Create New Post For Event Wall", "Create", "Post", new { id = Model.Event.ID }, new { @class = "" }) </button>
+            </center>
+        </div>
+
+        <br />
+
+        @{if (Model.Event.EventPosts != null)
+        {
+            foreach (var eventPost in Model.Event.EventPosts)
+            {
+                <div class="well">
+                    <p>@eventPost.Text</p>
+                    @if (eventPost.Image != null)
+                    {
+                        <img src="@eventPost.Image" alt="Hérna er mynd" />
+                    }
+
+                    <p>@eventPost.DateCreated</p>
+
+                    @eventPost.UserID.FirstName
+
+                    @*<div class="left">
+                        @Html.ActionLink("See Comments", "Details", "Post", new { id = Model.Event.ID }, new { @class = "" })
+                    </div>*@
+
+                </div>
+
+            }
+        }
+
+        else
+        {
+            <p>There are no posts for this event!</p>
+        }
+        }
+
+    </div>
+</div>
+
     </div>
 
     <div class="col-md-3">
@@ -70,9 +107,9 @@
 
         <br />
         <div>
-            <button type="button" class="btn btn-primary btn-block">@Html.ActionLink("Attend Event", "Create", "EventMembers", new { id = Model.ID }, null) </button>
+            <button type="button" class="btn btn-primary btn-block">@Html.ActionLink("Attend Event", "Create", "EventMembers", new { id = Model.Event.ID }, null) </button>
         </div>
-
+     
         <br />
 
         <div class="panel panel-default">
