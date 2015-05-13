@@ -139,7 +139,7 @@
                         @foreach (var item in Model.MyFriends)
                         {
                             <div class="list-group-item">
-                                @Html.ActionLink(item.FriendUserID.FirstName, "Details", "UserInfoes", new { id = item.UserId.Id }, null)
+                                @Html.ActionLink(item.FirstName, "Details", "UserInfoes", new { id = item.Id }, null)
                             </div>
                         }
                     </div>

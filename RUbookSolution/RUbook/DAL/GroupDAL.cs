@@ -21,6 +21,11 @@ namespace RUbook.DAL
             db = context;
         }
 
+        /// <summary>
+        /// Returns the group with the groupid input
+        /// </summary>
+        /// <param name="groupid">id of the group</param>
+        /// <returns></returns>
         public Group GetGroup(int groupid)
         {
             var group = (from u in db.Groups where u.ID == groupid select u).SingleOrDefault();
@@ -50,8 +55,6 @@ namespace RUbook.DAL
         {
             try
             {
-                //bæta við hérna dateAdded svo nýjasti komi fyrst eða í starfrófsröð bara - athuga virkar ekki 
-                //var users = db.Friends.Where(p => uid.Contains(p.UserId.Id)).OrderByDescending(p => p.UserId.FirstName).ToList();
                 var groups = db.Groups.ToList();
                 return groups;
             }

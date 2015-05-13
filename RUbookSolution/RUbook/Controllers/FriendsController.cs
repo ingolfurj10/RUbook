@@ -71,6 +71,13 @@ namespace RUbook.Controllers
             var user = userDAL.GetUser(uid);
             var fr = userDAL.GetUser(friend.FriendUserID.Id);
 
+            var friendListId = userDAL.GetAllFriendsIds(uid);
+
+            if(friendListId.Contains(friend.FriendUserID.Id))
+            {
+                return RedirectToAction("Error");
+            }
+
             Friend ship = new Friend();
             ship.UserId = user;
             ship.FriendUserID = fr;

@@ -1,10 +1,10 @@
-﻿@model RUbook.Models.Group
+﻿@model RUbook.Models.ViewModels.GroupViewModel
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>@Html.DisplayFor(model => model.Name)</h2>
+<h2>@Html.DisplayFor(model => model.Group.Name)</h2>
 
 <div>
     
@@ -13,17 +13,17 @@
     <div class="col-md-3">
 
         <!--Þessi if setning er ekki alveg að virka eins og hún á að gera, birtir aldrei default myndina-->
-        @if (Model.Image == null || Model.Image == "")
+        @if (Model.Group.Image == null || Model.Group.Image == "")
         {
             <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Friend Photo" />
         }
         else
         {
-            <img src="@Html.DisplayFor(model =>model.Image)" alt="Friend Photo" class="img-rounded" />
+            <img src="@Html.DisplayFor(model => model.Group.Image)" alt="Friend Photo" class="img-rounded" />
         }
 
         <!--þetta vil ég bara sjá þegar notandi sem bjó til síðu er loggaður inn-->
-        @Html.ActionLink("Edit Group", "Edit", new { id = Model.ID })
+        @Html.ActionLink("Edit Group", "Edit", new { id = Model.Group.ID })
 
 
     </div>
@@ -33,22 +33,22 @@
         <div class="panel panel-collapse">
             <div class="dl-horizontal">
                 <dt>
-                    @Html.LabelFor(model => model.Name, "Name of Group")
+                    @Html.LabelFor(model => model.Group.Name, "Name of Group")
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.Name)
+                    @Html.DisplayFor(model => model.Group.Name)
                 </dd>
                 <dt>
-                    @Html.LabelFor(model => model.Text, "Description")
+                    @Html.LabelFor(model => model.Group.Text, "Description")
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.Text)
+                    @Html.DisplayFor(model => model.Group.Text)
                 </dd>
                 <dt>
-                    @Html.LabelFor(model => model.Course, "Course")
+                    @Html.LabelFor(model => model.Group.Course, "Course")
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.Course)
+                    @Html.DisplayFor(model => model.Group.Course)
                 </dd>
                 <!--hérna mætti tengja departmentID við líka-->
             </div>
@@ -57,7 +57,7 @@
             <div>
                 <div>
                     <center>
-                        <button type="button" class="btn btn-default">@Html.ActionLink("Create New Post For Group Wall", "Create", "Post", new { id = Model.ID}, new { @class = "" }) </button>
+                        <button type="button" class="btn btn-default">@Html.ActionLink("Create New Post For Group Wall", "Create", "Post", new { id = Model.Group.ID}, new { @class = "" }) </button>
                     </center>
                 </div>
 
@@ -66,15 +66,17 @@
     </div>
 
     <div class="col-md-3">
-        <div>
-            <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
-            <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
-        </div>
+        <center>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
+                <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
+            </div>
+        </center>
 
         <br />
         <div>
             
-            <button type="button" class="btn btn-primary btn-block">@Html.ActionLink("Join Group", "Create", "GroupMembers", new { id = Model.ID }, null) </button>
+            <button type="button" class="btn btn-primary btn-block">@Html.ActionLink("Join Group", "Create", "GroupMembers", new { id = Model.Group.ID }, null) </button>
         </div>
 
         <br />
@@ -83,11 +85,13 @@
             <div class="panel-heading">Group members</div>
 
             <ul class="list-group">
-
-                <!--action linkur á notanda í forech loopu sem er skráðður í event-->
-                <a href="#" class="list-group-item">Notandi 1</a>
-                <a href="#" class="list-group-item">Notandi 2</a>
-
+                @if(Model.GroupMembers != null)
+                {
+                    foreach(var member in Model.GroupMembers)
+                    { 
+                        @Html.ActionLink(member.FirstName, "Details", "UserInfoes", new { id = member.Id})
+                    }
+                }
             </ul>
         </div>
 

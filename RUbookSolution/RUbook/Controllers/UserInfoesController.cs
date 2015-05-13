@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using RUbook.DAL;
 using RUbook.Models;
 using Microsoft.AspNet.Identity;
+using RUbook.Models.ViewModels;
 
 namespace RUbook.Controllers
 {
@@ -31,17 +32,38 @@ namespace RUbook.Controllers
         // GET: UserInfoes/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
+            if (String.IsNullOrEmpty(id))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ApplicationUser userInfo = userDAL.GetUser(id);
+
+            UserInfoViewModel model = new UserInfoViewModel();
+            model.User = userDAL.GetUser(id);
+            model.Friends = userDAL.GetFriends(id);
+
+            // hérna er tjékkað hver það er sem er að skoða notandann.
+            var currentUser = User.Identity.GetUserId();
+            var friendId = userDAL.GetAllFriendsIds(currentUser);
+
+            if(friendId.Contains(id))
+            {
+                model.whois = Whois.Friend;
+            }
+            else if(id == currentUser)
+            {
+                model.whois = Whois.Me;
+            }
+            else
+            {
+                model.whois = Whois.NotFriend;
+            }
            
             if (userInfo == null)
             {
                 return HttpNotFound();
             }
-            return View(userInfo);
+            return View(model);
         }
 
         // GET: UserInfoes/Create

@@ -16,10 +16,8 @@ namespace RUbook.Models
        public Post Post { get; set; }
        public ApplicationUser User { get; set; }
        public List<Group> MyGroups { get; set; }
-       public List<Friend> MyFriends { get; set; }
+       public List<ApplicationUser> MyFriends { get; set; }
        public List<Event> MyEvents { get; set; }
-
-        //public UserInfo UserInfo { get; set; }
        
     }
 }

@@ -98,6 +98,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\EventDALTest.cs" />
+    <Compile Include="DAL\GroupDALTest.cs" />
+    <Compile Include="DAL\UserDALTest.cs" />
     <Compile Include="IntegratedTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
