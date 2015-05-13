@@ -12,7 +12,7 @@ namespace RUbook.Tests.DAL
     [TestClass]
     public class UserDALTest
     {
-        [TestMethod]
+    /*    [TestMethod]
         public void GetFriends() //fá alla vini notanda
         {
             //Arrange:
@@ -24,6 +24,21 @@ namespace RUbook.Tests.DAL
             //Assert:
             Assert.AreEqual(2, result.Count); //þessi notandi á 2 vini
 
+        }*/
+        [TestMethod]
+        public void GetAllFriendsIds() //fá alla vini notanda
+        {
+            //Arrange:
+            const string user = "sombody"; //ákveðið ID = ákveðinn  notandi
+            var DAL = new UserDAL();
+            //Act:
+            var result = DAL.GetAllFriendsIds(user); //köllum á fallið með þessum ákv notandi
+
+            //Assert:
+            Assert.AreEqual(2, result.Count); //þessi notandi á 2 vini
+
         }
     }
+
+
 }
