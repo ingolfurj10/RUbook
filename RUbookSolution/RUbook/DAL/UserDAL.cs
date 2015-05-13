@@ -49,11 +49,11 @@ namespace RUbook.DAL
             return user;
         }
 
-        public List<Friend> GetFriends(string id)
+        public List<ApplicationUser> GetFriends(string id)
         {
             try
             {
-                var friends = db.Friends.Where(p => id.Contains(p.UserId.Id)).ToList();
+                var friends = db.Friends.Where(f => id.Contains(f.UserId.Id)).Select(f => f.FriendUserID).ToList();
                 return friends;
             }
             catch (Exception ex)

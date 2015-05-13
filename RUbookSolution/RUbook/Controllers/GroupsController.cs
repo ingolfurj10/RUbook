@@ -52,7 +52,7 @@ namespace RUbook.Controllers
             model.GroupPosts = postDAL.GetGroupPosts(id);
 
 
-            return View(group);
+            return View(model);
         }
 
         // GET: Groups/Create

@@ -1,4 +1,4 @@
-﻿@model RUbook.Models.ApplicationUser
+﻿@model RUbook.Models.ViewModels.UserInfoViewModel
 @using Microsoft.AspNet.Identity;
 
 @{
@@ -6,20 +6,20 @@
 }
 
 
-<h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2>
+<h2>@Html.DisplayFor(model => model.User.FirstName) @Html.DisplayFor(model => model.User.LastName)</h2>
 <div class="form-horizontal">
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
     <div class="col-md-3">
-        @if (Model.Image == null || Model.Image == "")
+        @if (Model.User.Image == null || Model.User.Image == "")
         {
             <img src="http://kairoschurch.org/wp-content/uploads/2013/09/default_profile-d80441a6f25a9a0aac354978c65c8fa91-e1379912288150.jpg" alt="Friend Photo" />
         }
         else
         {
-            <img src="@Html.DisplayFor(model =>model.Image)" alt="Friend Photo" class="img-rounded" />
+            <img src="@Html.DisplayFor(model => model.User.Image)" alt="Friend Photo" class="img-rounded" />
         }
 
         <br/>
@@ -30,16 +30,16 @@
         <form class="panel panel-collapse">
             <dl class="dl-horizontal">
                 <dt>
-                    @Html.LabelFor(model => model.DateOfBirth, "Date of Birth")
+                    @Html.LabelFor(model => model.User.DateOfBirth, "Date of Birth")
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.DateOfBirth)
+                    @Html.DisplayFor(model => model.User.DateOfBirth)
                 </dd>
                 <dt>
-                    @Html.LabelFor(model => model.Email, "Email")
+                    @Html.LabelFor(model => model.User.Email, "Email")
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.Email)
+                    @Html.DisplayFor(model => model.User.Email)
                 </dd>
                 @*<dt>
                         @Html.LabelFor(model => model.Phone, "Phone Number")
@@ -48,22 +48,22 @@
                         @Html.DisplayFor(model => model.Phone)
                     </dd>*@
                 <dt>
-                    @Html.LabelFor(model => model.Department, "Department")
+                    @Html.LabelFor(model => model.User.Department, "Department")
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.Department)
+                    @Html.DisplayFor(model => model.User.Department)
                 </dd>
                 <dt>
-                    @Html.LabelFor(model => model.Education, "Education Information")
+                    @Html.LabelFor(model => model.User.Education, "Education Information")
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.Education)
+                    @Html.DisplayFor(model => model.User.Education)
                 </dd>
                 <dt>
-                    @Html.LabelFor(model => model.WorkInfo, "Work Information")
+                    @Html.LabelFor(model => model.User.WorkInfo, "Work Information")
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.WorkInfo)
+                    @Html.DisplayFor(model => model.User.WorkInfo)
                 </dd>
             </dl>
         </form>
@@ -73,29 +73,31 @@
     <div class="col-md-3">
         @{
             
-            var user = User.Identity.GetUserId();
-            
-            if( user == Model.Id)
+            if(Model.whois == RUbook.Models.ViewModels.Whois.Me)
             { 
                 <!-- hérna vatnar að athuga hver er að skoða síðuna-->
-                <button type="button" class="btn btn-info btn-block">@Html.ActionLink("Edit", "Edit", new { id = user }) </button>
+                <button type="button" class="btn btn-info btn-block">@Html.ActionLink("Edit", "Edit", new { id = Model.User.Id }) </button>
             }
-            else
+            else if(Model.whois == RUbook.Models.ViewModels.Whois.NotFriend)
             { 
                 <!--hérna vantar action link sem addar friend-->
-                <button type="button" class="btn btn-info btn-block">@Html.ActionLink("Follow Friend", "Create", "Friends", new { id = Model.Id }, null) </button>
+                <button type="button" class="btn btn-info btn-block">@Html.ActionLink("Follow Friend", "Create", "Friends", new { id = Model.User.Id }, null) </button>
+            }
+            else
+            {
+                <p>This is your friend, do you want to unfriend</p>
             }
         }
 
         <ul class="list-group">
-            @*<div>
-                @foreach (var item in model.allfriendsofuser)
+            <div>
+                @foreach (var item in Model.Friends)
                 {
                     <div class="list-group-item">
-                        @html.actionlink(item.frienduserid.email, "details", "userinfoes", new { id = item.userid.id }, null)
+                        @Html.ActionLink(item.FirstName, "details", "userinfoes", new { id = item.Id }, null)
                     </div>
                 }
-            </div>*@
+            </div>
         </ul>
 
     </div>
