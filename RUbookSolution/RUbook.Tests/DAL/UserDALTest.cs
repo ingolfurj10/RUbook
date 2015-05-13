@@ -26,7 +26,7 @@ namespace RUbook.Tests.DAL
 
         }*/
         [TestMethod]
-        public void GetAllFriendsIds() //fá alla vini notanda
+        public void GetAllFriendsIds() //fá alla vini notanda - BÞ
         {
             //Arrange:
             const string user = "sombody"; //ákveðið ID = ákveðinn  notandi
