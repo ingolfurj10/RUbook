@@ -105,14 +105,15 @@
         }
 
         <ul class="list-group">
-            <div>
+            <li>
                 @foreach (var item in Model.Friends)
                 {
                     <div class="list-group-item">
-                        @Html.ActionLink(item.FirstName, "details", "userinfoes", new { id = item.Id }, null)
+                        <span class="glyphicon glyphicon-user" aria-hidden="true">
+</span> @Html.ActionLink(item.FirstName, "details", "userinfoes", new { id = item.Id }, null)
                     </div>
                 }
-            </div>
+            </li>
         </ul>
 
     </div>
