@@ -13,13 +13,12 @@ namespace RUbook.Models
         public string Name { get; set; }
         public string Text { get; set; }
         [Required]
-        public DateTime? DateOfEvent { get; set; }
+        public DateTime DateOfEvent { get; set; }
         public string Location { get; set; }
         public string Image { get; set; }
         //ekki búið að tengja ennþá
-        public Department DepartmentID { get; set; }
         //ekki búið að tengja ennþá
-        public Group GroupID { get; set; }
+        public int? GroupID { get; set; }
         //public ApplicationUser UserID {get; set;}
 
         public virtual ICollection<EventMember> EventMembers { get; set; }

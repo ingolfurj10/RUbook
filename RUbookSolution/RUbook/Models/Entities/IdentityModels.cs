@@ -18,11 +18,6 @@ namespace RUbook.Models
 		{
 			/*this.Friends = new HashSet<ApplicationUser>();*/
 		}
-
-     
-   
-        //ekki búið að tengja ennþá
-        //public int DepartmentID { get; set; }
       
         public DateTime? DateOfBirth { get; set; }
         public string FirstName { get; set; }

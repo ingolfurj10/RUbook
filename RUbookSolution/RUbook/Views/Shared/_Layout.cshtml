@@ -7,6 +7,10 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/themes/base/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Navbar.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/calendar.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/calendar.js"></script>
     @using Microsoft.AspNet.Identity;
 
     <meta name="RUbook" content="Social media for students and faculty of The University of Reykjavík" />
@@ -14,7 +18,7 @@
 </head>
 
 <body>
-    <div class="navbar  navbar-fixed-top" >
+    <div class="navbar  navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -27,7 +31,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Timeline", "Index", "Home")</li>
-                    <li>@Html.ActionLink("My Profile", "Details", "UserInfoes", new {id = User.Identity.GetUserId()}, null)</li>
+                    <li>@Html.ActionLink("My Profile", "Details", "UserInfoes", new { id = User.Identity.GetUserId() }, null)</li>
                     <li>@Html.ActionLink("All Groups", "Index", "Groups")</li>
                     <li>@Html.ActionLink("All Events", "Index", "Events")</li>
                     <li>@Html.ActionLink("All Users", "Index", "UserInfoes")</li>
@@ -43,7 +47,7 @@
 
     <div>
         <footer>
-            <br/>
+            <br />
             <p class="help-block">&copy; @DateTime.Now.Year - RUbook - Social media for students and faculty of The University of Reykjavík</p>
         </footer>
     </div>
@@ -52,5 +56,6 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqueryUI")
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/scripts.js"></script>
 </body>
 </html>

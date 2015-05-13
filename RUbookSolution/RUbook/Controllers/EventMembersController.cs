@@ -9,138 +9,136 @@ using System.Web.Mvc;
 using RUbook.DAL;
 using RUbook.Models;
 using Microsoft.AspNet.Identity;
-using RUbook.Models.ViewModels;
 
 namespace RUbook.Controllers
 {
-    public class GroupsController : Controller
+    public class EventMembersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private GroupDAL groupDAL;
-        private PostDAL postDAL;
 
-        public GroupsController() : base()
+        EventDAL eventDAL;
+        UserDAL userDAL;
+
+        public EventMembersController():base()
         {
-            groupDAL = new GroupDAL(db);
-            postDAL = new PostDAL(db);
+            eventDAL = new EventDAL(db);
+            userDAL = new UserDAL(db);
         }
 
-        // GET: Groups
-        [Authorize]
+        // GET: EventMembers
         public ActionResult Index()
         {
-            return View(db.Groups.ToList());
+            return View(db.EventMembers.ToList());
         }
 
-        // GET: Groups/Details/5
-        [Authorize]
+        // GET: EventMembers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GroupViewModel model = new GroupViewModel();
-            var group = groupDAL.GetGroup((int)id);
-            if (group == null)
+            EventMember eventMember = db.EventMembers.Find(id);
+            if (eventMember == null)
             {
-                //TODO skila error eða einhverju um að grúppan sé ekki til.
                 return HttpNotFound();
             }
-            model.Group = group;
-            model.GroupMembers = groupDAL.GetGroupMembers(id);
-            model.GroupPosts = postDAL.GetGroupPosts(id);
-
-
-            return View(group);
+            return View(eventMember);
         }
 
-        // GET: Groups/Create
-        [Authorize]
-        public ActionResult Create()
+        // GET: EventMembers/Create
+        public ActionResult Create(int id)
         {
-            return View();
+            EventMember eve = new EventMember();
+            eve.EventID = id;
+            eve.UserID = userDAL.GetUser(User.Identity.GetUserId());
+
+            return View(eve);
         }
 
-        // POST: Groups/Create
+        // POST: EventMembers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public ActionResult Create([Bind(Include = "ID,Name,Text,Course,Image")] Group group)
+        public ActionResult Create([Bind(Include = "ID")] EventMember eventMember)
         {
-            if (ModelState.IsValid)
-            {
-                
-                db.Groups.Add(group);
-                db.SaveChanges();
-                return RedirectToAction("Details", new { id = group.ID });
-                
-            }
+            var uid = User.Identity.GetUserId();
 
-            return View(group);
+            //if (id == uid)
+            //{
+            //     ekki hægt að joina tvisvar sama event. Contains
+            
+            //}
+
+            var user = userDAL.GetUser(uid);
+
+            EventMember member = new EventMember();
+            member.UserID = user;
+            member.EventID = eventMember.ID;
+
+            db.EventMembers.Add(member);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Details", "Events", new { id = eventMember.ID });
         }
 
-        // GET: Groups/Edit/5
-        [Authorize]
+        // GET: EventMembers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Group group = db.Groups.Find(id);
-            if (group == null)
+            EventMember eventMember = db.EventMembers.Find(id);
+            if (eventMember == null)
             {
                 return HttpNotFound();
             }
-            return View(group);
+            return View(eventMember);
         }
 
-        // POST: Groups/Edit/5
+        // POST: EventMembers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public ActionResult Edit([Bind(Include = "ID,Name,Text,Course,Image")] Group group)
+        public ActionResult Edit([Bind(Include = "ID")] EventMember eventMember)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(group).State = EntityState.Modified;
+                db.Entry(eventMember).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(group);
+            return View(eventMember);
         }
 
-        // GET: Groups/Delete/5
-        [Authorize]
+        // GET: EventMembers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Group group = db.Groups.Find(id);
-            if (group == null)
+            EventMember eventMember = db.EventMembers.Find(id);
+            if (eventMember == null)
             {
                 return HttpNotFound();
             }
-            return View(group);
+            return View(eventMember);
         }
 
-        // POST: Groups/Delete/5
+        // POST: EventMembers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
-            Group group = db.Groups.Find(id);
-            db.Groups.Remove(group);
+            EventMember eventMember = db.EventMembers.Find(id);
+            db.EventMembers.Remove(eventMember);
             db.SaveChanges();
-            return RedirectToAction("Details", new { id = group.ID });
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

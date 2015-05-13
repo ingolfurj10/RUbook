@@ -42,7 +42,7 @@
         <h4>Comments</h4>
         @foreach (var comment in Model.Comments)
         {
-            <p>@comment.UserID | @comment.text</p>
+            <p>@comment.UserID | @comment.Text</p>
             <p>@comment.CreatedDate</p>
         }
     </section>
@@ -53,7 +53,7 @@
             <input type="hidden" id="postid" name="postid" value="@Model.ID" />
             <div class="form-horizontal">
                 <label class="sr-only" for="posttext">Post</label>
-                <textarea class="form-control" rows="5" name="posttext" style="max-width:100%"></textarea>
+                <textarea id="commentToAdd" class="form-control" rows="5" name="posttext" style="max-width:100%"></textarea>
                 <button type="submit" class="btn btn-primary">Send</button>
             </div>
             @Html.ValidationSummary(false)
