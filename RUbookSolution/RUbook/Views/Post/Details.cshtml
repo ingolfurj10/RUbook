@@ -42,7 +42,11 @@
         <h4>Comments</h4>
         @foreach (var comment in Model.Comments)
         {
+<<<<<<< HEAD
             if (comment.PostID == Model.ID)
+=======
+            if(comment.PostID == Model.ID)
+>>>>>>> asabjorg
             {
                 <p>@comment.UserID | @comment.Text</p>
                 <p>@comment.CreatedDate</p>
