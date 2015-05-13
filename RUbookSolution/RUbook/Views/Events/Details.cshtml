@@ -31,8 +31,7 @@
     <div class="col-md-6">
 
         <div class="panel panel-collapse">
-            <div class="dl-horizontal">
-
+            <dl class="dl-horizontal">
                 <dt>
                     @Html.LabelFor(model => model.Event.Name, "Name of Event")
                 </dt>
@@ -51,7 +50,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.Event.Text)
                 </dd>
-            </div>
+            </dl>
         </div>
         <div class="panel panel-heading">
        
@@ -95,52 +94,43 @@
     </div>
 </div>
 
-
-
-    <div class="col-md-3">
-        <center>
-            <div class="btn-group">
-                <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
-                <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
-            </div>
-        </center>
-
-        <br />
-        <div>
-            <button type="button" class="btn btn-success btn-block">@Html.ActionLink("Attend Event", "Create", "EventMembers", new { id = Model.Event.ID }, new { @class = "linkcolor" }) </button>
+<div class="col-md-3">
+    <center>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
+            <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
         </div>
-     
-        <br />
+    </center>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">Attending Event</div>
-
-            <ul class="list-group">
-
-                <!-- hérna mætti gera ajax svo hann birist strax í fólk sem ætlar að attenda-->
-                <!--Linkur á notanda sem er skráður í event-->
-                <li>
-                    @if (Model.EventMember != null)
-                    {
-                        foreach (var member in Model.EventMember)
-                        {
-                            <div class="list-group-item">
-                                <span class="glyphicon glyphicon-user" aria-hidden="true">
-                                </span> @Html.ActionLink(member.FirstName, "Details", "UserInfoes", new { id = member.Id })
-                            </div>
-                        }
-                    }
-                </li>
-
-            </ul>
-        </div>
-
+    <br />
+    <div>
+        <button type="button" class="btn btn-success btn-block">@Html.ActionLink("Attend Event", "Create", "EventMembers", new { id = Model.Event.ID }, new { @class = "linkcolor" }) </button>
     </div>
+     
+    <br />
 
+    <div class="panel panel-default">
+        <div class="panel-heading">Attending Event</div>
 
+        <ul class="list-group">
+
+            <!-- hérna mætti gera ajax svo hann birist strax í fólk sem ætlar að attenda-->
+            <!--Linkur á notanda sem er skráður í event-->
+            <li>
+                @if (Model.EventMember != null)
+                {
+                    foreach (var member in Model.EventMember)
+                    {
+                        <div class="list-group-item">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true">
+                            </span> @Html.ActionLink(member.FirstName, "Details", "UserInfoes", new { id = member.Id })
+                        </div>
+                    }
+                }
+            </li>
+        </ul>
+    </div>
 </div>
-
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
