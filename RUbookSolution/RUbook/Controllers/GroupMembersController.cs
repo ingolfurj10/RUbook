@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using RUbook.DAL;
 using RUbook.Models;
 using Microsoft.AspNet.Identity;
+using RUbook.Models.ViewModels;
 
 namespace RUbook.Controllers
 {
@@ -50,11 +51,13 @@ namespace RUbook.Controllers
      
         public ActionResult Create(int id)
         {
-            GroupMember group = new GroupMember();
-            group.GroupID = id;
-            group.UserID = userDAL.GetUser(User.Identity.GetUserId());
+            GroupMemberViewModel g = new GroupMemberViewModel();
+            var group = groupDAL.GetGroup(id);
+
+            g.GroupId = group.ID;
+            g.GroupName = group.Name;
             
-            return View(group);
+            return View(g);
         }
 
         // POST: GroupMembers/Create
@@ -62,26 +65,20 @@ namespace RUbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,UserID,GroupID")] GroupMember groupMember)
+        public ActionResult Create([Bind(Include = "GroupId")] GroupMemberViewModel model)
         {
             var uid = User.Identity.GetUserId();
 
-            //if (id == uid)
-            //{
-            //     ekki hægt að vera vinur sinn
-            //}
-
             var user = userDAL.GetUser(uid);
+            GroupMember gm = new GroupMember();
+            gm.GroupID = model.GroupId;
+            gm.UserID = user;
 
-            GroupMember member = new GroupMember();
-            member.UserID = user;
-            member.GroupID = groupMember.GroupID;
-
-            db.GroupMembers.Add(member);
+            db.GroupMembers.Add(gm);
 
             db.SaveChanges();
 
-            return RedirectToAction("Details", "Groups", new { id = groupMember.GroupID});
+            return RedirectToAction("Details", "Groups", new { id = gm.GroupID });
         }
 
         // GET: GroupMembers/Edit/5

@@ -21,6 +21,11 @@ namespace RUbook.DAL
             db = context;
         }
 
+        /// <summary>
+        /// Returns the group with the groupid input
+        /// </summary>
+        /// <param name="groupid">id of the group</param>
+        /// <returns></returns>
         public Group GetGroup(int groupid)
         {
             var group = (from u in db.Groups where u.ID == groupid select u).SingleOrDefault();

@@ -1,4 +1,4 @@
-﻿@model RUbook.Models.GroupMember
+﻿@model RUbook.Models.ViewModels.GroupMemberViewModel
 
 @{
     ViewBag.Title = "Join Group";
@@ -17,9 +17,9 @@
 
         <div class="form-group">
             <div class="col-md-10">
-                @Html.DisplayFor(model => model.UserID.FirstName)
+                @*@Html.DisplayFor(model => model.UserID.FirstName)
                 @Html.HiddenFor(model => model.UserID.Id, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserID.Id, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.UserID.Id, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -29,9 +29,9 @@
 
         <div class="form-group">
             <div class="col-md-10">
-                @Html.DisplayFor(model => model.GroupID.Name)
-                @Html.HiddenFor(model => model.GroupID.ID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.GroupID.ID, "", new { @class = "text-danger" })
+                @Html.DisplayFor(model => model.GroupName)
+                @Html.HiddenFor(model => model.GroupId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GroupId, "", new { @class = "text-danger" })
             </div>
         </div>        
 
