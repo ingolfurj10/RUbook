@@ -64,7 +64,7 @@ namespace RUbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID")] EventMember model)
+        public ActionResult Create([Bind(Include = "EventId")] EventMember model)
         {
             var uid = User.Identity.GetUserId();
             var user = userDAL.GetUser(uid);

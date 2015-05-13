@@ -1,4 +1,4 @@
-body {
+﻿body {
     background-color:#fff9fc;
     padding: 77px;
     margin: auto;
@@ -32,10 +32,6 @@ textarea {
 
 .navbar {
     background-color:#9f1e63;
-}
-
-a {
-    color: #d16ea3;
 }
 
 img{

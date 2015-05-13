@@ -18,11 +18,13 @@ namespace RUbook.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private GroupDAL groupDAL;
         private PostDAL postDAL;
+        private UserDAL userDAL;
 
         public GroupsController() : base()
         {
             groupDAL = new GroupDAL(db);
             postDAL = new PostDAL(db);
+            userDAL = new UserDAL(db);
         }
 
         // GET: Groups
@@ -54,7 +56,6 @@ namespace RUbook.Controllers
             model.GroupMembers = groupDAL.GetGroupMembers(id);
             model.GroupPosts = postDAL.GetGroupPosts(id);
 
-
             return View(model);
         }
 
@@ -75,11 +76,12 @@ namespace RUbook.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                var id = User.Identity.GetUserId();
+                var user = (from u in db.Users where u.Id == id select u).SingleOrDefault();
+                group.userID = (ApplicationUser)user;
                 db.Groups.Add(group);
                 db.SaveChanges();
                 return RedirectToAction("Details", new { id = group.ID });
-                
             }
 
             return View(group);
