@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-﻿
->>>>>>> asabjorg
 ﻿body {
     background-color:#fff9fc;
     padding: 77px;
@@ -91,14 +87,12 @@ img {
     width:100%;
     max-width:600px;
 }
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> asabjorg
->>>>>>> 2f0a31f5c688213655d826e7e7028ec80e040877
 .btn-info {
     color: #d16ea3;
+}
+
+.footer-RUbook {
+    padding: 77px;
+    margin: auto;
 }
