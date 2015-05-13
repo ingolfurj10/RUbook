@@ -20,6 +20,7 @@ namespace RUbook.Models
         //public ApplicationUser UserID {get; set;}
 
         public virtual ICollection<EventMember> EventMembers { get; set; }
+        public virtual List<Post> EventPosts { get; set; }
        
 
     }

@@ -4,8 +4,10 @@
     ViewBag.Title = "My Timeline";
 }
 
-
-<h3> @Model.User.FirstName @Model.User.LastName's Timeline</h3>
+@if (Model.User.FirstName != null)
+{
+    <h3> @Model.User.FirstName @Model.User.LastName's Timeline</h3>
+}
 
 @using (Html.BeginForm())
 {
@@ -30,38 +32,37 @@
             <br>
 
             <div>
-                @{
-    if (Model.Posts != null)
-    {
-        foreach (var item in Model.Posts)
-        {
-            <div class="well">
-                <p>@item.Text</p>
-                @if (item.Image != null)
+                @{if (Model.Posts != null)
                 {
-                    <img src="@item.Image" alt="Hérna er mynd" />
+                    foreach (var item in Model.Posts)
+                    {
+                        <div class="well">
+                            <p>@item.Text</p>
+                            @if (item.Image != null)
+                            {
+                                <img src="@item.Image" alt="Hérna er mynd" />
+                            }
+
+                            <p>@item.DateCreated</p>
+
+                            @item.UserID.FirstName
+                            <div class="left">
+                                @Html.ActionLink("See Comments", "Details", "Post", new { id = item.ID }, new { @class = "" })
+                            </div>                
+                        </div>
+
+                    }
                 }
 
-                <p>@item.DateCreated</p>
-
-                @item.UserID.FirstName
-                <div class="left">
-                    @Html.ActionLink("See Comments", "Details", "Post", new { id = item.ID }, new { @class = "" })
-                </div>                
-            </div>
-
-        }
-    }
-
-    else
-    {
-        <p>You have no posts!!!</p>
-    }
+                else
+                {
+                    <p>You have no posts!!!</p>
                 }
+             }
 
             </div>
 
-        </div>
+   </div>
 
         <div class="col-md-3 col-md-pull-6 col-sm-6">
             <div class="panel panel-default">
