@@ -17,7 +17,7 @@ namespace RUbook.Models
         public string Location { get; set; }
         public string Image { get; set; }
         public int? GroupID { get; set; }
-        //public ApplicationUser UserID {get; set;}
+        public ApplicationUser UserID {get; set;}
 
         public virtual ICollection<EventMember> EventMembers { get; set; }
         public virtual List<Post> EventPosts { get; set; }
