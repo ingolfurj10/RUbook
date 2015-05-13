@@ -96,3 +96,8 @@ img {
     padding: 77px;
     margin: auto;
 }
+
+li {
+    list-style-type: none;
+}
+
