@@ -19,11 +19,13 @@ namespace RUbook.Controllers
         public  ApplicationDbContext db = new ApplicationDbContext();
         UserDAL userDAL;
         PostDAL postDAL;
+        GroupDAL groupDAL;
 
         public PostController() : base()
         {
             userDAL = new UserDAL(db);
             postDAL = new PostDAL(db);
+            groupDAL = new GroupDAL(db);
         }
 
         // GET: Post
@@ -32,15 +34,14 @@ namespace RUbook.Controllers
         {
             var userId = User.Identity.GetUserId();
             var user = userDAL.GetUser(userId);
-
-            //vinaID
+            //var group = groupDAL.GetGroup();
 
             try
             {
-                var friends = (from u in db.Friends where u.UserId.Id == user.Id select u.FriendUserID.Id).ToList();
-                friends.Add(userId);
-                var posts = postDAL.GetAllPosts(friends);
-                return View(db.Posts.ToList());
+                //var friends = (from u in db.Friends where u.UserId.Id == user.Id select u.FriendUserID.Id).ToList();
+                //friends.Add(userId);
+                //var posts = postDAL.(friends);
+                //return View(db.Posts.ToList());
 
             }
 
@@ -71,8 +72,15 @@ namespace RUbook.Controllers
 
         // GET: Post/Create
         [Authorize]
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            if (id != null)
+            {
+                Post post = new Post();
+                post.GroupID = (int)id;
+                return View(post);
+            }
+
             return View();
         }
 
@@ -82,24 +90,18 @@ namespace RUbook.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "ID,Text,Image,UserID,DateCreated")] Post post)
+        public ActionResult Create([Bind(Include = "ID,Text,Image,UserID,DateCreated, groupID")] Post post)
         {
             if (ModelState.IsValid)
             {
 				var id = User.Identity.GetUserId();
 				var user = (from u in db.Users where u.Id == id select u).SingleOrDefault();
 				post.UserID = (ApplicationUser)user;
-                //post.UserEmail = (ApplicationUser)user;
-				post.DateCreated = DateTime.Now;
-                //if (post.Image == "")
-                //{
-                    //hvað gerist ef image er NULL strengur
-                //}
+				post.DateCreated = DateTime.Now;  
                 db.Posts.Add(post);
                 db.SaveChanges();
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
-
             return View(post);
         }
 

@@ -13,11 +13,11 @@ namespace RUbook.Models
         [Required]
         public string Text { get; set; }
         public string Image { get; set; }
-        //public Department DepartmentID { get; set; }
         public string Course { get; set; }
-        //public ApplicationUser userID { get; set; }
 
-        public virtual ICollection<GroupMember> GroupMembers { get; set; }
+        public virtual ApplicationUser userID { get; set; }
+
+        public virtual List<GroupMember> GroupMembers { get; set; }
         public List<Post> Posts { get; set; }
        
     }

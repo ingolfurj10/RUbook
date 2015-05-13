@@ -62,15 +62,18 @@
     </div>
 
     <div class="col-md-3">
-        <div>
-            <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
-            <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
-        </div>
+        <center>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
+                <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
+            </div>
+        </center>
 
         <br />
         <div>
             <!--hérna vatnar action link til að attenda event-->
-            <button type="button" class="btn btn-primary">Attend Event</button>
+            <button type="button" class="btn btn-primary btn-block">@Html.ActionLink("Attend Event", "Create", "EventMembers", new { id = Model.ID }, null) </button>
+
         </div>
 
         <br />

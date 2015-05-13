@@ -1,8 +1,10 @@
 ﻿using RUbook.Models;
+using RUbook.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.Identity;
 
 namespace RUbook.DAL
 {
@@ -22,16 +24,17 @@ namespace RUbook.DAL
             get
             {
                 if (instance == null)
+                    
                     instance = new PostDAL(db);
-                return instance;
+                    return instance;
             }
         }
 
-        public List<Post> GetAllPosts(List<string> uid)
+        public List<Post> GetUserPosts(string uid)
         {
             try
             {
-                var posts = db.Posts.Where(p => uid.Contains(p.UserID.Id)).OrderByDescending(p => p.DateCreated).ToList();
+                var posts = db.Posts.Where(p => uid == p.UserID.Id).OrderByDescending(p => p.DateCreated).ToList();
                 return posts;
             }
             
@@ -41,14 +44,32 @@ namespace RUbook.DAL
             }
             return null;
         }
+        /// <summary>
+        /// Sækir all pósta sem tengjast id´s í inntakinu og eru ekki merktir grúppu.
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <returns></returns>
+        public List<Post> GetUsersPosts(List<string> uid)
+        {
+            try
+            {
+                var posts = db.Posts.Where(p => uid.Contains(p.UserID.Id)).Where(p => p.GroupID == null).OrderByDescending(p => p.DateCreated).ToList();
+                return posts;
+            }
 
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return null;
+        }
         
-
         public Post GetPostById(int postId)
         {
             Post result = (from post in db.Posts
                            where post.ID == postId
-                           select post).SingleOrDefault();
+                           select post).FirstOrDefault();
+
             if(result != null)
             {
                 result.Comments = (from comment in db.Comments
@@ -69,6 +90,19 @@ namespace RUbook.DAL
             comment.ID = newID;
             comment.CreatedDate = DateTime.Now;
             db.Comments.Add(comment);
+            db.SaveChanges();
+        }
+
+        public List<Post> GetGroupPosts(int? guid)
+        { 
+            if (guid == null)
+            {
+                return null;
+            }
+
+            var posts = db.Posts.Where(p => p.GroupID == (int)guid).OrderByDescending(p => p.DateCreated).ToList();
+
+            return posts;
         }
     }
 }

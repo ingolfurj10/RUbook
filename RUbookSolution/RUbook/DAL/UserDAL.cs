@@ -24,14 +24,6 @@ namespace RUbook.DAL
         }
 
 
-        public List<Event> GetAllEvents()
-        {
-            var events = db.Events.ToList();
-
-            return events;
-
-        }
-
         public List<ApplicationUser> GetAllUsers()
         {
             try
@@ -56,10 +48,34 @@ namespace RUbook.DAL
             var user = (from u in db.Users where u.Id == userid select u).SingleOrDefault();
             return user;
         }
-	
-		
+
+        public List<ApplicationUser> GetFriends(string id)
+        {
+            try
+            {
+                var friends = db.Friends.Where(f => id.Contains(f.UserId.Id)).Select(f => f.FriendUserID).ToList();
+                return friends;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return null;
+        }
+        public List<string> GetAllFriendsIds(string id)
+        {
+            try
+            {
+                var friendsIds = db.Friends.Where(p => id.Contains(p.UserId.Id)).Select(p => p.FriendUserID.Id).ToList();
+                return friendsIds;
+            }
+            catch(Exception ex)
+            { 
+                //If no friends do nothing
+            }
+
+            return null;
+        }
     }
 
 }
-
-//Hérna viljum við hafa allar linq queries. 
