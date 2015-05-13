@@ -55,6 +55,14 @@ namespace RUbook.Controllers
             model.Group = group;
             model.GroupMembers = groupDAL.GetGroupMembers(id);
             model.GroupPosts = postDAL.GetGroupPosts(id);
+            if(group.userID.Id == User.Identity.GetUserId())
+            {
+                model.CreatedByMe = true;
+            }
+            else
+            {
+                model.CreatedByMe = false;
+            }
 
             return View(model);
         }
@@ -78,7 +86,7 @@ namespace RUbook.Controllers
             {
                 var id = User.Identity.GetUserId();
                 var user = (from u in db.Users where u.Id == id select u).SingleOrDefault();
-                group.userID = (ApplicationUser)user;
+                group.userID = user;
                 db.Groups.Add(group);
                 db.SaveChanges();
                 return RedirectToAction("Details", new { id = group.ID });
