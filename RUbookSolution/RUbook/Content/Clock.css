@@ -1,0 +1,18 @@
+﻿ul li { 
+    display:inline; 
+    font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif; 
+    color: black;
+}
+
+.clock {
+    padding-right: 15%;
+}
+
+#point { 
+    position:relative;
+    font-size:40px; 
+}
+
+#hours, #min, #sec {
+    font-size:40px; 
+}
