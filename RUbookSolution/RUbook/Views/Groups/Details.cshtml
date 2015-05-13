@@ -1,4 +1,5 @@
 ﻿@model RUbook.Models.ViewModels.GroupViewModel
+@using Microsoft.AspNet.Identity;
 
 @{
     ViewBag.Title = "Details";
@@ -22,9 +23,10 @@
             <img src="@Html.DisplayFor(model => model.Group.Image)" alt="Friend Photo" class="img-rounded" />
         }
 
-  
-        @Html.ActionLink("Edit Group", "Edit", new { id = Model.Group.ID })
-
+        @if(Model.Group.userID == )
+        {
+            @Html.ActionLink("Edit Group", "Edit", new { id = Model.Group.ID })
+        }
 
     </div>
 
