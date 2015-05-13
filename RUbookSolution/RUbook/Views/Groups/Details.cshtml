@@ -50,7 +50,7 @@
                 <dd>
                     @Html.DisplayFor(model => model.Group.Course)
                 </dd>
-            
+                <!--hérna mætti tengja departmentID við líka-->
             </div>
         </div>
         <div class="panel panel-heading">
@@ -60,27 +60,6 @@
                         <button type="button" class="btn btn-default">@Html.ActionLink("Create New Post For Group Wall", "Create", "Post", new { id = Model.Group.ID}, new { @class = "" }) </button>
                     </center>
                 </div>
-                @if (Model.GroupPosts != null)
-                {
-                    foreach (var item in Model.GroupPosts)
-                    {
-                        <div class="well">
-                            <p>@item.Text</p>
-                            @if (item.Image != null)
-                            {
-                                <img src="@item.Image" alt="Hérna er mynd" />
-                            }
-
-                            <p>@item.DateCreated</p>
-
-                            @item.UserID.FirstName
-
-                            @Html.ActionLink("Add comment", "Details", "Post", new { id = item.ID }, new { @class = "" })
-
-                        </div>
-                    }
-                }
-
 
             </div>
         </div>

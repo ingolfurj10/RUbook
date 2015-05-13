@@ -25,6 +25,7 @@
         <br/>
     </div>
 
+
     <div class="col-md-6">
         <form class="panel panel-collapse">
             <dl class="dl-horizontal">
@@ -40,6 +41,12 @@
                 <dd>
                     @Html.DisplayFor(model => model.User.Email)
                 </dd>
+                @*<dt>
+                        @Html.LabelFor(model => model.Phone, "Phone Number")
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Phone)
+                    </dd>*@
                 <dt>
                     @Html.LabelFor(model => model.User.Department, "Department")
                 </dt>
@@ -80,7 +87,6 @@
             else
             {
                 <p>This is your friend, do you want to unfriend</p>
-                <!--hérna vantar delete button-->
             }
         }
 
