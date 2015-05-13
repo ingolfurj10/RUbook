@@ -101,7 +101,7 @@ namespace RUbook.Controllers
                 db.Posts.Add(post);
                 db.SaveChanges();
 
-                if (post.GroupID == null /*&& post.EventID == null*/)
+                if (post.GroupID == null)
                 {
                     return RedirectToAction("Index", "Home");
                 }
