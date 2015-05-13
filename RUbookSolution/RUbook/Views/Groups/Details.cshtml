@@ -23,12 +23,10 @@
             <img src="@Html.DisplayFor(model => model.Group.Image)" alt="Friend Photo" class="img-rounded" />
         }
 
-<<<<<<< HEAD
+
         @if(Model.Group.userID.Id == User.Identity.GetUserId() )
 
-=======
-        @if(Model.CreatedByMe)
->>>>>>> asabjorg
+
         {
             @Html.ActionLink("Edit Group", "Edit", new { id = Model.Group.ID })
         }

@@ -78,6 +78,7 @@ namespace RUbook.Controllers
             {
                 Post post = new Post();
                 post.GroupID = (int)id;
+                post.EventID = (int)id; 
                 return View(post);
             }
 
@@ -90,29 +91,38 @@ namespace RUbook.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "ID,Text,Image,UserID,DateCreated, groupID")] Post post)
+        public ActionResult Create([Bind(Include = "ID,Text,Image,UserID,DateCreated, groupID,eventID")] Post post)
         {
             if (ModelState.IsValid)
             {
 				var id = User.Identity.GetUserId();
 				var user = (from u in db.Users where u.Id == id select u).SingleOrDefault();
 				post.UserID = user;
+               
 				post.DateCreated = DateTime.Now;  
                 db.Posts.Add(post);
                 db.SaveChanges();
 
-                if (post.GroupID == null)
+                if (post.GroupID == null && post.EventID == null)
                 {
                     return RedirectToAction("Index", "Home");
                 }
 
-                //if (post.EventID != null)
-                //{
-                //    return RedirectToAction("Details", "Events", new { id = post.EventID });
-                //}
+                
+                else if(post.GroupID != null)
+                {
+                    
+                    return RedirectToAction("Details", "Groups", new { id = post.GroupID });
+                }
 
-                return RedirectToAction("Details", "Groups", new { id = post.GroupID });
-                   
+                else
+                {
+                    return RedirectToAction("Details", "Event", new { id = post.EventID });
+                
+                }
+
+                
+                
              }
                 
             return View(post);
