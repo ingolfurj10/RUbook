@@ -42,7 +42,7 @@
         <h4>Comments</h4>
         @foreach (var comment in Model.Comments)
         {
-            <p>@comment.@Model.UserID.FirstName @Model.UserID.LastName | @comment.Text</p>
+            <p>@Model.UserID.FirstName @Model.UserID.LastName | @comment.Text</p>
             <p>@comment.CreatedDate</p>
         }
     </section>
