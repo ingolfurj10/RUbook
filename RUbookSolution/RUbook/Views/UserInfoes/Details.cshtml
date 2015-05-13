@@ -1,3 +1,4 @@
+﻿<<<<<<< HEAD
 ﻿@model RUbook.Models.ViewModels.UserInfoViewModel
 @using Microsoft.AspNet.Identity;
 
@@ -119,3 +120,107 @@
 </div>
 
 
+=======
+﻿@model RUbook.Models.ViewModels.UserInfoViewModel
+@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<h2>@Html.DisplayFor(model => model.User.FirstName) @Html.DisplayFor(model => model.User.LastName)</h2>
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="col-md-3">
+        @if (Model.User.Image == null || Model.User.Image == "")
+        {
+            <img src="http://kairoschurch.org/wp-content/uploads/2013/09/default_profile-d80441a6f25a9a0aac354978c65c8fa91-e1379912288150.jpg" alt="Friend Photo" />
+        }
+        else
+        {
+            <img src="@Html.DisplayFor(model => model.User.Image)" alt="Friend Photo" class="img-rounded" />
+        }
+
+        <br/>
+    </div>
+
+
+    <div class="col-md-6">
+        <form class="panel panel-collapse">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.LabelFor(model => model.User.DateOfBirth, "Date of Birth")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.User.DateOfBirth)
+                </dd>
+                <dt>
+                    @Html.LabelFor(model => model.User.Email, "Email")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.User.Email)
+                </dd>
+                
+                <dt>
+                    @Html.LabelFor(model => model.User.Department, "Department")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.User.Department)
+                </dd>
+                <dt>
+                    @Html.LabelFor(model => model.User.Education, "Education Information")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.User.Education)
+                </dd>
+                <dt>
+                    @Html.LabelFor(model => model.User.WorkInfo, "Work Information")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.User.WorkInfo)
+                </dd>
+            </dl>
+        </form>
+    </div>
+
+
+    <div class="col-md-3">
+        @{
+            
+            if(Model.whois == RUbook.Models.ViewModels.Whois.Me)
+            { 
+                <!-- hérna vatnar að athuga hver er að skoða síðuna-->
+                <button type="button" class="btn btn-info btn-block">@Html.ActionLink("Edit", "Edit", new { id = Model.User.Id }) </button>
+            }
+            else if(Model.whois == RUbook.Models.ViewModels.Whois.NotFriend)
+            { 
+                <!--hérna vantar action link sem addar friend-->
+                <button type="button" class="btn btn-info btn-block"> @Html.ActionLink("Follow Friend", "Create", "Friends", new { id = Model.User.Id }, null) <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+            }
+            else
+            {
+                <p>This is your friend, do you want to unfriend</p>
+            }
+        }
+
+        <ul class="list-group">
+            <li>
+                @foreach (var item in Model.Friends)
+                {
+                    <div class="list-group-item">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true">
+</span> @Html.ActionLink(item.FirstName, "details", "userinfoes", new { id = item.Id }, null)
+                    </div>
+                }
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+
+>>>>>>> d2a696fb2b5614af472dbb7aff70d485289a6dfc

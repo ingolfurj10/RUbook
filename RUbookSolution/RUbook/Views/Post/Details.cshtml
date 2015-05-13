@@ -43,14 +43,12 @@
         @foreach (var comment in Model.Comments)
         {
 <<<<<<< HEAD
-            if(comment.PostID == Model.ID)
-            {
-                <p>@comment.UserID.FirstName | @comment.Text</p>
-=======
             if (comment.PostID == Model.ID)
+=======
+            if(comment.PostID == Model.ID)
+>>>>>>> asabjorg
             {
                 <p>@comment.UserID | @comment.Text</p>
->>>>>>> 31c4d06b8a2bca9abb49f8f17e7d75b7d4dbbd9f
                 <p>@comment.CreatedDate</p>
             }
         }
