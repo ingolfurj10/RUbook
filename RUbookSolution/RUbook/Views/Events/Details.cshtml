@@ -1,10 +1,10 @@
-﻿@model RUbook.Models.Event
+﻿@model RUbook.Models.ViewModels.EventViewModel
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>@Html.DisplayFor(model => model.Name)</h2>
+<h2>@Html.DisplayFor(model => model.Event.Name)</h2>
 
 <div>
 
@@ -13,18 +13,18 @@
     <div class="col-md-3">
 
         <!--Þessi if setning er ekki alveg að virka eins og hún á að gera, birtir aldrei default myndina-->
-        @if (Model.Image == null || Model.Image == "")
+        @if (Model.Event.Image == null || Model.Event.Image == "")
         {
             <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Group photo" class="img-rounded" />
         }
         else
         {
-            <img src="@Html.DisplayFor(model =>model.Image)" alt="Group photo" />
+            <img src="@Html.DisplayFor(model =>model.Event.Image)" alt="Group photo" />
         }
 
 
         
-        @Html.ActionLink("Edit Event", "Edit", new { id = Model.ID })
+        @Html.ActionLink("Edit Event", "Edit", new { id = Model.Event.ID })
     </div>
 
 
@@ -33,30 +33,29 @@
         <div class="panel panel-collapse">
             <div class="dl-horizontal">
                 <dt>
-                    @Html.LabelFor(model => model.Name, "Name of Event")
+                    @Html.LabelFor(model => model.Event.Name, "Name of Event")
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.Name)
+                    @Html.DisplayFor(model => model.Event.Name)
                 </dd>
                 <!--Hérna þurfum við að fá date og time til að vera sitt hvort eða fá þetta til að birtast fallegra-->
                 <dt>
-                    @Html.LabelFor(model => model.DateOfEvent, "DateTime")
+                    @Html.LabelFor(model => model.Event.DateOfEvent, "DateTime")
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.DateOfEvent)
+                    @Html.DisplayFor(model => model.Event.DateOfEvent)
                 </dd>
                 <dt>
-                    @Html.LabelFor(model => model.Text, "Information")
+                    @Html.LabelFor(model => model.Event.Text, "Information")
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.Text)
+                    @Html.DisplayFor(model => model.Event.Text)
                 </dd>
-                <!--hérna mætti tengja departmentID við líka-->
-            </div>
+                            </div>
         </div>
         <div class="panel panel-heading">
             <div>
-                <p>Hérna eiga Event Posts að koma!</p>
+                <p>Hérna eiga Group Posts að koma!</p>
             </div>
         </div>
     </div>
@@ -71,13 +70,10 @@
 
         <br />
         <div>
-            <!--hérna vatnar action link til að attenda event-->
             <button type="button" class="btn btn-primary btn-block">@Html.ActionLink("Attend Event", "Create", "EventMembers", new { id = Model.ID }, null) </button>
-
         </div>
 
         <br />
-
 
         <div class="panel panel-default">
             <div class="panel-heading">Attending Event</div>
@@ -85,9 +81,16 @@
             <ul class="list-group">
 
                 <!-- hérna mætti gera ajax svo hann birist strax í fólk sem ætlar að attenda-->
-                <!--Linkur á notanda sem er skráðður í event-->
-                <a href="#" class="list-group-item">Notandi 1</a>
-                <a href="#" class="list-group-item">Notandi 2</a>
+                <!--Linkur á notanda sem er skráður í event-->
+                <ul class="list-group">
+                    @if (Model.EventMember != null)
+                    {
+                        foreach (var member in Model.EventMember)
+                        {
+                            @Html.ActionLink(member.FirstName, "Details", "UserInfoes", new { id = member.Id })
+                        }
+                    }
+                </ul>
 
             </ul>
         </div>
