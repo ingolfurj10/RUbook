@@ -24,6 +24,7 @@
         }
 
         @if(Model.Group.userID.Id == User.Identity.GetUserId() )
+
         {
             @Html.ActionLink("Edit Group", "Edit", new { id = Model.Group.ID })
         }
