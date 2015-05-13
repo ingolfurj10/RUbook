@@ -22,8 +22,8 @@
             <img src="@Html.DisplayFor(model => model.User.Image)" alt="Friend Photo" class="img-rounded" />
         }
 
-        <br/>
-        <br/>
+        <br />
+        <br />
 
         @{
 
@@ -39,7 +39,7 @@
             }
             else
             {
-                <p>This is your friend, do you want to unfriend</p>
+                <p>You are Following this user, do you want to Unfollow him?</p>
             }
 
         }
@@ -91,6 +91,7 @@
 
 
     <div class="col-md-3">
+<<<<<<< HEAD
         @{
             
             if(Model.whois == RUbook.Models.ViewModels.Whois.Me)
@@ -116,5 +117,20 @@
             </li>
         </ul>
 
+=======
+        <div class="panel panel-default">
+            <div class="panel-heading">Friends List</div>
+            <ul class="list-group">
+                <div>
+                    @foreach (var item in Model.Friends)
+                    {
+                        <div class="list-group-item">
+                            @Html.ActionLink(item.FirstName, "details", "userinfoes", new { id = item.Id }, null)
+                        </div>
+                    }
+                </div>
+            </ul>
+        </div>
+>>>>>>> annaksnorra
     </div>
 </div>
