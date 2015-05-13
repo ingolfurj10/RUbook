@@ -10,7 +10,7 @@ using RUbook.Controllers;
 using RUbook.Models;
 
 namespace RUbook.Tests
-{
+{/*
 	[TestClass]
 	public class IntegratedTest
 	{
@@ -33,5 +33,5 @@ namespace RUbook.Tests
 			var post = new Post(){UserID=(ApplicationUser)user,Text="This will work"};
 			controller.Create(post);
 		}
-	}
+	}*/
 }
