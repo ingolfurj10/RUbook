@@ -30,12 +30,12 @@
             if (Model.whois == RUbook.Models.ViewModels.Whois.Me)
             {
                 <!-- hérna vatnar að athuga hver er að skoða síðuna-->
-                <button type="button" class="btn btn-info btn-block">@Html.ActionLink("Edit", "Edit", new { id = Model.User.Id }) </button>
+                <button type="button" class="btn btn-info btn-block">@Html.ActionLink("Edit", "Edit", new { id = Model.User.Id }, new { @class = "linkcolor" }) </button>
             }
             else if (Model.whois == RUbook.Models.ViewModels.Whois.NotFriend)
             {
                 <!--hérna vantar action link sem addar friend-->
-                <button type="button" class="btn btn-info btn-block"> @Html.ActionLink("Follow Friend", "Create", "Friends", new { id = Model.User.Id }, null) <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-success btn-block"> @Html.ActionLink("Follow Friend", "Create", "Friends", new { id = Model.User.Id }, new { @class = "linkcolor" }) <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
             }
             else
             {

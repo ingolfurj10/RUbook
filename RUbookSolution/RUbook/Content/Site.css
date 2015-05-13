@@ -84,10 +84,6 @@ img {
     max-width:600px;
 }
 
-.btn-info {
-    color: #d16ea3;
-}
-
 .footer-RUbook {
     padding: 77px;
     margin: auto;
@@ -97,3 +93,6 @@ li {
     list-style-type: none;
 }
 
+a.linkcolor {
+    color: white;
+}
