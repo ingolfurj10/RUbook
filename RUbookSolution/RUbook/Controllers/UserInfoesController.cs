@@ -142,7 +142,8 @@ namespace RUbook.Controllers
 					db.SaveChanges();
 				}
             }
-            return View(userInfo);
+			//return View(userInfo);
+			return RedirectToAction("Details", "UserInfoes", new { id = userInfo.Id });
         }
 
         // GET: UserInfoes/Delete/5
