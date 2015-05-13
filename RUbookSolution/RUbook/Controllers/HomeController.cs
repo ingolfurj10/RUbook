@@ -36,17 +36,18 @@ namespace RUbook.Controllers
 
             try
             {
-                var friends = (from u in db.Friends where u.UserId.Id == user.Id select u.FriendUserID.Id).ToList();
+                // Ná í Id fyrir alla vini og bæta sínu eigin id við til að sækja alla pósta.
+                var friends = userDAL.GetAllFriendsIds(userId);
                 friends.Add(userId);
 
-                model.AllPosts = postDAL.GetAllPosts(friends);
-                model.AllGroups = groupDAL.GetAllGroups();
-                model.AllEvents = eventDAL.GetAllEvents();
-                model.AllUsers = userDAL.GetAllUsers();
+                model.Posts = postDAL.GetUsersPosts(friends);
+                //model.AllGroups = groupDAL.GetAllGroups();
+                //model.AllEvents = eventDAL.GetAllEvents();
+                //model.AllUsers = userDAL.GetAllUsers();
                 model.User = userDAL.GetUser(userId);
-                model.AllFriendsOfUser = userDAL.AllFriendsOfUser(userId);
-                model.AllGroupsOfUser = groupDAL.GetAllGroupsOfUser(userId);
-                model.AllEventsOfUser = eventDAL.GetAllEventsOfUser(userId);
+                model.MyFriends = userDAL.GetFriends(userId);
+                model.MyGroups = groupDAL.GetAllGroupsOfUser(userId);
+                model.MyEvents = eventDAL.GetAllEventsOfUser(userId);
 
                 return View(model);
             }

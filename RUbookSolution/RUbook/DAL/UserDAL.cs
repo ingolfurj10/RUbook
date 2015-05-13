@@ -48,12 +48,12 @@ namespace RUbook.DAL
             var user = (from u in db.Users where u.Id == userid select u).SingleOrDefault();
             return user;
         }
-        
-        public List<Friend> AllFriendsOfUser(string gid)
+
+        public List<Friend> GetFriends(string id)
         {
             try
             {
-                var friends = db.Friends.Where(p => gid.Contains(p.UserId.Id)).ToList();
+                var friends = db.Friends.Where(p => id.Contains(p.UserId.Id)).ToList();
                 return friends;
             }
             catch (Exception ex)
@@ -62,7 +62,20 @@ namespace RUbook.DAL
             }
             return null;
         }
-		
+        public List<string> GetAllFriendsIds(string id)
+        {
+            try
+            {
+                var friendsIds = db.Friends.Where(p => id.Contains(p.UserId.Id)).Select(p => p.FriendUserID.Id).ToList();
+                return friendsIds;
+            }
+            catch(Exception ex)
+            { 
+                //If no friends do nothing
+            }
+
+            return null;
+        }
     }
 
 }
