@@ -1,4 +1,4 @@
-body {
+﻿body {
     background-color:#fff9fc;
     padding: 77px;
     margin: auto;
@@ -90,4 +90,9 @@ img {
 
 .btn-info {
     color: #d16ea3;
+}
+
+.footer-RUbook {
+    padding: 77px;
+    margin: auto;
 }
