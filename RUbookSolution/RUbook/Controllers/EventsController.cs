@@ -9,12 +9,22 @@ using System.Web.Mvc;
 using RUbook.DAL;
 using RUbook.Models;
 using Microsoft.AspNet.Identity;
+using RUbook.Models.ViewModels;
 
 namespace RUbook.Controllers
 {
     public class EventsController : Controller
-    {
+    {   
         private ApplicationDbContext db = new ApplicationDbContext();
+        private EventDAL eventDAL;
+        private PostDAL postDAL;
+
+        public EventsController() : base()
+        {
+            eventDAL = new EventDAL(db);
+            postDAL = new PostDAL(db);
+        }
+       
 
         // GET: Events
         [Authorize]
@@ -31,12 +41,21 @@ namespace RUbook.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.Events.Find(id);
-            if (@event == null)
+
+            EventViewModel model = new EventViewModel();
+            var ev = eventDAL.GetEvent((int)id);
+            
+            if (ev == null)
             {
+                //TODO skila error eða einhverju um að grúppan sé ekki til.
                 return HttpNotFound();
             }
-            return View(@event);
+            model.Event = ev;
+            model.EventMember = eventDAL.GetEventMembers(id);
+            model.EventPosts = postDAL.GetGroupPosts(id);
+
+
+            return View(model);
         }
 
         // GET: Events/Create
@@ -87,7 +106,7 @@ namespace RUbook.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Edit([Bind(Include = "ID,Name,DateOfEvent,Image,Location,Text,GroupID,DepartmentID")] Event @event)
+        public ActionResult Edit([Bind(Include = "ID,Name,DateOfEvent,Image,Location,Text,GroupID")] Event @event)
         {
             if (ModelState.IsValid)
             {

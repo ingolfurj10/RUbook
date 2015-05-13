@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using RUbook.DAL;
 using RUbook.Models;
 using Microsoft.AspNet.Identity;
+using RUbook.Models.ViewModels;
 
 namespace RUbook.Controllers
 {
@@ -49,11 +50,13 @@ namespace RUbook.Controllers
         // GET: EventMembers/Create
         public ActionResult Create(int id)
         {
-            EventMember eve = new EventMember();
-            eve.EventID = id;
-            eve.UserID = userDAL.GetUser(User.Identity.GetUserId());
+            EventMemberViewModel e = new EventMemberViewModel();
+            var eve = eventDAL.GetEvent(id);
 
-            return View(eve);
+            e.EventId = eve.ID;
+            e.EventName = eve.Name;
+
+            return View(e);
         }
 
         // POST: EventMembers/Create
@@ -61,27 +64,19 @@ namespace RUbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID")] EventMember eventMember)
+        public ActionResult Create([Bind(Include = "ID")] EventMember model)
         {
             var uid = User.Identity.GetUserId();
-
-            //if (id == uid)
-            //{
-            //     ekki hægt að joina tvisvar sama event. Contains
-            
-            //}
-
             var user = userDAL.GetUser(uid);
 
-            EventMember member = new EventMember();
-            member.UserID = user;
-            member.EventID = eventMember.ID;
+            EventMember em = new EventMember();
+            em.EventID = model.EventID;
+            em.UserID = user;
 
-            db.EventMembers.Add(member);
-
+            db.EventMembers.Add(em);
             db.SaveChanges();
 
-            return RedirectToAction("Details", "Events", new { id = eventMember.ID });
+            return RedirectToAction("Details", "Events", new { id = em.EventID });
         }
 
         // GET: EventMembers/Edit/5

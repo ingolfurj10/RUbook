@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using RUbook.DAL;
 using RUbook.Models;
 using Microsoft.AspNet.Identity;
+using RUbook.Models.ViewModels;
 
 namespace RUbook.DAL
 {
@@ -21,6 +22,11 @@ namespace RUbook.DAL
             db = context;
         }
 
+        /// <summary>
+        /// Returns the event with the groupid input
+        /// </summary>
+        /// <param name="event">id of the event</param>
+        /// <returns></returns>
         public Event GetEvent(int eventid)
         {
             var eve = (from u in db.Events where u.ID == eventid select u).SingleOrDefault();
@@ -59,6 +65,20 @@ namespace RUbook.DAL
             }
 
             return null;
+        }
+
+        public List<ApplicationUser> GetEventMembers(int? eid)
+        {
+            if (eid == null)
+            {
+                return null;
+            }
+
+            var emembers = (from gm in db.EventMembers
+                            where gm.EventID == eid
+                            select gm.UserID).ToList();
+
+            return emembers;
         }
     }
 }

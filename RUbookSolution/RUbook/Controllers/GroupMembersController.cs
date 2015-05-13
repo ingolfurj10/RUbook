@@ -68,14 +68,13 @@ namespace RUbook.Controllers
         public ActionResult Create([Bind(Include = "GroupId")] GroupMemberViewModel model)
         {
             var uid = User.Identity.GetUserId();
-
             var user = userDAL.GetUser(uid);
+
             GroupMember gm = new GroupMember();
             gm.GroupID = model.GroupId;
             gm.UserID = user;
 
             db.GroupMembers.Add(gm);
-
             db.SaveChanges();
 
             return RedirectToAction("Details", "Groups", new { id = gm.GroupID });

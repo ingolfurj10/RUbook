@@ -16,8 +16,6 @@ namespace RUbook.Models
         public DateTime DateOfEvent { get; set; }
         public string Location { get; set; }
         public string Image { get; set; }
-        //ekki búið að tengja ennþá
-        //ekki búið að tengja ennþá
         public int? GroupID { get; set; }
         //public ApplicationUser UserID {get; set;}
 

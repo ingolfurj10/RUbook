@@ -100,8 +100,21 @@ namespace RUbook.Controllers
 				post.DateCreated = DateTime.Now;  
                 db.Posts.Add(post);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
-            }
+
+                if (post.GroupID == null /*&& post.EventID == null*/)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                //if (post.EventID != null)
+                //{
+                //    return RedirectToAction("Details", "Events", new { id = post.EventID });
+                //}
+
+                return RedirectToAction("Details", "Groups", new { id = post.GroupID });
+                   
+             }
+                
             return View(post);
         }
 

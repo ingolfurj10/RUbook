@@ -40,13 +40,16 @@ namespace RUbook.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             GroupViewModel model = new GroupViewModel();
             var group = groupDAL.GetGroup((int)id);
+
             if (group == null)
             {
                 //TODO skila error eða einhverju um að grúppan sé ekki til.
                 return HttpNotFound();
             }
+
             model.Group = group;
             model.GroupMembers = groupDAL.GetGroupMembers(id);
             model.GroupPosts = postDAL.GetGroupPosts(id);

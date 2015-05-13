@@ -10,5 +10,6 @@ namespace RUbook.Models.ViewModels
         public Group Group { get; set; }
         public List<ApplicationUser> GroupMembers { get; set; }
         public List<Post> GroupPosts { get; set; }
+
     }
 }

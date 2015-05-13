@@ -18,8 +18,6 @@ namespace RUbook.Models
        public List<Group> MyGroups { get; set; }
        public List<ApplicationUser> MyFriends { get; set; }
        public List<Event> MyEvents { get; set; }
-
-        //public UserInfo UserInfo { get; set; }
        
     }
 }

@@ -28,11 +28,8 @@ namespace RUbook.DAL
         {
             try
             {
-                //bæta við hérna dateAdded svo nýjasti komi fyrst eða í starfrófsröð bara - athuga virkar ekki 
-                //var users = db.Friends.Where(p => uid.Contains(p.UserId.Id)).OrderByDescending(p => p.UserId.FirstName).ToList();
                 var users = db.Users.ToList();
                 return users;
-
             }
 
             catch (Exception ex)
@@ -62,6 +59,7 @@ namespace RUbook.DAL
             }
             return null;
         }
+
         public List<string> GetAllFriendsIds(string id)
         {
             try
