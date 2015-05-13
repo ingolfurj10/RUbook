@@ -28,12 +28,16 @@ namespace RUbook.DAL
             return group;
         }
 
-        public List<GroupMember> GetAllGroupsOfUser(string gid)
+        public List<Group> GetAllGroupsOfUser(string id)
         {
             try
             {
-                var group = db.GroupMembers.Where(p => gid.Contains(p.UserID.Id)).ToList();
-                return group;
+                //var group = db.GroupMembers.Where(p => gid.Contains(p.UserID.Id)).ToList();
+                var groups = (from g in db.Groups
+                             join gm in db.GroupMembers on g.ID equals gm.GroupID
+                             where gm.UserID.Id == id
+                             select g).ToList();
+                return groups;
             }
             catch(Exception ex)
             {
@@ -58,6 +62,20 @@ namespace RUbook.DAL
             }
 
             return null;
+        }
+
+        public List<ApplicationUser> GetGroupMembers(int? gid)
+        {
+            if (gid == null)
+            {
+                return null;
+            }
+
+            var gmembers = (from gm in db.GroupMembers
+                            where gm.GroupID == gid
+                            select gm.UserID).ToList();
+
+            return gmembers;
         }
     }
 }

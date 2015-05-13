@@ -30,15 +30,34 @@ namespace RUbook.DAL
             }
         }
 
-        public List<Post> GetAllPosts(List<string> uid)
+        public List<Post> GetUserPosts(string uid)
         {
             try
             {
-                var posts = db.Posts.Where(p => uid.Contains(p.UserID.Id)).OrderByDescending(p => p.DateCreated).ToList();
+                var posts = db.Posts.Where(p => uid == p.UserID.Id).OrderByDescending(p => p.DateCreated).ToList();
                 return posts;
             }
             
             catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return null;
+        }
+        /// <summary>
+        /// Sækir all pósta sem tengjast id´s í inntakinu og eru ekki merktir grúppu.
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <returns></returns>
+        public List<Post> GetUsersPosts(List<string> uid)
+        {
+            try
+            {
+                var posts = db.Posts.Where(p => uid.Contains(p.UserID.Id)).Where(p => p.GroupID == null).OrderByDescending(p => p.DateCreated).ToList();
+                return posts;
+            }
+
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
@@ -72,6 +91,18 @@ namespace RUbook.DAL
             comment.CreatedDate = DateTime.Now;
             db.Comments.Add(comment);
             db.SaveChanges();
+        }
+
+        public List<Post> GetGroupPosts(int? guid)
+        { 
+            if (guid == null)
+            {
+                return null;
+            }
+
+            var posts = db.Posts.Where(p => p.GroupID == (int)guid).OrderByDescending(p => p.DateCreated).ToList();
+
+            return posts;
         }
     }
 }

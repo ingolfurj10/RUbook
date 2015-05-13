@@ -48,7 +48,7 @@ namespace RUbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,text,CreatedDate")] Comment comment)
+        public ActionResult Create([Bind(Include="ID,Text,CreatedDate")] Comment comment)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace RUbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ID,text,CreatedDate")] Comment comment)
+        public ActionResult Edit([Bind(Include="ID,Text,CreatedDate")] Comment comment)
         {
             if (ModelState.IsValid)
             {
@@ -137,7 +137,7 @@ namespace RUbook.Controllers
             Post post = Instance.GetPostById(id);
             if (post != null)
             {
-                Comment comment = new Comment { text = commentText, PostID = post };
+                Comment comment = new Comment { Text = commentText, PostID = post.ID };
                 PostDAL.Instance.AddComment(comment);
                 Instance.AddComment(comment);
                 db.SaveChanges();

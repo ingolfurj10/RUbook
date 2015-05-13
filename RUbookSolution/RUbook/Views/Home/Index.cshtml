@@ -31,9 +31,9 @@
 
             <div>
                 @{
-    if (Model.AllPosts != null)
+    if (Model.Posts != null)
     {
-        foreach (var item in Model.AllPosts)
+        foreach (var item in Model.Posts)
         {
             <div class="well">
                 <p>@item.Text</p>
@@ -67,10 +67,10 @@
             <div class="panel panel-default">
                 <div class="panel-heading">My Groups</div>
                 <ul class="list-group">
-                    @foreach (var group in Model.AllGroupsOfUser)
+                    @foreach (var group in Model.MyGroups)
                     {
                         <div class="list-group-item">
-                            @Html.ActionLink(group.GroupID.Name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
+                            @Html.ActionLink(group.Name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
                         </div>
                     }
                 </ul>
@@ -79,12 +79,12 @@
                 <div class="panel-heading">My Events</div>
                 <ul class="list-group">
 
-                    @foreach (var eve in Model.AllEventsOfUser)
+                    @foreach (var eve in Model.MyEvents)
                     {
-                        if (DateTime.Now < eve.EventID.DateOfEvent)
+                        if (DateTime.Now < eve.DateOfEvent)
                         {
                             <div class="list-group-item">
-                                @Html.ActionLink(eve.EventID.Name, "Details", "Events", new { id = eve.ID }, new { @class = "" })
+                                @Html.ActionLink(eve.Name, "Details", "Events", new { id = eve.ID }, new { @class = "" })
                             </div>
                         }
                     }
@@ -136,10 +136,10 @@
 
                 <ul class="list-group">
                     <div>
-                        @foreach (var item in Model.AllFriendsOfUser)
+                        @foreach (var item in Model.MyFriends)
                         {
                             <div class="list-group-item">
-                                @Html.ActionLink(item.FriendUserID.Email, "Details", "UserInfoes", new { id = item.UserId.Id }, null)
+                                @Html.ActionLink(item.FriendUserID.FirstName, "Details", "UserInfoes", new { id = item.UserId.Id }, null)
                             </div>
                         }
                     </div>

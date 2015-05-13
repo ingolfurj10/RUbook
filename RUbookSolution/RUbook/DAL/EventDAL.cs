@@ -28,11 +28,14 @@ namespace RUbook.DAL
             return eve;
         }
 
-        public List<EventMember> GetAllEventsOfUser(string gid)
+        public List<Event> GetAllEventsOfUser(string id)
         {
             try
             {
-                var events = db.EventMembers.Where(p => gid.Contains(p.UserID.Id)).ToList();
+                var events = (from e in db.Events
+                              join em in db.EventMembers on e.ID equals em.EventID
+                              where em.UserID.Id == id
+                              select e).ToList();
                 return events;
             }
             catch (Exception ex)

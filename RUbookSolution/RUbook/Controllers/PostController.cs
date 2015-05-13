@@ -38,10 +38,10 @@ namespace RUbook.Controllers
 
             try
             {
-                var friends = (from u in db.Friends where u.UserId.Id == user.Id select u.FriendUserID.Id).ToList();
-                friends.Add(userId);
-                var posts = postDAL.GetAllPosts(friends);
-                return View(db.Posts.ToList());
+                //var friends = (from u in db.Friends where u.UserId.Id == user.Id select u.FriendUserID.Id).ToList();
+                //friends.Add(userId);
+                //var posts = postDAL.(friends);
+                //return View(db.Posts.ToList());
 
             }
 
@@ -78,6 +78,7 @@ namespace RUbook.Controllers
             {
                 Post post = new Post();
                 post.GroupID = (int)id;
+                return View(post);
             }
 
             return View();
@@ -98,12 +99,8 @@ namespace RUbook.Controllers
 				post.UserID = (ApplicationUser)user;
 				post.DateCreated = DateTime.Now;  
                 db.Posts.Add(post);
-                db.SaveChanges();
-
                 return RedirectToAction("Index", "Home");
-               
             }
-
             return View(post);
         }
 

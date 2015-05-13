@@ -9,6 +9,6 @@ namespace RUbook.Models
     {
         public int ID { get; set; }
         public virtual ApplicationUser UserID { get; set; }
-        public Group GroupID { get; set; }
+        public int? GroupID { get; set; }
     }
 }
