@@ -91,33 +91,6 @@
 
 
     <div class="col-md-3">
-<<<<<<< HEAD
-        @{
-            
-            if(Model.whois == RUbook.Models.ViewModels.Whois.Me)
-            { 
-                <!-- hérna vatnar að athuga hver er að skoða síðuna-->
-                <button type="button" class="btn btn-primary btn-block">@Html.ActionLink("Friendlist", "Index", "UserInfoes", new { id = Model.User.Id }) </button>
-            }          
-            else
-            {
-                <p>This is your friend, do you want to unfriend</p>
-            }
-        }
-
-        <ul class="list-group">
-            <li>
-                @foreach (var item in Model.Friends)
-                {
-                    <div class="list-group-item">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true">
-</span> @Html.ActionLink(item.FirstName, "details", "userinfoes", new { id = item.Id }, null)
-                    </div>
-                }
-            </li>
-        </ul>
-
-=======
         <div class="panel panel-default">
             <div class="panel-heading">Friends List</div>
             <ul class="list-group">
@@ -125,12 +98,12 @@
                     @foreach (var item in Model.Friends)
                     {
                         <div class="list-group-item">
-                            @Html.ActionLink(item.FirstName, "details", "userinfoes", new { id = item.Id }, null)
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                @Html.ActionLink(item.FirstName, "details", "userinfoes", new { id = item.Id }, null)
                         </div>
                     }
                 </div>
             </ul>
         </div>
->>>>>>> annaksnorra
     </div>
 </div>
