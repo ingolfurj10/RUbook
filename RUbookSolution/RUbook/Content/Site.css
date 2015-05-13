@@ -1,7 +1,6 @@
-﻿<<<<<<< HEAD
 ﻿body {
     background-color:#fff9fc;
-    padding: 70px;
+    padding: 77px;
     margin: auto;
 }
 
@@ -44,7 +43,6 @@ img{
     max-width:600px;
 }
 
-=======
 ﻿body {
     background-color:#fff9fc;
     padding: 70px;
@@ -85,12 +83,10 @@ a {
     color: #d16ea3;
 }
 
-img{
+img {
     width:100%;
     max-width:600px;
 }
-
->>>>>>> 73060f351e1d545d3f33d85d9e473a52408492cb
 .btn-info {
     color: #d16ea3;
 }
