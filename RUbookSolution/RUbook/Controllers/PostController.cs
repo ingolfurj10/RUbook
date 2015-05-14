@@ -76,9 +76,18 @@ namespace RUbook.Controllers
         {
             if (id != null)
             {
+                var fromroute = Request.ServerVariables["http_referer"];
                 Post post = new Post();
-                post.GroupID = (int)id;
-                post.EventID = (int)id; 
+                
+                if(fromroute.Contains("Event"))
+                {
+                    post.EventID = (int)id; 
+                }
+                if(fromroute.Contains("Group"))
+                {
+                    post.GroupID = (int)id;
+                }
+                
                 return View(post);
             }
 
@@ -117,7 +126,7 @@ namespace RUbook.Controllers
 
                 else
                 {
-                    return RedirectToAction("Details", "Event", new { id = post.EventID });
+                    return RedirectToAction("Details", "Events", new { id = post.EventID });
                 
                 }
 
