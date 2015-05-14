@@ -77,10 +77,9 @@ namespace RUbook.Controllers
             {
                 var fromroute = Request.ServerVariables["http_referer"];
                 Post post = new Post();
-<<<<<<< HEAD
+
                 post.GroupID = (int)id;
                 //post.EventID = (int)id; 
-=======
                 
                 if(fromroute.Contains("Event"))
                 {
@@ -90,8 +89,7 @@ namespace RUbook.Controllers
                 {
                     post.GroupID = (int)id;
                 }
-                
->>>>>>> 387479b8a7f785350ff91fb7cdc85bee46abc634
+   
                 return View(post);
             }
 
