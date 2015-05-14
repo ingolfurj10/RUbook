@@ -117,16 +117,21 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">Group members</div>
-
             <ul class="list-group">
-                @if(Model.GroupMembers != null)
-                {
-                    foreach(var member in Model.GroupMembers)
-                    { 
-                        @Html.ActionLink(member.FirstName, "Details", "UserInfoes", new { id = member.Id})
+                <li>
+                    @if (Model.GroupMembers != null)
+                    {
+                        foreach (var member in Model.GroupMembers)
+                        {
+                            <div class="list-group-item">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true">
+                                </span> @Html.ActionLink(member.FirstName, "Details", "UserInfoes", new { id = member.Id })
+                            </div>
+                        }
                     }
-                }
+                </li>
             </ul>
+
         </div>
 
         <br />
