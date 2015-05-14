@@ -25,15 +25,11 @@
 
             <!--Hér er button sem beinir á create post nýja síðu sem vísar síðan aftur hingað á tímalínuna-->
             <div>
-                <!--<center>
-                    <button type="button" class="btn btn-default">@Html.ActionLink("Create New Post For Timeline", "Create", "Post") </button>
-                </center>-->
-
                 <center>
-                    @Html.ActionLink("Create New Post For Timeline", "Create", "Post", new { @class = "btn btn-default" })
+                   @Html.ActionLink("Create a New Post for Timeline", "Create", "Post", null, new { @class = "btn btn-default"})
                 </center>
             </div>
-
+           
             <br>
 
             <div>
@@ -70,6 +66,16 @@
    </div>
 
         <div class="col-md-3 col-md-pull-6 col-sm-6">
+
+            <center>
+                <div class="btn-group">
+                    @Html.ActionLink("Create Group", "Create", "Groups", null, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Create Event", "Create", "Events", null, new { @class = "btn btn-default" })
+                </div>
+            </center>
+
+            <br/>
+
             <div class="panel panel-default">
                 <div class="panel-heading">My Groups</div>
                 <ul class="list-group">
@@ -97,14 +103,6 @@
                 </ul>
             </div>
 
-            <!-- Kodi fyrir dagatal fenginn her https://github.com/oneyoung/jquery-calendar -->
-
-            <center>
-                <div>
-                    <div class="jquery-calendar"></div>
-                </div>
-            </center>
-
         </div>
 
         <br />
@@ -112,7 +110,6 @@
         <div class="col-md-3 col-sm-6">
 
             <!-- Kodi fyrir klukku fenginn her http://www.alessioatzeni.com/blog/css3-digital-clock-with-jquery/ -->
-
             <center>
                 <div>
                     <ul class="clock">
@@ -121,14 +118,17 @@
                         <li id="min"> </li>
                     </ul>
                 </div>
-                </center>
+             </center>
 
-                    <center>
-                        <div class="btn-group">
-                           @Html.ActionLink("Create Group", "Create", "Groups", null, new { @class = "btn btn-default" })
-                           @Html.ActionLink("Create Event", "Create", "Events", null, new { @class = "btn btn-default" })
-                        </div>
-                    </center>
+
+           <!-- Kodi fyrir dagatal fenginn her https://github.com/oneyoung/jquery-calendar -->
+            <center>
+                <div>
+                    <div class="jquery-calendar"></div>
+                </div>
+            </center>
+
+
 
                     <br>
 

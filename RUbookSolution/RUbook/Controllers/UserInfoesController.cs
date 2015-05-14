@@ -44,7 +44,7 @@ namespace RUbook.Controllers
 
             // hérna er tjékkað hver það er sem er að skoða notandann.
             var currentUser = User.Identity.GetUserId();
-            var friendId = userDAL.GetAllFriendsIds(currentUser);
+			var friendId = userDAL.GetAllFriendsIds(currentUser);
 
             if(friendId.Contains(id))
             {
