@@ -110,7 +110,7 @@
         <br />
         <div>
             
-            <button type="button" class="btn btn-primary btn-block">@Html.ActionLink("Join Group", "Create", "GroupMembers", new { id = Model.Group.ID }, null) </button>
+            @Html.ActionLink("Join Group", "Create", "GroupMembers", new { id = Model.Group.ID }, new { @class = "btn btn-success btn-block linkcolor" })
         </div>
 
         <br />
