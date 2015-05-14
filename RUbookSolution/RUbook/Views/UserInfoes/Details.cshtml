@@ -30,7 +30,7 @@
             if (Model.whois == RUbook.Models.ViewModels.Whois.Me)
             {
                 <!-- hérna vatnar að athuga hver er að skoða síðuna-->
-                <button type="button" class="btn btn-info btn-block">@Html.ActionLink("Edit", "Edit", new { id = Model.User.Id }, new { @class = "linkcolor" }) </button>
+                <button type="button" class="btn btn-default btn-block">@Html.ActionLink("Edit", "Edit", new { id = Model.User.Id }, new { @class = "linkcolor" }) </button>
             }
             else if (Model.whois == RUbook.Models.ViewModels.Whois.NotFriend)
             {
