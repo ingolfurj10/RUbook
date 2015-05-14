@@ -37,14 +37,11 @@ namespace RUbook.Controllers
 
         // GET: Events/Details/5
         [Authorize]
-        //[HandleError(View = "~/Views/Shared/Error.cshtml")]
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
-
                 return RedirectToAction("PageNotFound","Error");
-
             }
 
             EventViewModel model = new EventViewModel();
@@ -52,13 +49,12 @@ namespace RUbook.Controllers
             
             if (ev == null)
             {
-                //TODO skila error eða einhverju um að grúppan sé ekki til.
                 return HttpNotFound();
             }
+
             model.Event = ev;
             model.EventMember = eventDAL.GetEventMembers(id);
             model.EventPosts = postDAL.GetEventPosts(id);
-
 
             return View(model);
         }
@@ -71,8 +67,8 @@ namespace RUbook.Controllers
         }
 
         // POST: Events/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
@@ -80,7 +76,6 @@ namespace RUbook.Controllers
         {
             if (ModelState.IsValid)
             {
-                
                 db.Events.Add(@event);
                 db.SaveChanges();
                 return RedirectToAction("Details", new { id = @event.ID });
@@ -106,8 +101,6 @@ namespace RUbook.Controllers
         }
 
         // POST: Events/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
@@ -122,33 +115,33 @@ namespace RUbook.Controllers
             return View(@event);
         }
 
-        // GET: Events/Delete/5
-        [Authorize]
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Event @event = db.Events.Find(id);
-            if (@event == null)
-            {
-                return HttpNotFound();
-            }
-            return View(@event);
-        }
+        //// GET: Events/Delete/5
+        //[Authorize]
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Event @event = db.Events.Find(id);
+        //    if (@event == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(@event);
+        //}
 
-        // POST: Events/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        [Authorize]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Event @event = db.Events.Find(id);
-            db.Events.Remove(@event);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //// POST: Events/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //[Authorize]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Event @event = db.Events.Find(id);
+        //    db.Events.Remove(@event);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
