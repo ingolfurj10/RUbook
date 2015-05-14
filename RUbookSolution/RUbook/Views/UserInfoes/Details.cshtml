@@ -35,7 +35,7 @@
                 <!-- hérna vatnar að athuga hver er að skoða síðuna-->
                 <button type="button" class="btn btn-default btn-block">@Html.ActionLink("Edit", "Edit", new { id = Model.User.Id }, new { @class = "linkcolor" }) </button>
                 
-                @Html.ActionLink("Edit", "Edit", new { id = Model.User.Id }, new { @class = "btn btn-default btn-block linkcolor" })
+                @*@Html.ActionLink("Edit", "Edit", new { id = Model.User.Id }, new { @class = "btn btn-default btn-block linkcolor" })*@
             }
             else if (Model.whois == RUbook.Models.ViewModels.Whois.NotFriend)
             {
@@ -100,7 +100,7 @@
 
     <div class="col-md-3">
         <div class="panel panel-default">
-            <div class="panel-heading">Friends List</div>
+            <div class="panel-heading">Following</div>
             <ul class="list-group">
                 <li>
                     @foreach (var item in Model.Friends)
@@ -114,7 +114,7 @@
             </ul>
         </div>
         <div class="panel panel-default">
-            <div class="panel-heading">Followers of user</div>
+            <div class="panel-heading">Followers</div>
                 <ul class="list-group">
                 <div>
                         @if (Model.Followers != null)
