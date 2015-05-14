@@ -25,8 +25,12 @@
 
             <!--Hér er button sem beinir á create post nýja síðu sem vísar síðan aftur hingað á tímalínuna-->
             <div>
-                <center>
+                <!--<center>
                     <button type="button" class="btn btn-default">@Html.ActionLink("Create New Post For Timeline", "Create", "Post") </button>
+                </center>-->
+
+                <center>
+                    @Html.ActionLink("Create New Post For Timeline", "Create", "Post", new { @class = "btn btn-default" })
                 </center>
             </div>
 
@@ -81,9 +85,9 @@
                 <ul class="list-group">
                     @foreach (var group in Model.MyGroups)
                     {
-                        <div class="list-group-item">
+                        <li class="list-group-item">
                             @Html.ActionLink(group.Name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
-                        </div>
+                        </li>
                     }
                 </ul>
             </div>
@@ -95,9 +99,9 @@
                     {
                         if (DateTime.Now < eve.DateOfEvent)
                         {
-                            <div class="list-group-item">
+                            <li class="list-group-item">
                                 @Html.ActionLink(eve.Name, "Details", "Events", new { id = eve.ID }, new { @class = "" })
-                            </div>
+                            </li>
                         }
                     }
                 </ul>
@@ -121,6 +125,7 @@
                 </div>
             </center>
 
+<<<<<<< HEAD
             <!-- Kodi fyrir dagatal fenginn her https://github.com/oneyoung/jquery-calendar -->
 
             <center>
@@ -128,6 +133,14 @@
                     <div class="jquery-calendar"></div>
                 </div>
             </center>               
+=======
+                    <center>
+                        <div class="btn-group">
+                           @Html.ActionLink("Create Group", "Create", "Groups", null, new { @class = "btn-group btn btn-default" })
+                           @Html.ActionLink("Create Event", "Create", "Events", null, new { @class = "btn-group btn btn-default" })
+                        </div>
+                    </center>
+>>>>>>> 64a6dffcd263e4655ac09c954a1b54ef2a20df99
 
                     <br>
 
