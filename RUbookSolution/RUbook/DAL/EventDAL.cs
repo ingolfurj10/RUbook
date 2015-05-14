@@ -22,11 +22,6 @@ namespace RUbook.DAL
             db = context;
         }
 
-        /// <summary>
-        /// Returns the event with the groupid input
-        /// </summary>
-        /// <param name="event">id of the event</param>
-        /// <returns></returns>
         public Event GetEvent(int eventid)
         {
             var eve = (from u in db.Events where u.ID == eventid select u).SingleOrDefault();

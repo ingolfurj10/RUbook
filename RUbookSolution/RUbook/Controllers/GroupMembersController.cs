@@ -70,6 +70,9 @@ namespace RUbook.Controllers
             var uid = User.Identity.GetUserId();
             var user = userDAL.GetUser(uid);
 
+            
+
+
             GroupMember gm = new GroupMember();
             gm.GroupID = model.GroupId;
             gm.UserID = user;

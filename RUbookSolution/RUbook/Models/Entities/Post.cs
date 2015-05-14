@@ -14,7 +14,6 @@ namespace RUbook.Models
         public string Image {get; set; }
         public virtual ApplicationUser UserID { get; set; }
         public DateTime? DateCreated { get; set; }
-        //ekki búið að tengja
         public int? GroupID { get; set; }
         public int? EventID { get; set; }
 

@@ -98,9 +98,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\EventDALTest.cs" />
-    <Compile Include="DAL\GroupDALTest.cs" />
-    <Compile Include="DAL\UserDALTest.cs" />
     <Compile Include="IntegratedTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
@@ -116,6 +113,9 @@
       <Project>{C62FCE7B-0697-4744-BCDD-D86EEC1B79E1}</Project>
       <Name>RUbook</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DAL\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
