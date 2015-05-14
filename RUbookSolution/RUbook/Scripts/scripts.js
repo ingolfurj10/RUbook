@@ -26,4 +26,36 @@ $(document).ready(function () {
         return false;
     });
 
+    $('#followfriend').click(function () {
+        
+        var id = $(this).data('assigned-value');
+
+        $.post("/Friends/CreateFriend", id, function (data) {
+            $('#followfriend').hide();
+            $('#unfriend').show();
+
+        }).fail(function (xhr, err) {
+
+            alert("readyState: " + xhr.readyState +
+            "\nstatus: " + xhr.status);
+            alert("responseText: " + xhr.responseText);
+        });
+
+    });
+
+    $('#unfriend').click(function () {
+
+        $.post("/Friends/RemoveFriend", function (data) {
+            $('#followfriend').show();
+            $('#unfriend').hide();
+
+        }).fail(function (xhr, err) {
+
+            alert("readyState: " + xhr.readyState +
+            "\nstatus: " + xhr.status);
+            alert("responseText: " + xhr.responseText);
+        });
+
+    });
+
 });

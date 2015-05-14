@@ -30,7 +30,7 @@ namespace RUbook.Tests.DAL
         {
             //Arrange:
             const string user = "sombody"; //ákveðið ID = ákveðinn  notandi
-            var DAL = new UserDAL();
+            var DAL = new UserDAL(null);
             //Act:
             var result = DAL.GetAllFriendsIds(user); //köllum á fallið með þessum ákv notandi
 

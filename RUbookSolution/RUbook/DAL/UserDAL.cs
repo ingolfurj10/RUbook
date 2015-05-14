@@ -74,6 +74,12 @@ namespace RUbook.DAL
 
             return null;
         }
+
+        public Friend FindFriendShip(string userId, string friendId)
+        {
+            var ship = db.Friends.Where(f => f.FriendUserID.Id == friendId).Where(f => f.UserId.Id == userId).Select(f => f).SingleOrDefault();
+            return ship;
+        }
     }
 
 }

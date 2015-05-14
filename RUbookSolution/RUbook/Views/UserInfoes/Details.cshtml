@@ -24,22 +24,29 @@
 
         <br />
         <br />
-
+       
+        
         @{
 
+            
+            
             if (Model.whois == RUbook.Models.ViewModels.Whois.Me)
             {
                 <!-- hérna vatnar að athuga hver er að skoða síðuna-->
                 <button type="button" class="btn btn-default btn-block">@Html.ActionLink("Edit", "Edit", new { id = Model.User.Id }, new { @class = "linkcolor" }) </button>
+                
             }
             else if (Model.whois == RUbook.Models.ViewModels.Whois.NotFriend)
             {
                 <!--hérna vantar action link sem addar friend-->
-                <button type="button" class="btn btn-success btn-block"> @Html.ActionLink("Follow Friend", "Create", "Friends", new { id = Model.User.Id }, new { @class = "linkcolor" }) <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                <input type="button" class="btn btn-success btn-block" id="followfriend" data-assigned-value="@Model.User.Id" value="Follow friend" />
+                <input type="button" class="btn btn-success btn-block" style="display:none" id="unfriend" data-assigned-value="@Model.User.Id" value="Unfriend" />
+                
             }
             else
             {
-                <p>You are Following this user, do you want to Unfollow him?</p>
+                <input type="button" class="btn btn-success btn-block" style="display:none" id="followfriend" data-assigned-value="@Model.User.Id" value="Follow friend" />
+                <input type="button" class="btn btn-success btn-block" id="unfriend" value="Unfriend" />
             }
 
         }

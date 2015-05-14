@@ -11,7 +11,7 @@ namespace RUbook.Tests.DAL
         {
             //Arrange:
             const string user = "sombody"; //ákveðið ID = ákveðinn  notandi
-            var DAL = new GroupDAL();
+            var DAL = new GroupDAL(null);
             //Act:
             var result = DAL.GetAllGroupsOfUser(user); //köllum á fallið 
 
@@ -23,10 +23,10 @@ namespace RUbook.Tests.DAL
         public void GetGroupMembers() //Allir notendur sem tilheyra ákv grúppu -BÞ 
         {
             //Arrange:
-            const int group = "some group id"; 
-            var DAL = new GroupDAL();
+            string group = "some group id"; 
+            var DAL = new GroupDAL(null);
             //Act:
-            var result = DAL.GetGroupMembers(group); //köllum á fallið 
+            var result = DAL.GetGroupMembers(null); //köllum á fallið 
 
             //Assert:
             Assert.AreEqual(2, result.Count); //það tilheyra 2 notendr þessum hópi

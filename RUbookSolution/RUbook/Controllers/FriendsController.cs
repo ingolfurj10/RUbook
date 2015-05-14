@@ -89,6 +89,49 @@ namespace RUbook.Controllers
 
         }
 
+        [HttpPost]
+        public ActionResult CreateFriend(string id)
+        {
+
+            string request = Request.ServerVariables["http_referer"];
+            int posOfSlash = request.LastIndexOf('/');
+            string fid = request.Substring(posOfSlash + 1);
+            Console.WriteLine(request);
+            var uid = User.Identity.GetUserId();
+            
+            if (id == uid)
+            {
+                return RedirectToAction("CustomError","Error");
+            }
+
+            var newFriend = new Friend();
+            newFriend.UserId = userDAL.GetUser(uid);
+            newFriend.FriendUserID = userDAL.GetUser(fid);
+            newFriend.DateCreated = DateTime.Now;
+
+            db.Friends.Add(newFriend);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home");
+
+        }
+
+        [HttpPost]
+        public ActionResult RemoveFriend()
+        {
+            string request = Request.ServerVariables["http_referer"];
+            int posOfSlash = request.LastIndexOf('/');
+            string fid = request.Substring(posOfSlash + 1);
+
+            var uid = User.Identity.GetUserId();
+
+            var removeFriend = userDAL.FindFriendShip(uid, fid);
+
+            db.Friends.Remove(removeFriend);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+
         // GET: Friends/Edit/5
         public ActionResult Edit(int? id)
         {
