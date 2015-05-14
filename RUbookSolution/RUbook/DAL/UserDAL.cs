@@ -88,14 +88,29 @@ namespace RUbook.DAL
             return followers;
         }
 
-        //????
+        /// <summary>
+        /// Returns an instance of the Friend connection between two users
+		/// If no Friend connection is in place returns null
+        /// </summary>
+        /// <param name="userId">The id of logged in user</param>
+        /// <param name="friendId">The id of the friend in question</param>
+        /// <returns></returns>
         public Friend FindFriendShip(string userId, string friendId)
         {
-            var ship = db.Friends.Where(f => f.FriendUserID.Id == friendId)
+			try
+			{ 
+				var ship = db.Friends.Where(f => f.FriendUserID.Id == friendId)
                                  .Where(f => f.UserId.Id == userId)
                                  .Select(f => f).SingleOrDefault();
-            return ship;
-        }
+				return ship;
+        
+			}
+			catch(Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				return null;
+			}
+		}
     }
 
 }
