@@ -120,12 +120,20 @@
                 </div>
              </center>
 
+
            <!-- Kodi fyrir dagatal fenginn her https://github.com/oneyoung/jquery-calendar -->
             <center>
                 <div>
                     <div class="jquery-calendar"></div>
                 </div>
             </center>
+
+                    <center>
+                        <div class="btn-group">
+                           @Html.ActionLink("Create Group", "Create", "Groups", null, new { @class = "btn btn-default" })
+                           @Html.ActionLink("Create Event", "Create", "Events", null, new { @class = "btn btn-default" })
+                        </div>
+                    </center>
 
                     <br>
 
