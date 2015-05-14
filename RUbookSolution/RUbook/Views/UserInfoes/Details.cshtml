@@ -22,15 +22,15 @@
             <img src="@Html.DisplayFor(model => model.User.Image)" alt="Friend Photo" class="img-rounded" />
         }
 
-        <br />
-        <br />
+        <br/>
+        <br/>
 
         @{
 
             if (Model.whois == RUbook.Models.ViewModels.Whois.Me)
             {
                 <!-- hérna vatnar að athuga hver er að skoða síðuna-->
-                <button type="button" class="btn btn-default btn-block">@Html.ActionLink("Edit", "Edit", new { id = Model.User.Id }, new { @class = "linkcolor" }) </button>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.User.Id }, new { @class = "btn btn-default btn-block linkcolor" })
             }
             else if (Model.whois == RUbook.Models.ViewModels.Whois.NotFriend)
             {
@@ -94,7 +94,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">Friends List</div>
             <ul class="list-group">
-                <div>
+                <li>
                     @foreach (var item in Model.Friends)
                     {
                         <div class="list-group-item">
@@ -102,7 +102,7 @@
                                 @Html.ActionLink(item.FirstName, "details", "userinfoes", new { id = item.Id }, null)
                         </div>
                     }
-                </div>
+                </li>
             </ul>
         </div>
     </div>
