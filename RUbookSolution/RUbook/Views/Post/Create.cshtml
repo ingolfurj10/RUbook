@@ -18,7 +18,8 @@
             <div class="col-md-6">
                 <h3>Create a new Post for Timeline</h3>
                 <div class="input-group">
-                    @Html.TextAreaFor(model => model.Text, new { @class = "newpost", rows = 3, cols = 55, placeholder = "Something on your mind?" })
+                    @Html.TextAreaFor(model => model.Text, new { @class = "newpost", rows = 3, cols = 55, placeholder = "Something on your mind?", required="required" })
+                    @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger"})
                     @Html.HiddenFor(model => model.GroupID)
                     @Html.HiddenFor(model => model.EventID)
                     <div class="form-group">
