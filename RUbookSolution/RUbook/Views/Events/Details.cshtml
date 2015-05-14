@@ -55,7 +55,7 @@
         <div class="panel panel-heading">
        
             <center>
-                <button type="button" class="btn btn-default">@Html.ActionLink("Create New Post For Event Wall", "Create", "Post", new { id = Model.Event.ID }, new { @class = "" }) </button>
+                @Html.ActionLink("Create New Post For Event Wall", "Create", "Post", new { id = Model.Event.ID }, new { @class = "btn btn-default" })
             </center>
         </div>
 
@@ -97,14 +97,14 @@
 <div class="col-md-3">
     <center>
         <div class="btn-group">
-            <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
-            <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
+            @Html.ActionLink("Create Group", "Create", "Groups", new { @class = "btn btn-default" })
+            @Html.ActionLink("Create Event", "Create", "Events", new { @class = "btn btn-default" })
         </div>
     </center>
 
     <br />
     <div>
-        <button type="button" class="btn btn-success btn-block">@Html.ActionLink("Attend Event", "Create", "EventMembers", new { id = Model.Event.ID }, new { @class = "linkcolor" }) </button>
+        @Html.ActionLink("Attend Event", "Create", "EventMembers", new { id = Model.Event.ID }, new { @class = "btn btn-success btn-block linkcolor" })
     </div>
      
     <br />
@@ -114,8 +114,7 @@
 
         <ul class="list-group">
 
-            <!-- hérna mætti gera ajax svo hann birist strax í fólk sem ætlar að attenda-->
-            <!--Linkur á notanda sem er skráður í event-->
+           
             <li>
                 @if (Model.EventMember != null)
                 {

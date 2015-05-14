@@ -37,7 +37,6 @@ namespace RUbook.DAL
         {
             try
             {
-                //var group = db.GroupMembers.Where(p => gid.Contains(p.UserID.Id)).ToList();
                 var groups = (from g in db.Groups
                              join gm in db.GroupMembers on g.ID equals gm.GroupID
                              where gm.UserID.Id == id

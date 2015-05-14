@@ -50,7 +50,7 @@ namespace RUbook.DAL
         {
             try
             {
-                var friends = db.Friends.Where(f => id.Contains(f.UserId.Id)).Select(f => f.FriendUserID).ToList();
+                var friends = db.Friends.Where(f => id.Contains(f.UserId.Id)).OrderByDescending(f => f.DateCreated).Select(f => f.FriendUserID).ToList();
                 return friends;
             }
             catch (Exception ex)
@@ -73,6 +73,15 @@ namespace RUbook.DAL
             }
 
             return null;
+        }
+
+        public List<ApplicationUser> GetFollowers(string id)
+        {
+            var followers = db.Friends.Where(f => f.FriendUserID.Id == id)
+                              .OrderByDescending(f => f.DateCreated)
+                              .Select(f => f.UserId).ToList();
+
+            return followers;
         }
 
         public Friend FindFriendShip(string userId, string friendId)

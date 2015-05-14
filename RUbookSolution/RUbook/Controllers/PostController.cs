@@ -34,7 +34,6 @@ namespace RUbook.Controllers
         {
             var userId = User.Identity.GetUserId();
             var user = userDAL.GetUser(userId);
-            //var group = groupDAL.GetGroup();
 
             try
             {
@@ -78,6 +77,9 @@ namespace RUbook.Controllers
             {
                 var fromroute = Request.ServerVariables["http_referer"];
                 Post post = new Post();
+
+                post.GroupID = (int)id;
+                //post.EventID = (int)id; 
                 
                 if(fromroute.Contains("Event"))
                 {
@@ -87,7 +89,7 @@ namespace RUbook.Controllers
                 {
                     post.GroupID = (int)id;
                 }
-                
+   
                 return View(post);
             }
 
@@ -117,10 +119,8 @@ namespace RUbook.Controllers
                     return RedirectToAction("Index", "Home");
                 }
 
-                
                 else if(post.GroupID != null)
                 {
-                    
                     return RedirectToAction("Details", "Groups", new { id = post.GroupID });
                 }
 
@@ -130,8 +130,6 @@ namespace RUbook.Controllers
                 
                 }
 
-                
-                
              }
                 
             return View(post);

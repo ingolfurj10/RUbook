@@ -10,6 +10,7 @@ namespace RUbook.Models.ViewModels
     {
         public ApplicationUser User { get; set; }
         public List<ApplicationUser> Friends { get; set; }
+        public List<ApplicationUser> Followers { get; set; }
         public Whois whois { get; set; }
     }
 
