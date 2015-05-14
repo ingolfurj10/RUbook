@@ -34,7 +34,9 @@ namespace RUbook.DAL
         {
             try
             {
-                var posts = db.Posts.Where(p => uid == p.UserID.Id).OrderByDescending(p => p.DateCreated).ToList();
+                var posts = db.Posts.Where(p => uid == p.UserID.Id)
+                                    .OrderByDescending(p => p.DateCreated)
+                                    .ToList();
                 return posts;
             }
             
@@ -53,7 +55,10 @@ namespace RUbook.DAL
         {
             try
             {
-                var posts = db.Posts.Where(p => uid.Contains(p.UserID.Id)).Where(p => p.GroupID == null).OrderByDescending(p => p.DateCreated).ToList();
+                var posts = db.Posts.Where(p => uid.Contains(p.UserID.Id))
+                                    .Where(p => p.GroupID == null)
+                                    .OrderByDescending(p => p.DateCreated)
+                                    .ToList();
                 return posts;
             }
 

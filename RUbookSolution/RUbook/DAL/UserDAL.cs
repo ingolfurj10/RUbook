@@ -23,7 +23,7 @@ namespace RUbook.DAL
             db = context;
         }
 
-
+        //Get list of all users of the system
         public List<ApplicationUser> GetAllUsers()
         {
             try
@@ -31,7 +31,6 @@ namespace RUbook.DAL
                 var users = db.Users.ToList();
                 return users;
             }
-
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
@@ -40,17 +39,21 @@ namespace RUbook.DAL
             return null; 
         }
 
+        //Get single user of system 
         public ApplicationUser GetUser (string userid)
         {
             var user = (from u in db.Users where u.Id == userid select u).SingleOrDefault();
             return user;
         }
 
+        //get list of friends of certain user
         public List<ApplicationUser> GetFriends(string id)
         {
             try
             {
-                var friends = db.Friends.Where(f => id.Contains(f.UserId.Id)).OrderByDescending(f => f.DateCreated).Select(f => f.FriendUserID).ToList();
+                var friends = db.Friends.Where(f => id.Contains(f.UserId.Id))
+                                        .OrderByDescending(f => f.DateCreated)
+                                        .Select(f => f.FriendUserID).ToList();
                 return friends;
             }
             catch (Exception ex)
@@ -60,6 +63,7 @@ namespace RUbook.DAL
             return null;
         }
 
+        //return a list of only the ids of the users that a user is following
         public List<string> GetAllFriendsIds(string id)
         {
             try
@@ -74,7 +78,7 @@ namespace RUbook.DAL
 
             return null;
         }
-
+        //returns a list of all people that is following a single user. 
         public List<ApplicationUser> GetFollowers(string id)
         {
             var followers = db.Friends.Where(f => f.FriendUserID.Id == id)
@@ -84,9 +88,12 @@ namespace RUbook.DAL
             return followers;
         }
 
+        //????
         public Friend FindFriendShip(string userId, string friendId)
         {
-            var ship = db.Friends.Where(f => f.FriendUserID.Id == friendId).Where(f => f.UserId.Id == userId).Select(f => f).SingleOrDefault();
+            var ship = db.Friends.Where(f => f.FriendUserID.Id == friendId)
+                                 .Where(f => f.UserId.Id == userId)
+                                 .Select(f => f).SingleOrDefault();
             return ship;
         }
     }
