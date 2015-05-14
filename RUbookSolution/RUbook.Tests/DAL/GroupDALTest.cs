@@ -14,17 +14,20 @@ namespace RUbook.Tests.DAL
         {
             ApplicationDbContext db = new ApplicationDbContext();
             //Arrange:
-            // const string user = "sombody"; //ákveðið ID = ákveðinn  notandi
+                        // const string user = "sombody"; //ákveðið ID = ákveðinn  notandi
             var DAL = new GroupDAL(db);
             //Act:
             var result = DAL.GetAllGroupsOfUser("4f186767-6ee6-4c54-9ede-846529b7eaf7"); //köllum á fallið 
+            //Assert:
+            Assert.AreEqual(2, result.Count); //notandi tileyrir 2 grúppum
+
         }
         [TestMethod]
         public void GetGroupMembers() //Allir notendur sem tilheyra ákv grúppu -BÞ 
         {
             ApplicationDbContext db = new ApplicationDbContext();
             //Arrange:
-           //const int group = "some group id"; 
+                  //const int group = "some group id"; 
             var DAL = new GroupDAL(db);
             //Act:
             var result = DAL.GetGroupMembers(1); //köllum á fallið 
