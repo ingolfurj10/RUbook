@@ -4,7 +4,6 @@
     ViewBag.Title = "Details";
  }
 
-<h2>Post</h2>
 
 <div>
     <h4>@Model.UserID.FirstName @Model.UserID.LastName</h4>
@@ -12,28 +11,20 @@
 
 
     <hr />
-    <dl class="dl-horizontal">
-       
+    <dl class="form-horizontal">       
         <dd>
             @Html.DisplayFor(model => model.Text)
         </dd>
-
         <dd>
             @if (Model.Image != null)
             {
                 <img src="@Html.DisplayFor(model =>model.Image)" alt="Hérna er mynd" style="width:299px; height:228px" />
-
             }
         </dd>
     </dl>
-
     
     
 </div>
-<p>
-   
-    @Html.ActionLink("Go back" ,"Index", "Home")
-</p>
 
 <hr />
 
@@ -59,4 +50,9 @@
             @Html.ValidationSummary(false)
         }
     </section>
+
+    <p>
+        @Html.ActionLink("Go back", "Index", "Home")
+    </p>
+
 </div>
