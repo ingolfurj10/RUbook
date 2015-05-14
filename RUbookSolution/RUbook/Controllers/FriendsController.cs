@@ -92,13 +92,22 @@ namespace RUbook.Controllers
         [HttpPost]
         public ActionResult CreateFriend(string id)
         {
-
+			//Find the id of the friend to befriend from the url
             string request = Request.ServerVariables["http_referer"];
             int posOfSlash = request.LastIndexOf('/');
             string fid = request.Substring(posOfSlash + 1);
-            Console.WriteLine(request);
+ 
             var uid = User.Identity.GetUserId();
-            
+
+			var friendship = userDAL.FindFriendShip(uid, fid);
+			
+			//If there exists a friendship go to error page
+			if(friendship != null)
+			{
+				return RedirectToAction("CustomError", "Error");
+			}
+
+			// cannot befriend yourself
             if (id == uid)
             {
                 return RedirectToAction("CustomError","Error");
@@ -118,13 +127,20 @@ namespace RUbook.Controllers
         [HttpPost]
         public ActionResult RemoveFriend()
         {
+			//Find the id of the friend to remove from the url
             string request = Request.ServerVariables["http_referer"];
             int posOfSlash = request.LastIndexOf('/');
             string fid = request.Substring(posOfSlash + 1);
 
             var uid = User.Identity.GetUserId();
 
-            var removeFriend = userDAL.FindFriendShip(uid, fid);
+			var removeFriend = userDAL.FindFriendShip(uid, fid);
+			
+			//If friendship not found or an error occured redirect to an error page
+			if(removeFriend == null)
+			{
+				RedirectToAction("CustomError","Error");
+			}
 
             db.Friends.Remove(removeFriend);
             db.SaveChanges();

@@ -96,3 +96,35 @@ li {
 a.linkcolor {
     color: #000000;
 }
+
+.fa {
+    font-size: 1.5em;
+}
+
+a.fa {
+    font-size: 1.5em;
+}
+
+i#logout {
+    font-size: 1.5em;
+}
+
+@media (max-width: 991px) {
+    a#mobile {
+        display: inherit;
+    }
+
+    a#desktop {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    a#mobile {
+        display: none;
+    }
+
+    a#desktop {
+        display: inherit;
+    }
+}
