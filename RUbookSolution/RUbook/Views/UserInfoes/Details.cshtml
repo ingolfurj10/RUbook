@@ -40,14 +40,14 @@
             else if (Model.whois == RUbook.Models.ViewModels.Whois.NotFriend)
             {
                 <!--hérna vantar action link sem addar friend-->
-                <input type="button" class="btn btn-success btn-block" id="followfriend" data-assigned-value="@Model.User.Id" value="Follow friend" />
-                <input type="button" class="btn btn-success btn-block" style="display:none" id="unfriend" data-assigned-value="@Model.User.Id" value="Unfriend" />
+                <input type="button" class="btn btn-success btn-block" id="followfriend" data-assigned-value="@Model.User.Id" value="Follow Friend" />
+                <input type="button" class="btn btn-success btn-block" style="display:none" id="unfriend" data-assigned-value="@Model.User.Id" value="Unfollow Friend" />
                 
             }
             else
             {
-                <input type="button" class="btn btn-success btn-block" style="display:none" id="followfriend" data-assigned-value="@Model.User.Id" value="Follow friend" />
-                <input type="button" class="btn btn-success btn-block" id="unfriend" value="Unfriend" />
+                <input type="button" class="btn btn-success btn-block" style="display:none" id="followfriend" data-assigned-value="@Model.User.Id" value="Follow Friend" />
+                <input type="button" class="btn btn-success btn-block" id="unfriend" value="Unfollow Friend" />
             }
 
         }
