@@ -13,6 +13,7 @@ using RUbook.Models.ViewModels;
 
 namespace RUbook.Controllers
 {
+    
     public class EventsController : Controller
     {   
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -28,6 +29,7 @@ namespace RUbook.Controllers
 
         // GET: Events
         [Authorize]
+        
         public ActionResult Index()
         {
             return View(db.Events.ToList());
@@ -35,11 +37,14 @@ namespace RUbook.Controllers
 
         // GET: Events/Details/5
         [Authorize]
+        //[HandleError(View = "~/Views/Shared/Error.cshtml")]
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+                return RedirectToAction("PageNotFound","Error");
+
             }
 
             EventViewModel model = new EventViewModel();

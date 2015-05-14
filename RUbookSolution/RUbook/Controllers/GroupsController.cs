@@ -55,6 +55,7 @@ namespace RUbook.Controllers
             model.Group = group;
             model.GroupMembers = groupDAL.GetGroupMembers(id);
             model.GroupPosts = postDAL.GetGroupPosts(id);
+
             if(group.userID.Id == User.Identity.GetUserId())
             {
                 model.CreatedByMe = true;

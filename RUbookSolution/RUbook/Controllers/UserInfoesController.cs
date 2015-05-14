@@ -24,12 +24,14 @@ namespace RUbook.Controllers
         }
 
         // GET: UserInfoes
+        [Authorize]
         public ActionResult Index()
         {
             return View(userDAL.GetAllUsers());
         }
 
         // GET: UserInfoes/Details/5
+        [Authorize]
         public ActionResult Details(string id)
         {
             if (String.IsNullOrEmpty(id))
@@ -41,6 +43,7 @@ namespace RUbook.Controllers
             UserInfoViewModel model = new UserInfoViewModel();
             model.User = userDAL.GetUser(id);
             model.Friends = userDAL.GetFriends(id);
+            model.Followers = userDAL.GetFollowers(id);
 
             // hérna er tjékkað hver það er sem er að skoða notandann.
             var currentUser = User.Identity.GetUserId();
@@ -67,6 +70,7 @@ namespace RUbook.Controllers
         }
 
         // GET: UserInfoes/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -77,6 +81,7 @@ namespace RUbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "ID,FirstName,LastName, DateOfBirth, Education, WorkInfo, Department, Image")] ApplicationUser userInfo)
         {
             var uid = User.Identity.GetUserId();
@@ -102,6 +107,7 @@ namespace RUbook.Controllers
         }
 
         // GET: UserInfoes/Edit/5
+        [Authorize]
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -123,6 +129,7 @@ namespace RUbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "ID,FirstName,LastName, DateOfBirth, Education, WorkInfo, Department, Image")] ApplicationUser userInfo)
         {
             if (ModelState.IsValid)
@@ -145,6 +152,7 @@ namespace RUbook.Controllers
         }
 
         // GET: UserInfoes/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -163,6 +171,7 @@ namespace RUbook.Controllers
         // POST: UserInfoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             //UserInfo userInfo = db.UsersInfo.Find(id);

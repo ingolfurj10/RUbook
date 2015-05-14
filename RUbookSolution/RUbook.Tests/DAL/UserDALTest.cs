@@ -20,7 +20,7 @@ namespace RUbook.Tests.DAL
         {
             ApplicationDbContext db = new ApplicationDbContext();
             //Arrange:
-            const string user = "sigga@ru.is"; // ákveðinn  notandi
+            //const string user = "sigga@ru.is"; // ákveðinn  notandi
             var DAL = new UserDAL(db);
             //Act:
             List<string> result = DAL.GetAllFriendsIds("4f186767-6ee6-4c54-9ede-846529b7eaf7"); //köllum á fallið með id ákveðins notanda

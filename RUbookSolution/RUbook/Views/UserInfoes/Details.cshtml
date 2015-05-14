@@ -99,11 +99,30 @@
                     {
                         <div class="list-group-item">
                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                @Html.ActionLink(item.FirstName, "details", "userinfoes", new { id = item.Id }, null)
+                            @Html.ActionLink(item.FirstName, "Details", "Userinfoes", new { id = item.Id }, null)
                         </div>
                     }
                 </li>
             </ul>
         </div>
-    </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Followers of user</div>
+                <ul class="list-group">
+                    <div>
+                        @if (Model.Followers != null)
+                        {
+                            foreach (var item in Model.Followers)
+                            {
+                                <div class="list-group-item">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    @Html.ActionLink(item.FirstName, "Details", "Userinfoes", new { id = item.Id }, null)
+                                </div>
+                            }
+                        }
+
+                </div>
+             </ul>
+        </div>
+
+      </div>
 </div>

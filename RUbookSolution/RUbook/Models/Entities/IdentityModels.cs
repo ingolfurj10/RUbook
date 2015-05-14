@@ -14,10 +14,7 @@ namespace RUbook.Models
     public class ApplicationUser : IdentityUser
     {
        ///Ása: hvað er þetta aftur? :) 
-		public ApplicationUser() : base()
-		{
-			/*this.Friends = new HashSet<ApplicationUser>();*/
-		}
+		public ApplicationUser() : base() {}
       
         public string DateOfBirth { get; set; }
         public string FirstName { get; set; }
@@ -28,7 +25,6 @@ namespace RUbook.Models
         public string Department { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
-
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<GroupMember> GroupMembers { get; set; }
         public virtual ICollection<EventMember> EventMembers { get; set; }
