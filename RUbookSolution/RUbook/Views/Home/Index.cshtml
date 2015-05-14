@@ -25,12 +25,8 @@
 
             <!--Hér er button sem beinir á create post nýja síðu sem vísar síðan aftur hingað á tímalínuna-->
             <div>
-                <!--<center>
-                    <button type="button" class="btn btn-default">@Html.ActionLink("Create New Post For Timeline", "Create", "Post") </button>
-                </center>-->
-
                 <center>
-                    @Html.ActionLink("Create New Post For Timeline", "Create", "Post", new { @class = "btn btn-default" })
+                    <button type="button" class="btn btn-default btn-group">@Html.ActionLink("Create New Post For Timeline", "Create", "Post") </button>
                 </center>
             </div>
 
@@ -114,7 +110,6 @@
         <div class="col-md-3 col-sm-6">
 
             <!-- Kodi fyrir klukku fenginn her http://www.alessioatzeni.com/blog/css3-digital-clock-with-jquery/ -->
-
             <center>
                 <div>
                     <ul class="clock">
@@ -123,24 +118,14 @@
                         <li id="min"> </li>
                     </ul>
                 </div>
-            </center>
+             </center>
 
-<<<<<<< HEAD
-            <!-- Kodi fyrir dagatal fenginn her https://github.com/oneyoung/jquery-calendar -->
-
+           <!-- Kodi fyrir dagatal fenginn her https://github.com/oneyoung/jquery-calendar -->
             <center>
                 <div>
                     <div class="jquery-calendar"></div>
                 </div>
-            </center>               
-=======
-                    <center>
-                        <div class="btn-group">
-                           @Html.ActionLink("Create Group", "Create", "Groups", null, new { @class = "btn-group btn btn-default" })
-                           @Html.ActionLink("Create Event", "Create", "Events", null, new { @class = "btn-group btn btn-default" })
-                        </div>
-                    </center>
->>>>>>> 64a6dffcd263e4655ac09c954a1b54ef2a20df99
+            </center>
 
                     <br>
 
