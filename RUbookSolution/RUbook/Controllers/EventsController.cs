@@ -57,7 +57,7 @@ namespace RUbook.Controllers
             }
             model.Event = ev;
             model.EventMember = eventDAL.GetEventMembers(id);
-            model.EventPosts = postDAL.GetGroupPosts(id);
+            model.EventPosts = postDAL.GetEventPosts(id);
 
 
             return View(model);

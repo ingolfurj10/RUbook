@@ -61,7 +61,7 @@
             <div>
                 <div>
                     <center>
-                        <button type="button" class="btn btn-default">@Html.ActionLink("Create New Post For Group Wall", "Create", "Post", new { id = Model.Group.ID}, new { @class = "" }) </button>
+                        @Html.ActionLink("Create New Post For Group Wall", "Create", "Post", new { id = Model.Group.ID }, new { @class = "btn btn-default" })
                     </center>
                 </div>
 
@@ -102,26 +102,22 @@
     <div class="col-md-3">
         <center>
             <div class="btn-group">
-                <button type="button" class="btn btn-default">@Html.ActionLink("Create Group", "Create", "Groups")</button>
-                <button type="button" class="btn btn-default">@Html.ActionLink("Create Event", "Create", "Events")</button>
+                @Html.ActionLink("Create Group", "Create", "Groups", new { @class = "btn btn-default" })
+                @Html.ActionLink("Create Event", "Create", "Events", new { @class = "btn btn-default" })
             </div>
         </center>
 
         <br />
         <div>
             
-            <button type="button" class="btn btn-primary btn-block">@Html.ActionLink("Join Group", "Create", "GroupMembers", new { id = Model.Group.ID }, null) </button>
+            @Html.ActionLink("Join Group", "Create", "GroupMembers", new { id = Model.Group.ID }, new { @class = "btn btn-success btn-block linkcolor" })
         </div>
 
         <br />
 
-
         <div class="panel panel-default">
-            <div class="panel-heading">Attending Event</div>
-
+            <div class="panel-heading">Group members</div>
             <ul class="list-group">
-
-
                 <li>
                     @if (Model.GroupMembers != null)
                     {
@@ -135,6 +131,7 @@
                     }
                 </li>
             </ul>
+
         </div>
 
         <br />
