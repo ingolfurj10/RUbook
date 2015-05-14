@@ -9,7 +9,8 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/Navbar.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Content/calendar.css" />
-    <link href="~/Content/Clock.css" rel="stylesheet"/>
+    <link href="~/Content/Clock.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="~/Scripts/calendar.js"></script>
     <script type="text/javascript" src="~/Scripts/Clock.js"></script>
@@ -32,11 +33,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Timeline", "Index", "Home")</li>
-                    <li>@Html.ActionLink("My Profile", "Details", "UserInfoes", new { id = User.Identity.GetUserId() }, null)</li>
-                    <li>@Html.ActionLink("All Groups", "Index", "Groups")</li>
-                    <li>@Html.ActionLink("All Events", "Index", "Events")</li>
-                    <li>@Html.ActionLink("All Users", "Index", "UserInfoes")</li>
+                    <li>@Html.ActionLink(" ", "Index", "Home", null, new { id = "desktop", @class = "fa fa-home" })</li>
+                    <li>@Html.ActionLink(" Timeline", "Index", "Home", null, new { id = "mobile", @class = "fa fa-home" })</li>
+                    <li>@Html.ActionLink(" ", "Details", "UserInfoes", new { id = User.Identity.GetUserId() }, new { id = "desktop", @class = "fa fa-user" })</li>
+                    <li>@Html.ActionLink(" My Profile", "Details", "UserInfoes", new { id = User.Identity.GetUserId() }, new { id = "mobile", @class = "fa fa-user" })</li>
+                    <li>@Html.ActionLink("All Groups", "Index", "Groups", null, new { id = "desktop", @class = "fa fa-users" })</li>
+                    <li>@Html.ActionLink(" All Groups", "Index", "Groups", null, new { id = "mobile", @class = "fa fa-users" })</li>
+                    <li>@Html.ActionLink(" ", "Index", "Events", null, new { id = "desktop", @class = "fa fa-calendar" })</li>
+                    <li>@Html.ActionLink(" All Events", "Index", "Events", null, new { id = "mobile", @class = "fa fa-calendar" })</li>
+                    <li>@Html.ActionLink("All Users", "Index", "UserInfoes", null, new { id = "desktop", @class = "fa fa-users" })</li>
+                    <li>@Html.ActionLink(" All Users", "Index", "UserInfoes", null, new { id = "mobile", @class = "fa fa-users" })</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
