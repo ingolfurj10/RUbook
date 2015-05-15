@@ -126,8 +126,7 @@
                     foreach (var member in Model.EventMember)
                     {
                         <div class="list-group-item">
-                            <span class="glyphicon glyphicon-user" aria-hidden="true">
-                            </span> @Html.ActionLink(member.FirstName, "Details", "UserInfoes", new { id = member.Id })
+                            <i class="fa fa-user" id="size"></i> @Html.ActionLink(member.FirstName, "Details", "UserInfoes", new { id = member.Id })
                         </div>
                     }
                 }

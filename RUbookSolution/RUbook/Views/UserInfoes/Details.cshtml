@@ -106,8 +106,7 @@
                     @foreach (var item in Model.Friends)
                     {
                         <div class="list-group-item">
-                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                            @Html.ActionLink(item.FirstName, "Details", "Userinfoes", new { id = item.Id }, null)
+                            <i class="fa fa-user" id="size"></i> @Html.ActionLink(item.FirstName, "Details", "Userinfoes", new { id = item.Id }, null)
                         </div>
                     }
                 </li>
@@ -116,19 +115,18 @@
         <div class="panel panel-default">
             <div class="panel-heading">Followers</div>
                 <ul class="list-group">
-                <div>
+                <li>
                         @if (Model.Followers != null)
                         {
                             foreach (var item in Model.Followers)
-                    {
-                        <div class="list-group-item">
-                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                    @Html.ActionLink(item.FirstName, "Details", "Userinfoes", new { id = item.Id }, null)
-                        </div>
-                    }
+                            {
+                                <div class="list-group-item">
+                                    <i class="fa fa-user" id="size"></i> @Html.ActionLink(item.FirstName, "Details", "Userinfoes", new { id = item.Id }, null)
+                                </div>
+                            }
                         }
 
-                </div>
+                </li>
             </ul>
         </div>
 
