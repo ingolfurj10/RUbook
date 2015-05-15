@@ -7,12 +7,23 @@
 
 <!--Help to create this view was found at-->
 <!--http://stackoverflow.com/questions/13905164/how-to-make-custom-error-pages-work-in-asp-net-mvc-4-->
-<div class="list-header clearfix">
-    <span>Error</span>
-</div>
+
+<h1 id="bigerror"><i class="fa fa-exclamation-triangle"></i> Unknown Error</h1>
+
 <div class="list-sfs-holder">
     <div class="alert alert-error">
-        An unexpected error has occurred. Please contact the system administrator.
+        <div>
+            <h2>
+                <i class="fa fa-user-secret"></i>
+                Mr. Error says:
+            </h2>
+        </div>
+        
+        <h3>
+            The error is unknown because the guy who wrote this part of the code quit a while back and he was like
+            really really smart and the rest of us are not really sure how this works or what to do.
+            By the way, if you are that guy, please give us a call and let us know what to do.
+        </h3>
     </div>
     @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
     {
