@@ -127,7 +127,6 @@ namespace RUbook.Controllers
                 else
                 {
                     return RedirectToAction("Details", "Events", new { id = post.EventID });
-                
                 }
 
              }
