@@ -58,6 +58,7 @@ namespace RUbook.DAL
                 var posts = db.Posts.Where(p => uid.Contains(p.UserID.Id))
                                     .Where(p => p.GroupID == null)
                                     .OrderByDescending(p => p.DateCreated)
+                                    .Take(25)
                                     .ToList();
                 return posts;
             }
