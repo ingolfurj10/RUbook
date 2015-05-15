@@ -18,20 +18,20 @@ namespace RUbook.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private GroupDAL groupDAL;
         private PostDAL postDAL;
-        private UserDAL userDAL;
+        //private UserDAL userDAL;
 
         public GroupsController() : base()
         {
             groupDAL = new GroupDAL(db);
             postDAL = new PostDAL(db);
-            userDAL = new UserDAL(db);
+            //userDAL = new UserDAL(db);
         }
 
         // GET: Groups
         [Authorize]
         public ActionResult Index()
         {
-            return View(db.Groups.ToList());
+            return View(db.Groups.OrderByDescending(p => p.Name).ToList());
         }
 
         // GET: Groups/Details/5

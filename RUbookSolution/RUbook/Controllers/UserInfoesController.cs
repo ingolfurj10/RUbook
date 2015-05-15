@@ -27,7 +27,7 @@ namespace RUbook.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View(userDAL.GetAllUsers());
+            return View(userDAL.GetAllUsers().OrderBy(p => p.FirstName));
         }
 
         // GET: UserInfoes/Details/5

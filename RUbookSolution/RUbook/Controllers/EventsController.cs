@@ -32,7 +32,7 @@ namespace RUbook.Controllers
         
         public ActionResult Index()
         {
-            return View(db.Events.ToList());
+            return View(db.Events.OrderByDescending(p => p.DateOfEvent).ToList());
         }
 
         // GET: Events/Details/5
@@ -72,10 +72,11 @@ namespace RUbook.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "ID,Name,DateOfEvent,Image,Location,Text,GroupID,DepartmentID")] Event @event)
+        public ActionResult Create([Bind(Include = "ID,Name,DateOfEvent,Image,Location,Text,GroupID,userID")] Event @event)
         {
             if (ModelState.IsValid)
             {
+                
                 db.Events.Add(@event);
                 db.SaveChanges();
                 return RedirectToAction("Details", new { id = @event.ID });

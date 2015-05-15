@@ -30,7 +30,10 @@
             @Html.DisplayFor(modelItem => item.DateOfEvent)
         </td>
         <td>
-            @Html.ActionLink("Attend Event", "Create", "EventMembers", new { id = item.ID }) 
+            @Html.ActionLink("Checkout Event", "Details", new { id = item.ID }) 
+          
+
+            
            
         </td>
         <td>
