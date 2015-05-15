@@ -26,9 +26,9 @@
 
         @if(Model.Group.userID.Id == User.Identity.GetUserId() )
 
-
+        <br />
         {
-            @Html.ActionLink("Edit Group", "Edit", new { id = Model.Group.ID })
+            @Html.ActionLink("Edit Group", "Edit", new { id = Model.Group.ID }, new { @class = "btn btn-default btn-block linkcolor" })
         }
 
     </div>
@@ -72,17 +72,19 @@
                     foreach (var post in Model.Group.Posts)
                     {
                         <div class="well">
+                            <h3>@post.UserID.FirstName</h3>
                             <p>@post.Text</p>
                             @if (post.Image != null)
                             {
                                 <img src="@post.Image" alt="Hérna er mynd" />
                             }
+                            <hr />
 
                             <p><i class="fa fa-clock-o"></i> @post.DateCreated</p>
 
-                            @post.UserID.FirstName
+                            
                             <div class="left">
-                                @Html.ActionLink("See Comments", "Details", "Post", new { id = post.ID }, new { @class = "" })
+                                @Html.ActionLink("Add Comment", "Details", "Post", new { id = post.ID }, new { @class = "" })
                             </div>
                         </div>
 

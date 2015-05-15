@@ -23,8 +23,9 @@
         {
             <img src="@Html.DisplayFor(model =>model.Event.Image)" alt="Event photo" class="img-rounded" />
         }
+        <br />
 
-            @Html.ActionLink("Edit Event", "Edit", new { id = Model.Event.ID })
+            @Html.ActionLink("Edit Event", "Edit", new { id = Model.Event.ID }, new { @class = "btn btn-default btn-block linkcolor" })
     
     </div>
 
@@ -67,19 +68,19 @@
             foreach (var eventPost in Model.Event.EventPosts)
             {
                 <div class="well">
+                    <h3>@eventPost.UserID.FirstName</h3>
                     <p>@eventPost.Text</p>
                     @if (eventPost.Image != null)
                     {
                         <img src="@eventPost.Image" alt="Hérna er mynd" />
                     }
-
+                    <hr />
                     <p><i class="fa fa-clock-o"></i> @eventPost.DateCreated</p>
+                    
 
-                    @eventPost.UserID.FirstName
-
-                    @*<div class="left">
-                        @Html.ActionLink("See Comments", "Details", "Post", new { id = Model.Event.ID }, new { @class = "" })
-                    </div>*@
+                    <div class="left">
+                        @Html.ActionLink("Add Comment", "Details", "Post", new { id = Model.Event.ID }, new { @class = "" })
+                    </div>
 
                 </div>
 
