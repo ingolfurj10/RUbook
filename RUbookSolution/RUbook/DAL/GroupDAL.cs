@@ -33,9 +33,15 @@ namespace RUbook.DAL
             return group;
         }
         /// <summary>
+<<<<<<< HEAD
         /// Get all the groups which a single user is a member of
         /// </summary>
         /// <param name="id">user id</param>
+=======
+        /// Return
+        /// </summary>
+        /// <param name="id"></param>
+>>>>>>> asabjorg
         /// <returns></returns>
         public List<Group> GetAllGroupsOfUser(string id)
         {
