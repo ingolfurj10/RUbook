@@ -70,7 +70,7 @@
             <br/>
 
             <div class="panel panel-default">
-                <div class="panel-heading">My Groups</div>
+                <div class="panel-heading"><i class="fa fa-users" id="size"></i> My Groups</div>
                 <ul class="list-group">
                     @foreach (var group in Model.MyGroups)
                     {
@@ -81,7 +81,7 @@
                 </ul>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading">My Events</div>
+                <div class="panel-heading"><i class="fa fa-calendar" id="size"></i> My Events</div>
                 <ul class="list-group">
 
                     @foreach (var eve in Model.MyEvents)
@@ -141,8 +141,7 @@
                                 @foreach (var item in Model.MyFriends)
                                 {
                                     <div class="list-group-item">
-                                        <span class="glyphicon glyphicon-user" aria-hidden="true">
-                                        </span> @Html.ActionLink(item.FirstName, "Details", "UserInfoes", new { id = item.Id }, null)
+                                        <i class="fa fa-user" id="size"></i> @Html.ActionLink(item.FirstName, "Details", "UserInfoes", new { id = item.Id }, null)
                                     </div>
                                 }
                             </li>
