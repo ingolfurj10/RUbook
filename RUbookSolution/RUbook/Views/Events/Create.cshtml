@@ -42,6 +42,7 @@
             <div class="form-group">
                <div class="col-md-10">
                     @Html.EditorFor(model => model.DateOfEvent, new { htmlAttributes = new { @class = "form-control", placeholder = "Date of Event" } })
+                   <p class="help-block">Please use the format - dd.mm.yyyy</p>
                     @Html.ValidationMessageFor(model => model.DateOfEvent, "", new { @class = "text-danger" })
                 </div>
             </div>

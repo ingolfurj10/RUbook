@@ -55,7 +55,7 @@
                 @Html.LabelFor(model => model.DateOfBirth, "", htmlAttributes: new { @class = "control-label" })
                 <div>
                     @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control", placeholder = "Date Of Birth" } })
-                    <p class="help-block">Please use the format - mm/dd/yyyy</p>
+                    <p class="help-block">Please use the format - dd.mm.yyyy</p>
                     @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
                 </div>
             </div>
