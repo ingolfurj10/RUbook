@@ -9,12 +9,10 @@
 <h2>@Html.DisplayFor(model => model.Event.Name)</h2>
 
 <div>
-
     <hr />
-
     <div class="col-md-3">
 
-        <!--Þessi if setning er ekki alveg að virka eins og hún á að gera, birtir aldrei default myndina-->
+        <!--EF mynd er ekki til staðar ekki reyna að birta mynd-->
         @if (Model.Event.Image == null || Model.Event.Image == "")
         {
             <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Group photo" class="img-rounded" />
@@ -26,12 +24,10 @@
         <br />
 
             @Html.ActionLink("Edit Event", "Edit", new { id = Model.Event.ID }, new { @class = "btn btn-default btn-block linkcolor" })
-    
+   
     </div>
 
-
     <div class="col-md-6">
-
         <div class="panel panel-collapse">
             <dl class="dl-horizontal">
                 <dt>
@@ -63,6 +59,7 @@
 
         <br />
 
+        <!--birtir alla posta tengda ákveðnu eventi-->
         @{if (Model.Event.EventPosts != null)
         {
             foreach (var eventPost in Model.Event.EventPosts)
@@ -76,14 +73,11 @@
                     }
                     <hr />
                     <p><i class="fa fa-clock-o"></i> @eventPost.DateCreated</p>
-                    
 
                     <div class="left">
                         @Html.ActionLink("Add Comment", "Details", "Post", new { id = Model.Event.ID }, new { @class = "" })
                     </div>
-
                 </div>
-
             }
         }
 
@@ -112,23 +106,21 @@
     <br />
 
     <div class="panel panel-default">
+        <!--Here  list upp all the guests of a certain events-->
         <div class="panel-heading">Attending Event</div>
-
-        <ul class="list-group">
-
-           
-            <li>
-                @if (Model.EventMember != null)
-                {
-                    foreach (var member in Model.EventMember)
+            <ul class="list-group">
+                <li>
+                    @if (Model.EventMember != null)
                     {
-                        <div class="list-group-item">
-                            <i class="fa fa-user" id="size"></i> @Html.ActionLink(member.FirstName, "Details", "UserInfoes", new { id = member.Id })
-                        </div>
+                        foreach (var member in Model.EventMember)
+                        {
+                            <div class="list-group-item">
+                                <i class="fa fa-user" id="size"></i> @Html.ActionLink(member.FirstName, "Details", "UserInfoes", new { id = member.Id })
+                            </div>
+                        }
                     }
-                }
-            </li>
-        </ul>
+                </li>
+            </ul>
     </div>
 </div>
 

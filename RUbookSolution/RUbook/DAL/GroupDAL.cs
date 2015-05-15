@@ -32,16 +32,11 @@ namespace RUbook.DAL
 
             return group;
         }
+
         /// <summary>
-<<<<<<< HEAD
         /// Get all the groups which a single user is a member of
         /// </summary>
         /// <param name="id">user id</param>
-=======
-        /// Return
-        /// </summary>
-        /// <param name="id"></param>
->>>>>>> asabjorg
         /// <returns></returns>
         public List<Group> GetAllGroupsOfUser(string id)
         {
@@ -59,7 +54,10 @@ namespace RUbook.DAL
             }
             return null;
         }
-
+        /// <summary>
+        /// returns all groups of system
+        /// </summary>
+        /// <returns></returns>
         public List<Group> GetAllGroups()
         {
             try
@@ -75,7 +73,11 @@ namespace RUbook.DAL
 
             return null;
         }
-
+        /// <summary>
+        /// Get all users of a group
+        /// </summary>
+        /// <param name="gid">group id</param>
+        /// <returns></returns>
         public List<ApplicationUser> GetGroupMembers(int? gid)
         {
             if (gid == null)
