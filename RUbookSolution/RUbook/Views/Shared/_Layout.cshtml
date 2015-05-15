@@ -37,12 +37,12 @@
                     <li>@Html.ActionLink(" Timeline", "Index", "Home", null, new { id = "mobile", @class = "fa fa-home" })</li>
                     <li>@Html.ActionLink(" ", "Details", "UserInfoes", new { id = User.Identity.GetUserId() }, new { id = "desktop", @class = "fa fa-user" })</li>
                     <li>@Html.ActionLink(" My Profile", "Details", "UserInfoes", new { id = User.Identity.GetUserId() }, new { id = "mobile", @class = "fa fa-user" })</li>
-                    <li>@Html.ActionLink(" All Groups", "Index", "Groups", null, new { id = "desktop", @class = "fa fa-users" })</li>
-                    <li>@Html.ActionLink(" All Groups", "Index", "Groups", null, new { id = "mobile", @class = "fa fa-users" })</li>
-                    <li>@Html.ActionLink(" ", "Index", "Events", null, new { id = "desktop", @class = "fa fa-calendar" })</li>
-                    <li>@Html.ActionLink(" All Events", "Index", "Events", null, new { id = "mobile", @class = "fa fa-calendar" })</li>
-                    <li>@Html.ActionLink(" All Users", "Index", "UserInfoes", null, new { id = "desktop", @class = "fa fa-users" })</li>
-                    <li>@Html.ActionLink(" All Users", "Index", "UserInfoes", null, new { id = "mobile", @class = "fa fa-users" })</li>
+                    <li>@Html.ActionLink(" Groups", "Index", "Groups", null, new { id = "desktop", @class = "fa fa-users" })</li>
+                    <li>@Html.ActionLink(" Groups", "Index", "Groups", null, new { id = "mobile", @class = "fa fa-users" })</li>
+                    <li>@Html.ActionLink(" Events", "Index", "Events", null, new { id = "desktop", @class = "fa fa-calendar" })</li>
+                    <li>@Html.ActionLink(" Events", "Index", "Events", null, new { id = "mobile", @class = "fa fa-calendar" })</li>
+                    <li>@Html.ActionLink(" Users", "Index", "UserInfoes", null, new { id = "desktop", @class = "fa fa-users" })</li>
+                    <li>@Html.ActionLink(" Users", "Index", "UserInfoes", null, new { id = "mobile", @class = "fa fa-users" })</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
