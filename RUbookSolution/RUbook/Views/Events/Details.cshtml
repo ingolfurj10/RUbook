@@ -24,12 +24,8 @@
             <img src="@Html.DisplayFor(model =>model.Event.Image)" alt="Event photo" />
         }
 
-        @if (Model.Event.UserID.Id == User.Identity.GetUserId())
-        {
-           @Html.ActionLink("Edit Event", "Edit", new { id = Model.Event.ID })
-        }
-
-        
+            @Html.ActionLink("Edit Event", "Edit", new { id = Model.Event.ID })
+    
     </div>
 
 
