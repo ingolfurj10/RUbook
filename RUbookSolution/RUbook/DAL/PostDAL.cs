@@ -30,22 +30,6 @@ namespace RUbook.DAL
             }
         }
 
-        //public List<Post> GetUserPosts(string uid)
-        //{
-        //    try
-        //    {
-        //        var posts = db.Posts.Where(p => uid == p.UserID.Id)
-        //                            .OrderByDescending(p => p.DateCreated)
-        //                            .ToList();
-        //        return posts;
-        //    }
-            
-        //    catch(Exception ex)
-        //    {
-        //        Console.WriteLine(ex);
-        //    }
-        //    return null;
-        //}
         /// <summary>
         /// Sækir all pósta sem tengjast id´s í inntakinu og eru ekki merktir grúppu.
         /// </summary>

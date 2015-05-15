@@ -67,8 +67,6 @@ namespace RUbook.Controllers
         }
 
         // POST: Events/Create
-        
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]

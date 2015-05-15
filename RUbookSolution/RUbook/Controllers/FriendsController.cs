@@ -55,8 +55,6 @@ namespace RUbook.Controllers
         }
 
         // POST: Friends/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,UserId,FriendUserId")] Friend friend)
@@ -164,8 +162,6 @@ namespace RUbook.Controllers
         }
 
         // POST: Friends/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID")] Friend friend)

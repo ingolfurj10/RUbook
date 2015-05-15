@@ -48,22 +48,6 @@ namespace RUbook.DAL
             return null;
         }
 
-        //public List<Event> GetAllEvents()
-        //{
-        //    try
-        //    {
-        //        var events = db.Events.ToList();
-        //        return events;
-        //    }
-
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex);
-        //    }
-
-        //    return null;
-        //}
-
         public List<ApplicationUser> GetEventMembers(int? eid)
         {
             if (eid == null)
