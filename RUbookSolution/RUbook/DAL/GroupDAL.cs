@@ -32,7 +32,11 @@ namespace RUbook.DAL
 
             return group;
         }
-
+        /// <summary>
+        /// Return
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<Group> GetAllGroupsOfUser(string id)
         {
             try
