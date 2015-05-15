@@ -4,29 +4,28 @@
     ViewBag.Title = "Rubook - Timeline";
 }
 
-
 @if (Model.User.FirstName != null && Model.User.LastName != null)
 {
     <h3> @Model.User.FirstName @Model.User.LastName's Timeline</h3>
 }
 
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div>
 
-    </div>
     <div class="row">
         <div class="col-md-6 col-md-push-3">
+            <br/>
 
             <!--Hér er button sem beinir á create post nýja síðu sem vísar síðan aftur hingað á tímalínuna-->
             <div>
                 <center>
-                   @Html.ActionLink("Create a New Post for Timeline", "Create", "Post", null, new { @class = "btn btn-default"})
+                   @Html.ActionLink("Create a New Post for Timeline", "Create", "Post", null, new { @class = "btn btn-default btn-block"})
                 </center>
             </div>
            
-            <br>
+            <br/>
 
             <div>
                 @{if (Model.Posts != null)
@@ -49,7 +48,6 @@
                                 @Html.ActionLink("See Comments", "Details", "Post", new { id = item.ID }, new { @class = "" })
                             </div>                
                         </div>
-
                     }
                 }
 
@@ -57,7 +55,7 @@
                 {
                     <p>You have no posts!!!</p>
                 }
-             }
+              }
 
             </div>
 
@@ -101,12 +99,6 @@
                 </div>
             </center>
 
-        </div>
-
-        <br />
-
-        <div class="col-md-3 col-sm-6">
-
             <!-- Kodi fyrir klukku fenginn her http://www.alessioatzeni.com/blog/css3-digital-clock-with-jquery/ -->
             <center>
                 <div>
@@ -116,37 +108,39 @@
                         <li id="min"> </li>
                     </ul>
                 </div>
-             </center>
+            </center>
 
 
-           <!-- Kodi fyrir dagatal fenginn her https://github.com/oneyoung/jquery-calendar -->
+            <!-- Kodi fyrir dagatal fenginn her https://github.com/oneyoung/jquery-calendar -->
             <center>
                 <div>
                     <div class="jquery-calendar"></div>
                 </div>
             </center>
 
+        </div>
+
+        <br />
+
+    <div class="col-md-3 col-sm-6">
 
 
-                    <br>
+           <div class="panel panel-default">
+                <div class="panel-heading">Following</div>
+                <ul class="list-group">
+                    <li>
+                        @foreach (var item in Model.MyFriends)
+                        {
+                            <div class="list-group-item">
+                                <i class="fa fa-user" id="size"></i> @Html.ActionLink(item.FirstName, "Details", "UserInfoes", new { id = item.Id }, null)
+                            </div>
+                        }
+                    </li>
+                </ul>
+           </div>
 
-                    <div class="panel panel-default">
-
-                        <div class="panel-heading">Following</div>
-
-                        <ul class="list-group">
-                            <li>
-                                @foreach (var item in Model.MyFriends)
-                                {
-                                    <div class="list-group-item">
-                                        <i class="fa fa-user" id="size"></i> @Html.ActionLink(item.FirstName, "Details", "UserInfoes", new { id = item.Id }, null)
-                                    </div>
-                                }
-                            </li>
-                        </ul>
-                    </div>
+     </div>
 </div>
-    </div>
 
 }
 

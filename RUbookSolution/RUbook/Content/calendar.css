@@ -39,10 +39,10 @@
 .cal caption {
   line-height: 32px;
   font-weight: bold;
-  color: #e2e2e2;
+  color: #9f1e63;
   text-align: center;
   text-shadow: 0 -1px black;
-  background: #9f1e63;
+  background: #ddd;
   //background: rgba(0, 0, 0, 0.35);
   border-top: 1px solid #333;
   border-bottom: 1px solid #313131;
