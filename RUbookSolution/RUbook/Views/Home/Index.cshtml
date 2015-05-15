@@ -16,16 +16,16 @@
 
     <div class="row">
         <div class="col-md-6 col-md-push-3">
-            <br/>
+            <br />
 
             <!--Hér er button sem beinir á create post nýja síðu sem vísar síðan aftur hingað á tímalínuna-->
             <div>
                 <center>
-                   @Html.ActionLink("Create a New Post for Timeline", "Create", "Post", null, new { @class = "btn btn-default btn-block"})
+                    @Html.ActionLink("Create a New Post for Timeline", "Create", "Post", null, new { @class = "btn btn-default btn-block" })
                 </center>
             </div>
-           
-            <br/>
+
+            <br />
 
             <div>
                 @{if (Model.Posts != null)
@@ -43,10 +43,10 @@
                             <hr />
                             <p>@item.DateCreated</p>
 
-                           
+
                             <div class="left">
                                 @Html.ActionLink("See Comments", "Details", "Post", new { id = item.ID }, new { @class = "" })
-                            </div>                
+                            </div>
                         </div>
                     }
                 }
@@ -55,15 +55,15 @@
                 {
                     <p>You have no posts!!!</p>
                 }
-              }
+                }
 
             </div>
 
-   </div>
+        </div>
 
         <div class="col-md-3 col-md-pull-6 col-sm-6">
 
-            <br/>
+            <br />
 
 
             <div class="panel panel-default">
@@ -96,8 +96,8 @@
 
             <center>
                 <div class="btn-group">
-                    @Html.ActionLink("Create Group", "Create", "Groups", null, new { @class = "btn btn-default" })
-                    @Html.ActionLink("Create Event", "Create", "Events", null, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Create Event", "Create", "Events", null, new { @class = "btn btn-default btn-block" })
+                    @Html.ActionLink("Create Group", "Create", "Groups", null, new { @class = "btn btn-default btn-block" })
                 </div>
             </center>
 
@@ -124,10 +124,10 @@
 
         <br />
 
-    <div class="col-md-3 col-sm-6">
+        <div class="col-md-3 col-sm-6">
 
 
-           <div class="panel panel-default">
+            <div class="panel panel-default">
                 <div class="panel-heading">Following</div>
                 <ul class="list-group">
                     <li>
@@ -139,10 +139,10 @@
                         }
                     </li>
                 </ul>
-           </div>
+            </div>
 
-     </div>
-</div>
+        </div>
+    </div>
 
 }
 
