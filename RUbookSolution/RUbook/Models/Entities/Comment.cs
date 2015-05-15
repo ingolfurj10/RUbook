@@ -14,6 +14,7 @@ namespace RUbook.Models
         public virtual ApplicationUser UserID { get; set; }
         public int PostID { get; set; }
         public DateTime? CreatedDate { get; set; }
+        //public string Name { get; set; }
      }
 }
 
