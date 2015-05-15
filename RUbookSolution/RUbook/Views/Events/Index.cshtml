@@ -31,17 +31,12 @@
         </td>
         <td>
             @Html.ActionLink("Checkout Event", "Details", new { id = item.ID }) 
-          
-
-            
-           
         </td>
         <td>
             @if (DateTime.Now > item.DateOfEvent)
             {
                 <p>Past event</p>
             }
-            
         </td>
     </tr>
 }
