@@ -14,7 +14,15 @@ namespace RUbook.Controllers
 {
     public class CommentsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+		private ApplicationDbContext db = new ApplicationDbContext();
+		UserDAL userDAL;
+		PostDAL postDAL;  
+        
+     	public CommentsController() : base()
+		{
+			userDAL = new UserDAL(db);
+			postDAL = new PostDAL(db);            
+		}
 
         //// GET: /Comments/
         //public ActionResult Index()
@@ -132,14 +140,13 @@ namespace RUbook.Controllers
                 return RedirectToAction("Details", "Post", new { id = postId });
             }
 
-            string username = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+			var user = userDAL.GetUser(User.Identity.GetUserId());
             int id = Int32.Parse(postId);
-            var Instance = new PostDAL(new ApplicationDbContext());
-            Post post = Instance.GetPostById(id);
+            Post post = postDAL.GetPostById(id);
             if (post != null)
             {
-                Comment comment = new Comment { Text = commentText, PostID = post.ID };
-                Instance.AddComment(comment);
+				Comment comment = new Comment { Text = commentText, PostID = post.ID, UserID = user };
+                postDAL.AddComment(comment);
                 return RedirectToAction("Details", "Post", new { id = postId });
             }
             return View("Error");

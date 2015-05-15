@@ -18,10 +18,6 @@
     </div>
     <div class="row">
         <div class="col-md-6 col-md-push-3">
-            <div class="input-group">
-                <!--þetta þarf að laga eða færa yfir í annað view ef þetta verður margnotað view-->
-                @*@Html.TextAreaFor(model => Model.Text, new { @class = "newpost", rows = 3, cols = 100, placeholder = "Something on your mind?" })*@
-            </div>
 
             <!--Hér er button sem beinir á create post nýja síðu sem vísar síðan aftur hingað á tímalínuna-->
             <div>
@@ -38,15 +34,17 @@
                     foreach (var item in Model.Posts)
                     {
                         <div class="well">
+                            <h3>@item.UserID.FirstName @item.UserID.LastName</h3>
                             <p>@item.Text</p>
                             @if (item.Image != null)
                             {
-                                <img src="@item.Image" alt="Hérna er mynd" />
+                                <img src="@Html.DisplayFor(model => item.Image)" alt="Hérna er mynd" class="img-rounded" />
                             }
 
+                            <hr />
                             <p>@item.DateCreated</p>
 
-                            @item.UserID.FirstName
+                           
                             <div class="left">
                                 @Html.ActionLink("See Comments", "Details", "Post", new { id = item.ID }, new { @class = "" })
                             </div>                
