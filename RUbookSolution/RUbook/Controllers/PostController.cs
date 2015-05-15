@@ -28,30 +28,30 @@ namespace RUbook.Controllers
             groupDAL = new GroupDAL(db);
         }
 
-        //// GET: Post
-        //[Authorize]
-        //public ActionResult Index()
-        //{
-        //    var userId = User.Identity.GetUserId();
-        //    var user = userDAL.GetUser(userId);
+        // GET: Post
+        [Authorize]
+        public ActionResult Index()
+        {
+            var userId = User.Identity.GetUserId();
+            var user = userDAL.GetUser(userId);
 
-        //    try
-        //    {
+            try
+            {
         //        //var friends = (from u in db.Friends where u.UserId.Id == user.Id select u.FriendUserID.Id).ToList();
         //        //friends.Add(userId);
         //        //var posts = postDAL.(friends);
         //        //return View(db.Posts.ToList());
 
-        //    }
+            }
 
-        //    catch (Exception ex)
-        //    {
+            catch (Exception ex)
+            {
 
-        //        Console.WriteLine(ex);
-        //    }
+                Console.WriteLine(ex);
+            }
 
-        //    return null;
-        //}
+            return null;
+        }
 
         // GET: Post/Details/5
         [Authorize]
@@ -77,10 +77,7 @@ namespace RUbook.Controllers
             {
                 var fromroute = Request.ServerVariables["http_referer"];
                 Post post = new Post();
-
-                post.GroupID = (int)id;
-                //post.EventID = (int)id; 
-                
+                                             
                 if(fromroute.Contains("Event"))
                 {
                     post.EventID = (int)id; 

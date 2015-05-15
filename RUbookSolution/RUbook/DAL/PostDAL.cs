@@ -107,7 +107,9 @@ namespace RUbook.DAL
                 return null;
             }
 
-            var posts = db.Posts.Where(p => p.GroupID == (int)guid).OrderByDescending(p => p.DateCreated).ToList();
+            var posts = db.Posts.Where(p => p.GroupID == (int)guid)
+                                .OrderByDescending(p => p.DateCreated)
+                                .ToList();
 
             return posts;
         }
@@ -118,7 +120,9 @@ namespace RUbook.DAL
             {
                 return null;
             }
-            var posts = db.Posts.Where(p => p.EventID == (int)evid).OrderByDescending(p => p.DateCreated).ToList();
+            var posts = db.Posts.Where(p => p.EventID == (int)evid)
+                                .OrderByDescending(p => p.DateCreated)
+                                .ToList();
             return posts;
         }
     }
