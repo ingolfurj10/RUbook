@@ -14,7 +14,6 @@ namespace RUbook.Models
         public string Text { get; set; }
         public string Image { get; set; }
         public string Course { get; set; }
-        //spurning hérna að breyta í stóra staf
         public virtual ApplicationUser userID { get; set; }
 
         public virtual List<GroupMember> GroupMembers { get; set; }

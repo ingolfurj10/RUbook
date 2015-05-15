@@ -29,14 +29,13 @@ namespace RUbook.Controllers
         public ActionResult Index()
         {
             TimelineViewModel model = new TimelineViewModel();
-
             var userId = User.Identity.GetUserId();
             var user = userDAL.GetUser(userId);
-           
 
             try
             {
-                // Ná í Id fyrir alla vini og bæta sínu eigin id við til að sækja alla pósta.
+                //get the users id that a user is following + his own so we
+                //can post the right posts on the timeline
                 var friends = userDAL.GetAllFriendsIds(userId);
                 friends.Add(userId);
 
@@ -57,6 +56,5 @@ namespace RUbook.Controllers
 
             return null; 
         }
-        
     }
 }

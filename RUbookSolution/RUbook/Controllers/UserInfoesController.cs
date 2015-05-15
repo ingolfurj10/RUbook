@@ -45,7 +45,7 @@ namespace RUbook.Controllers
             model.Friends = userDAL.GetFriends(id);
             model.Followers = userDAL.GetFollowers(id);
 
-            // hérna er tjékkað hver það er sem er að skoða notandann.
+            // here we check who is looking at the profile page.
             var currentUser = User.Identity.GetUserId();
 			var friendId = userDAL.GetAllFriendsIds(currentUser);
 

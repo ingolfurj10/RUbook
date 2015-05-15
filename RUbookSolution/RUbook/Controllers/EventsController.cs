@@ -32,7 +32,9 @@ namespace RUbook.Controllers
         
         public ActionResult Index()
         {
-            return View(db.Events.OrderByDescending(p => p.DateOfEvent).ToList());
+            return View(db.Events
+                          .OrderByDescending(p => p.DateOfEvent)
+                          .ToList());
         }
 
         // GET: Events/Details/5

@@ -13,7 +13,7 @@
 
     <div class="col-md-3">
 
-        <!--Þessi if setning er ekki alveg að virka eins og hún á að gera, birtir aldrei default myndina-->
+        <!--If no picture is choosen dont try to display it-->
         @if (Model.Group.Image == null || Model.Group.Image == "")
         {
             <img src="https://d18qs7yq39787j.cloudfront.net/public/defaults/default_group.png" alt="Friend Photo" />

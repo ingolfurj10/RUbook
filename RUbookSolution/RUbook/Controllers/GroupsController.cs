@@ -48,7 +48,6 @@ namespace RUbook.Controllers
 
             if (group == null)
             {
-                //TODO skila error eða einhverju um að grúppan sé ekki til.
                 return HttpNotFound();
             }
 
@@ -76,18 +75,17 @@ namespace RUbook.Controllers
         }
 
         // POST: Groups/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
         public ActionResult Create([Bind(Include = "ID,Name,Text,Course,Image")] Group group)
         {
             if (ModelState.IsValid)
-            {
+            {  
+                //assign the id of the current user to the group so only he can edit it 
                 var id = User.Identity.GetUserId();
                 var user = (from u in db.Users where u.Id == id select u).SingleOrDefault();
-                group.userID = user;
+                group.userID = user; 
                 db.Groups.Add(group);
                 db.SaveChanges();
                 return RedirectToAction("Details", new { id = group.ID });
@@ -113,8 +111,6 @@ namespace RUbook.Controllers
         }
 
         // POST: Groups/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]

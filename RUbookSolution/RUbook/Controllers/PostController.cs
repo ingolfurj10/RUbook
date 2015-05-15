@@ -77,11 +77,13 @@ namespace RUbook.Controllers
             {
                 var fromroute = Request.ServerVariables["http_referer"];
                 Post post = new Post();
-                                             
+                                         
+                //if we are coming from a event
                 if(fromroute.Contains("Event"))
                 {
                     post.EventID = (int)id; 
                 }
+                //if we are coming from an group
                 if(fromroute.Contains("Group"))
                 {
                     post.GroupID = (int)id;
@@ -103,6 +105,7 @@ namespace RUbook.Controllers
         {
             if (ModelState.IsValid)
             {
+                //assign the user  id to the current post
 				var id = User.Identity.GetUserId();
 				var user = (from u in db.Users where u.Id == id select u).SingleOrDefault();
 				post.UserID = user;
@@ -163,32 +166,32 @@ namespace RUbook.Controllers
         }
 
         // GET: Post/Delete/5
-        [Authorize]
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Post post = db.Posts.Find(id);
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
-            return View(post);
-        }
+        //[Authorize]
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Post post = db.Posts.Find(id);
+        //    if (post == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(post);
+        //}
 
         // POST: Post/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        [Authorize]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Post post = db.Posts.Find(id);
-            db.Posts.Remove(post);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //[Authorize]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Post post = db.Posts.Find(id);
+        //    db.Posts.Remove(post);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
