@@ -21,7 +21,7 @@
         }
         else
         {
-            <img src="@Html.DisplayFor(model =>model.Event.Image)" alt="Event photo" />
+            <img src="@Html.DisplayFor(model =>model.Event.Image)" alt="Event photo" class="img-rounded" />
         }
 
             @Html.ActionLink("Edit Event", "Edit", new { id = Model.Event.ID })
