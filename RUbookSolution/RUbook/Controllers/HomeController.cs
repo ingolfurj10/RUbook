@@ -41,9 +41,6 @@ namespace RUbook.Controllers
                 friends.Add(userId);
 
                 model.Posts = postDAL.GetUsersPosts(friends);
-                //model.AllGroups = groupDAL.GetAllGroups();
-                //model.AllEvents = eventDAL.GetAllEvents();
-                //model.AllUsers = userDAL.GetAllUsers();
                 model.User = userDAL.GetUser(userId);
                 model.MyFriends = userDAL.GetFriends(userId);
                 model.MyGroups = groupDAL.GetAllGroupsOfUser(userId);
