@@ -8,7 +8,7 @@
 <h2>@Html.DisplayFor(model => model.Group.Name)</h2>
 
 <div>
-    
+
     <hr />
 
     <div class="col-md-3">
@@ -23,18 +23,19 @@
             <img src="@Html.DisplayFor(model => model.Group.Image)" alt="Friend Photo" class="img-rounded" />
         }
 
+        <br/>
+        <br/>
 
-        @if(Model.Group.userID.Id == User.Identity.GetUserId() )
-
-        <br />
+        @if (Model.Group.userID.Id == User.Identity.GetUserId())
         {
+            
             @Html.ActionLink("Edit Group", "Edit", new { id = Model.Group.ID }, new { @class = "btn btn-default btn-block linkcolor" })
         }
 
     </div>
 
     <div class="col-md-6">
-    
+
         <div class="panel panel-collapse">
             <dl class="dl-horizontal">
                 <dt>
@@ -82,7 +83,7 @@
 
                             <p><i class="fa fa-clock-o"></i> @post.DateCreated</p>
 
-                            
+
                             <div class="left">
                                 @Html.ActionLink("Add Comment", "Details", "Post", new { id = post.ID }, new { @class = "" })
                             </div>
@@ -111,7 +112,7 @@
 
         <br />
         <div>
-            
+
             @Html.ActionLink("Join Group", "Create", "GroupMembers", new { id = Model.Group.ID }, new { @class = "btn btn-success btn-block linkcolor" })
         </div>
 
