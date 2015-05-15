@@ -23,7 +23,10 @@ namespace RUbook.DAL
             db = context;
         }
 
-        //Get list of all users of the system
+        /// <summary>
+        /// Gets a list of all users of the system
+        /// </summary>
+        /// <returns></returns>
         public List<ApplicationUser> GetAllUsers()
         {
             try
@@ -39,14 +42,22 @@ namespace RUbook.DAL
             return null;
         }
 
-        //Get single user of system 
+       /// <summary>
+        /// Gets a  single user of the system 
+       /// </summary>
+       /// <param name="userid"></param>
+       /// <returns></returns>
         public ApplicationUser GetUser (string userid)
         {
             var user = (from u in db.Users where u.Id == userid select u).SingleOrDefault();
             return user;
         }
 
-        //get list of friends of certain user
+        /// <summary>
+        /// //get list of friends of certain user with the id from the input
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<ApplicationUser> GetFriends(string id)
         {
             try
@@ -63,7 +74,11 @@ namespace RUbook.DAL
             return null;
         }
 
-        //return a list of only the ids of the users that a user is following
+        /// <summary>
+        /// return a list of only the ids of the users that a single user is following
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<string> GetAllFriendsIds(string id)
         {
             try
@@ -78,7 +93,12 @@ namespace RUbook.DAL
 
             return null;
         }
-        //returns a list of all people that is following a single user. 
+        /// <summary>
+        /// returns followers of user with the id from the input
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+ 
         public List<ApplicationUser> GetFollowers(string id)
         {
             var followers = db.Friends.Where(f => f.FriendUserID.Id == id)

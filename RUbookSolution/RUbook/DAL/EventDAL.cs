@@ -21,7 +21,11 @@ namespace RUbook.DAL
         {
             db = context;
         }
-
+        /// <summary>
+        /// Returns a single event with a id of the input
+        /// </summary>
+        /// <param name="eventid">event id</param>
+        /// <returns></returns>
         public Event GetEvent(int eventid)
         {
             var eve = (from u in db.Events 
@@ -30,7 +34,11 @@ namespace RUbook.DAL
 
             return eve;
         }
-
+        /// <summary>
+        /// Gets all events that a single user is attending
+        /// </summary>
+        /// <param name="id">user id</param>
+        /// <returns></returns>
         public List<Event> GetAllEventsOfUser(string id)
         {
             try
@@ -47,7 +55,11 @@ namespace RUbook.DAL
             }
             return null;
         }
-
+        /// <summary>
+        /// Get all members of a single event 
+        /// </summary>
+        /// <param name="eid">event id</param>
+        /// <returns></returns>
         public List<ApplicationUser> GetEventMembers(int? eid)
         {
             if (eid == null)

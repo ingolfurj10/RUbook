@@ -31,9 +31,11 @@ namespace RUbook.DAL
         }
 
         /// <summary>
-        /// Sækir all pósta sem tengjast id´s í inntakinu og eru ekki merktir grúppu.
+        /// Gets all posts that connects to the id's(list) from the input and are not 
+        /// connected to group or event. Used to get post to display on the timeline but not
+        /// the group and event posts
         /// </summary>
-        /// <param name="uid"></param>
+        /// <param name="uid">users id's</param>
         /// <returns></returns>
         public List<Post> GetUsersPosts(List<string> uid)
         {
@@ -55,6 +57,11 @@ namespace RUbook.DAL
             return null;
         }
         
+        /// <summary>
+        /// Gets a post by certain id from the input
+        /// </summary>
+        /// <param name="postId">post id</param>
+        /// <returns></returns>
         public Post GetPostById(int postId)
         {
             Post result = (from post in db.Posts
@@ -71,7 +78,10 @@ namespace RUbook.DAL
             return result;
         }
 
-        //vantar svo að færa þetta komment inn í CommentsControllar þar sem það á heima :/
+      /// <summary>
+      /// Creates new comment and sets the date to the current date and time
+      /// </summary>
+      /// <param name="comment"></param>
         public void AddComment(Comment comment)
         {
             int newID = 1;
@@ -85,6 +95,11 @@ namespace RUbook.DAL
             db.SaveChanges();
         }
 
+        /// <summary>
+        /// Gets all group post that connects to the group the the id from the input
+        /// </summary>
+        /// <param name="guid">groupId</param>
+        /// <returns></returns>
         public List<Post> GetGroupPosts(int? guid)
         { 
             if (guid == null)
@@ -98,7 +113,11 @@ namespace RUbook.DAL
 
             return posts;
         }
-
+        /// <summary>
+        /// Gets all group post that connects to the group the the id from the input
+        /// </summary>
+        /// <param name="evid">eventId</param>
+        /// <returns></returns>
         public List<Post> GetEventPosts(int? evid)
         {
             if (evid == null)

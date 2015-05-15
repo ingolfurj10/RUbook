@@ -22,7 +22,7 @@ namespace RUbook.DAL
         }
 
         /// <summary>
-        /// Returns the group with the groupid input
+        /// Returns the group with the inserted id
         /// </summary>
         /// <param name="groupid">id of the group</param>
         /// <returns></returns>
@@ -32,7 +32,11 @@ namespace RUbook.DAL
 
             return group;
         }
-
+        /// <summary>
+        /// Get all the groups which a single user is a member of
+        /// </summary>
+        /// <param name="id">user id</param>
+        /// <returns></returns>
         public List<Group> GetAllGroupsOfUser(string id)
         {
             try
