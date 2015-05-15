@@ -41,13 +41,13 @@
             {
                 <!--hérna vantar action link sem addar friend-->
                 <input type="button" class="btn btn-success btn-block" id="followfriend" data-assigned-value="@Model.User.Id" value="Follow Friend" />
-                <input type="button" class="btn btn-success btn-block" style="display:none" id="unfriend" data-assigned-value="@Model.User.Id" value="Unfollow Friend" />
+                <input type="button" class="btn btn-danger btn-block" style="display:none" id="unfriend" data-assigned-value="@Model.User.Id" value="Unfollow Friend" />
                 
             }
             else
             {
                 <input type="button" class="btn btn-success btn-block" style="display:none" id="followfriend" data-assigned-value="@Model.User.Id" value="Follow Friend" />
-                <input type="button" class="btn btn-success btn-block" id="unfriend" value="Unfollow Friend" />
+                <input type="button" class="btn btn-danger btn-block" id="unfriend" value="Unfollow Friend" />
             }
 
         }
