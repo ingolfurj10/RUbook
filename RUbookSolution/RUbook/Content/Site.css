@@ -132,3 +132,7 @@ i#logout {
 .navbar-brand {
     font-size: 25px;
 }
+
+#bigerror {
+    font-size: 120px;
+}
