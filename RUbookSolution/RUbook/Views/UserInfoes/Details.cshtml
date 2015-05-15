@@ -33,7 +33,7 @@
             if (Model.whois == RUbook.Models.ViewModels.Whois.Me)
             {
                 <!-- hérna vatnar að athuga hver er að skoða síðuna-->
-                <button type="button" class="btn btn-default btn-block">@Html.ActionLink("Edit", "Edit", new { id = Model.User.Id }, new { @class = "linkcolor" }) </button>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.User.Id }, new { @class = "btn btn-default btn-block linkcolor" })
                 
                 @*@Html.ActionLink("Edit", "Edit", new { id = Model.User.Id }, new { @class = "btn btn-default btn-block linkcolor" })*@
             }
