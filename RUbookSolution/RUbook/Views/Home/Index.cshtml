@@ -65,17 +65,7 @@
 
             <br/>
 
-            <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-users" id="size"></i> My Groups</div>
-                <ul class="list-group">
-                    @foreach (var group in Model.MyGroups)
-                    {
-                        <li class="list-group-item">
-                            @Html.ActionLink(group.Name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
-                        </li>
-                    }
-                </ul>
-            </div>
+
             <div class="panel panel-default">
                 <div class="panel-heading"><i class="fa fa-calendar" id="size"></i> My Events</div>
                 <ul class="list-group">
@@ -88,6 +78,18 @@
                                 @Html.ActionLink(eve.Name, "Details", "Events", new { id = eve.ID }, new { @class = "" })
                             </li>
                         }
+                    }
+                </ul>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading"><i class="fa fa-users" id="size"></i> My Groups</div>
+                <ul class="list-group">
+                    @foreach (var group in Model.MyGroups)
+                    {
+                        <li class="list-group-item">
+                            @Html.ActionLink(group.Name, "Details", "Groups", new { id = group.ID }, new { @class = "" })
+                        </li>
                     }
                 </ul>
             </div>
