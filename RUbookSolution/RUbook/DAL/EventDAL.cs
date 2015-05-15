@@ -24,7 +24,9 @@ namespace RUbook.DAL
 
         public Event GetEvent(int eventid)
         {
-            var eve = (from u in db.Events where u.ID == eventid select u).SingleOrDefault();
+            var eve = (from u in db.Events 
+                       where u.ID == eventid 
+                       select u).SingleOrDefault();
 
             return eve;
         }
@@ -46,21 +48,21 @@ namespace RUbook.DAL
             return null;
         }
 
-        public List<Event> GetAllEvents()
-        {
-            try
-            {
-                var events = db.Events.ToList();
-                return events;
-            }
+        //public List<Event> GetAllEvents()
+        //{
+        //    try
+        //    {
+        //        var events = db.Events.ToList();
+        //        return events;
+        //    }
 
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex);
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
 
         public List<ApplicationUser> GetEventMembers(int? eid)
         {

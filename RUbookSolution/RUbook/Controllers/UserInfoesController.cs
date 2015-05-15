@@ -151,34 +151,34 @@ namespace RUbook.Controllers
 			return RedirectToAction("Details", "UserInfoes", new { id = userInfo.Id });
         }
 
-        // GET: UserInfoes/Delete/5
-        [Authorize]
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            //UserInfo userInfo = db.UsersInfo.Find(id);
-            //if (userInfo == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(userInfo);
-            return null;
-        }
+        //// GET: UserInfoes/Delete/5
+        //[Authorize]
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    //UserInfo userInfo = db.UsersInfo.Find(id);
+        //    //if (userInfo == null)
+        //    //{
+        //    //    return HttpNotFound();
+        //    //}
+        //    //return View(userInfo);
+        //    return null;
+        //}
 
-        // POST: UserInfoes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        [Authorize]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            //UserInfo userInfo = db.UsersInfo.Find(id);
-            //db.UsersInfo.Remove(userInfo);
-            //db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //// POST: UserInfoes/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //[Authorize]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    //UserInfo userInfo = db.UsersInfo.Find(id);
+        //    //db.UsersInfo.Remove(userInfo);
+        //    //db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {

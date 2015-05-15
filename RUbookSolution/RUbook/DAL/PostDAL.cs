@@ -30,22 +30,22 @@ namespace RUbook.DAL
             }
         }
 
-        public List<Post> GetUserPosts(string uid)
-        {
-            try
-            {
-                var posts = db.Posts.Where(p => uid == p.UserID.Id)
-                                    .OrderByDescending(p => p.DateCreated)
-                                    .ToList();
-                return posts;
-            }
+        //public List<Post> GetUserPosts(string uid)
+        //{
+        //    try
+        //    {
+        //        var posts = db.Posts.Where(p => uid == p.UserID.Id)
+        //                            .OrderByDescending(p => p.DateCreated)
+        //                            .ToList();
+        //        return posts;
+        //    }
             
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-            return null;
-        }
+        //    catch(Exception ex)
+        //    {
+        //        Console.WriteLine(ex);
+        //    }
+        //    return null;
+        //}
         /// <summary>
         /// Sækir all pósta sem tengjast id´s í inntakinu og eru ekki merktir grúppu.
         /// </summary>
@@ -85,6 +85,7 @@ namespace RUbook.DAL
             return result;
         }
 
+        //vantar svo að færa þetta komment inn í CommentsControllar þar sem það á heima :/
         public void AddComment(Comment comment)
         {
             int newID = 1;

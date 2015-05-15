@@ -36,7 +36,7 @@ namespace RUbook.DAL
                 Console.WriteLine(ex);
             }
 
-            return null; 
+            return null;
         }
 
         //Get single user of system 
